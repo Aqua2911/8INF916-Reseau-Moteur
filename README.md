@@ -1,1 +1,3 @@
-# 8INF916-Reseau-Moteur
+# Magnum Bootstrap
+
+A self-contained bootstrap for Magnum GLFW with Bullet that compile on Windows, Linux and MacOS
