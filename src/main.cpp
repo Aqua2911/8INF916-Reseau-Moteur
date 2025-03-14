@@ -54,7 +54,7 @@ class MyApplication: public Platform::GlfwApplication
         GL::Mesh _box{NoCreate}, _sphere{NoCreate};
         GL::Buffer _boxInstanceBuffer{NoCreate}, _sphereInstanceBuffer{NoCreate};
         Shaders::PhongGL _shader{NoCreate};
-
+        BulletIntegration::DebugDraw _debugDraw{NoCreate};
         Containers::Array<InstanceData> _boxInstanceData, _sphereInstanceData;
 
         btDbvtBroadphase _bBroadphase;
@@ -75,7 +75,7 @@ class MyApplication: public Platform::GlfwApplication
         btSphereShape _bSphereShape{0.25f};
         btBoxShape _bGroundShape{{4.0f, 0.5f, 4.0f}};
 
-        bool _drawCubes{true}, _shootBox{true};
+        bool _drawCubes{true}, _drawDebug{true};
 };
 
 class ColoredDrawable: public SceneGraph::Drawable3D {
@@ -183,10 +183,10 @@ MyApplication::MyApplication(const Arguments& arguments):
     GL::Renderer::setPolygonOffset(2.0f, 0.5f);
 
     /* Bullet setup */
-    //_debugDraw = BulletIntegration::DebugDraw{};
-    //_debugDraw.setMode(BulletIntegration::DebugDraw::Mode::DrawWireframe);
+    _debugDraw = BulletIntegration::DebugDraw{};
+    _debugDraw.setMode(BulletIntegration::DebugDraw::Mode::DrawWireframe);
     _bWorld.setGravity({0.0f, -10.0f, 0.0f});
-    //_bWorld.setDebugDrawer(&_debugDraw);
+    _bWorld.setDebugDrawer(&_debugDraw);
 
     /* Create the ground */
     auto* ground = new RigidBody{&_scene, 0.0f, &_bGroundShape, _bWorld};
@@ -251,8 +251,8 @@ void MyApplication::drawEvent() {
         _shader.draw(_sphere);
     }
 
-    /* Debug draw. If drawing on top of cubes, avoid flickering by setting
-       depth function to <= instead of just <.
+    /*Debug draw. If drawing on top of cubes, avoid flickering by setting
+       depth function to <= instead of just <.*/
     if(_drawDebug) {
         if(_drawCubes)
             GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::LessOrEqual);
@@ -264,7 +264,7 @@ void MyApplication::drawEvent() {
         if(_drawCubes)
             GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::Less);
     }
-    */
+
 
     swapBuffers();
     _timeline.nextFrame();
@@ -274,27 +274,57 @@ void MyApplication::drawEvent() {
 
 void MyApplication::keyPressEvent(KeyEvent& event) {
     /* Movement */
-    if(event.key() == Key::Down) {
+    if(event.key() == Key::S) {
         _cameraObject->rotateX(5.0_degf);
-    } else if(event.key() == Key::Up) {
+    } else if(event.key() == Key::W) {
         _cameraObject->rotateX(-5.0_degf);
-    } else if(event.key() == Key::Left) {
+    } else if(event.key() == Key::A) {
         _cameraRig->rotateY(-5.0_degf);
-    } else if(event.key() == Key::Right) {
+    } else if(event.key() == Key::D) {
         _cameraRig->rotateY(5.0_degf);
-        /* What to shoot */
-    } else if(event.key() == Key::S) {
-        _shootBox ^= true;
+    } else if(event.key() == Key::Q) {
+        // Move forward
+        _cameraRig->translate(_cameraRig->transformation().backward() * -1);
+    } else if(event.key() == Key::E) {
+        // Move backward
+        _cameraRig->translate(_cameraRig->transformation().backward());
     } else return;
 
     event.setAccepted();
 }
 
-void MyApplication::pointerPressEvent(PointerEvent& event) {
-    if (event.pointer() == Pointer::MouseLeft) {
-        Debug{} << "Click détecté ! Tir d'une sphère à implémenter...";
-        // TODO: Ajouter la gestion de la sphère qui est tirée
-    }
+void MyApplication::pointerPressEvent(PointerEvent& event) {/* Shoot an object on click */
+    if(!event.isPrimary() ||
+       !(event.pointer() & Pointer::MouseLeft))
+        return;
+
+    /* First scale the position from being relative to window size to being
+       relative to framebuffer size as those two can be different on HiDPI
+       systems */
+    const Vector2 position = event.position()*Vector2{framebufferSize()}/Vector2{windowSize()};
+    const Vector2 clickPoint = Vector2::yScale(-1.0f)*(position/Vector2{framebufferSize()} - Vector2{0.5f})*_camera->projectionSize();
+    const Vector3 direction = (_cameraObject->absoluteTransformation().rotationScaling()*Vector3{clickPoint, -1.0f}).normalized();
+
+    auto* object = new RigidBody{
+        &_scene,
+        5.0f,
+        &_bSphereShape,
+        _bWorld};
+    object->translate(_cameraObject->absoluteTransformation().translation());
+    /* Has to be done explicitly after the translate() above, as Magnum ->
+       Bullet updates are implicitly done only for kinematic bodies */
+    object->syncPose();
+
+    /* Create either a box or a sphere */
+    new ColoredDrawable{*object,
+        _sphereInstanceData,
+        0x220000_rgbf,
+        Matrix4::scaling(Vector3{0.25f}), _drawables};
+
+    /* Give it an initial velocity */
+    object->rigidBody().setLinearVelocity(btVector3{direction*25.f});
+
+    event.setAccepted();
 }
 
 MAGNUM_APPLICATION_MAIN(MyApplication)
