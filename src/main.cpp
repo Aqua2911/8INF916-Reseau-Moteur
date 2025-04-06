@@ -24,6 +24,9 @@
 #include <Magnum/Shaders/PhongGL.h>
 #include <Magnum/Trade/MeshData.h>
 
+#include "Serializable/Object3D.h"
+#include "Serializable/Scene3D.h"
+
 #ifdef BT_USE_DOUBLE_PRECISION
 #error sorry, this example does not support Bullet with double precision enabled
 #endif
@@ -32,8 +35,8 @@ using namespace Magnum;
 
 using namespace Math::Literals;
 
-typedef SceneGraph::Object<SceneGraph::MatrixTransformation3D> Object3D;
-typedef SceneGraph::Scene<SceneGraph::MatrixTransformation3D> Scene3D;
+//typedef SceneGraph::Object<SceneGraph::MatrixTransformation3D> Object3D;
+//typedef SceneGraph::Scene<SceneGraph::MatrixTransformation3D> Scene3D;
 
 struct InstanceData {
     Matrix4 transformationMatrix;
@@ -95,7 +98,7 @@ private:
 
 class RigidBody: public Object3D {
 public:
-    RigidBody(Object3D* parent, Float mass, btCollisionShape* bShape, btDynamicsWorld& bWorld): Object3D{parent}, _bWorld(bWorld) {
+    RigidBody(Object3DParent* parent, Float mass, btCollisionShape* bShape, btDynamicsWorld& bWorld): Object3DParent{parent}, _bWorld(bWorld) {
         /* Calculate inertia so the object reacts as it should with
            rotation and everything */
         btVector3 bInertia(0.0f, 0.0f, 0.0f);
@@ -110,7 +113,7 @@ public:
         bWorld.addRigidBody(_bRigidBody.get());
     }
 
-    ~RigidBody() {
+    ~RigidBody() override {
         _bWorld.removeRigidBody(_bRigidBody.get());
     }
 
@@ -219,14 +222,16 @@ void MyApplication::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color|GL::FramebufferClear::Depth);
 
     /* Housekeeping: remove any objects which are far away from the origin */
-    for(Object3D* obj = _scene.children().first(); obj; )
-    {
-        Object3D* next = obj->nextSibling();
-        if(obj->transformation().translation().dot() > 100*100)
+    for(auto* base = _scene.children().first(); base;) {
+        auto* obj = dynamic_cast<Object3D*>(base);
+        auto* nextBase = base->nextSibling();
+
+        if(obj && obj->transformation().translation().dot() > 100*100)
             delete obj;
 
-        obj = next;
+        base = nextBase;
     }
+
 
     /* Step bullet simulation */
     _bWorld.stepSimulation(_timeline.previousFrameDuration(), 5);
