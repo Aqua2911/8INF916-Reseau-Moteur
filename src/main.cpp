@@ -186,7 +186,7 @@ MyApplication::MyApplication(const Arguments& arguments):
     _debugDraw = BulletIntegration::DebugDraw{};
     _debugDraw.setMode(BulletIntegration::DebugDraw::Mode::DrawWireframe);
     _bWorld.setGravity({0.0f, -10.0f, 0.0f});
-    _bWorld.setDebugDrawer(&_debugDraw);
+    //_bWorld.setDebugDrawer(&_debugDraw);
 
     /* Create the ground */
     auto* ground = new RigidBody{&_scene, 0.0f, &_bGroundShape, _bWorld};
@@ -236,7 +236,6 @@ void MyApplication::drawEvent() {
         arrayResize(_boxInstanceData, 0);
         arrayResize(_sphereInstanceData, 0);
         _camera->draw(_drawables);
-
         _shader.setProjectionMatrix(_camera->projectionMatrix());
 
         /* Upload instance data to the GPU (orphaning the previous buffer
