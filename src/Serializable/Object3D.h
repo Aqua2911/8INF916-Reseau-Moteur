@@ -8,11 +8,7 @@
 
 
 #include <Magnum/SceneGraph/Object.h>
-#include <Magnum/Math/Matrix4.h>
 #include <Magnum/SceneGraph/MatrixTransformation3D.h>
-#include <Corrade/Containers/Array.h>
-#include <Corrade/Utility/Assert.h>
-#include <iostream>
 #include <fstream>
 #include "Serializable.h"
 
@@ -22,8 +18,8 @@ class Object3D : public virtual Object3DParent, public virtual Serializable {
 public:
     using Object3DParent::Object3DParent; // inherit constructors
 
-    void serialize() const override { /* ... */ }
-    void deserialize() override { /* ... */ }
+    void serialize(std::ostream& out) const override { /* ... */ }
+    void deserialize(std::istream& in) override { /* ... */ }
 };
 
 #endif //OBJECT3D_H

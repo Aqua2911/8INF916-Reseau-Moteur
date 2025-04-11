@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include "Serializable.h"
+#include "Magnum/SceneGraph/Scene.h"
 
 
 typedef Magnum::SceneGraph::Scene<Magnum::SceneGraph::MatrixTransformation3D> Scene3DParent;
@@ -22,10 +23,10 @@ class Scene3D : public virtual Scene3DParent, public Serializable {
 public:
     using Scene3DParent::Scene3DParent;
 
-    void serialize() const override {
+    void serialize(std::ostream& out) const override {
     }
 
-    void deserialize() override {
+    void deserialize(std::istream& in) override {
     }
 };
 
