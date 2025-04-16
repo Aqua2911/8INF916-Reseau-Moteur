@@ -23,15 +23,15 @@ class Scene3D : public virtual Scene3DParent, Serializable{
 public:
     using Scene3DParent::Scene3DParent;
 
-    void serialize(std::ostream& out) const override;
+    void serialize() const override;
 
-    void deserialize(std::istream& in) override;
+    void deserialize() override;
 };
 
-inline void Scene3D::serialize(std::ostream &out) const {
+inline void Scene3D::serialize() const {
 }
 
-inline void Scene3D::deserialize(std::istream &in) {
+inline void Scene3D::deserialize() {
 }
 
 

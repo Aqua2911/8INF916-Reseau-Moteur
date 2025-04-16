@@ -18,8 +18,8 @@ class Object3D : public virtual Object3DParent, public virtual Serializable {
 public:
     using Object3DParent::Object3DParent; // inherit constructors
 
-    void serialize(std::ostream& out) const override { /* ... */ }
-    void deserialize(std::istream& in) override { /* ... */ }
+    void serialize() const override { /* ... */ }
+    void deserialize() override { /* ... */ }
 };
 
 #endif //OBJECT3D_H

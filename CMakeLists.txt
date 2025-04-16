@@ -24,7 +24,10 @@ set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
 # Main executable
 add_executable(MagnumBootstrap
-        src/main.cpp)
+        src/main.cpp
+        src/Serializable/InstanceData.cpp
+        src/Serializable/Serializable.cpp
+)
 
 # Include directories for other components
 target_include_directories(MagnumBootstrap PUBLIC inc)

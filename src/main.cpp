@@ -10,7 +10,7 @@
 #include <Magnum/Shaders/PhongGL.h>
 #include <Magnum/Trade/MeshData.h>
 
-#include "Serializable/InstancedData.h"
+#include "Serializable/InstanceData.h"
 #include "Serializable/Object3D.h"
 #include "Serializable/Scene3D.h"
 #include "Serializable/ColoredDrawable.h"
@@ -209,6 +209,8 @@ void MyApplication::drawEvent() {
 
     swapBuffers();
     _timeline.nextFrame();
+
+    _boxInstanceData.begin()->serialize();
     redraw();
 }
 
