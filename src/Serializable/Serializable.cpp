@@ -29,6 +29,11 @@ Magnum::Math::Matrix3x3<Magnum::Float> Serializable::deserializeMatrix3x3() {
 }
 
 Magnum::Math::Matrix4<Magnum::Float> Serializable::deserializeMatrix4() {
-    Magnum::Math::Matrix4<Magnum::Float> m;
-    return m;
+    Magnum::Matrix4 matrix;
+    //in.read(reinterpret_cast<char*>(&matrix), sizeof(matrix));
+    //if (!in) {
+        //std::cerr << "Failed to read Matrix4 from stream!" << std::endl;
+        // Handle error appropriately — return identity matrix or throw?
+    //}
+    return matrix;
 }

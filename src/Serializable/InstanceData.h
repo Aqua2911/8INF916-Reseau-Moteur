@@ -18,7 +18,7 @@ struct InstanceData {
     Color3 color;
 
     void serialize() const ;
-    //void deserialize() ;
+    void deserialize(std::streampos position) ;
 };
 
 #endif //INSTANCEDATA_H

@@ -14,7 +14,7 @@
 
 class Serializable {
 public:
-    std::ofstream out = std::ofstream("serialized.bin", std::ios::binary); // open in binary mode
+    std::ofstream out = std::ofstream("serialized.txt", std::ios::binary); // open in binary mode
     virtual ~Serializable() = default;
 
     virtual void serialize() const = 0;

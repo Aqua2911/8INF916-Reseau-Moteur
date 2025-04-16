@@ -36,6 +36,7 @@ class MyApplication: public Platform::GlfwApplication
         void drawEvent() override;
         void keyPressEvent(KeyEvent& event) override;
         void pointerPressEvent(PointerEvent& event) override;
+        void EmptySerializedFile();
 
         GL::Mesh _box{NoCreate}, _sphere{NoCreate};
         GL::Buffer _boxInstanceBuffer{NoCreate}, _sphereInstanceBuffer{NoCreate};
@@ -69,6 +70,7 @@ class MyApplication: public Platform::GlfwApplication
 MyApplication::MyApplication(const Arguments& arguments):
     Platform::GlfwApplication(arguments, NoCreate)
 {
+    EmptySerializedFile();
     /* Try 8x MSAA, fall back to zero samples if not possible. Enable only 2x
        MSAA if we have enough DPI. */
     {
@@ -158,6 +160,14 @@ MyApplication::MyApplication(const Arguments& arguments):
 void MyApplication::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color|GL::FramebufferClear::Depth);
 
+    int currentPos = 0;
+    for (auto iData: _boxInstanceData) {
+        iData.deserialize(currentPos);
+
+        // Move to the next position in the file for the next object
+        currentPos += sizeof(Matrix4);
+    }
+
     /* Housekeeping: remove any objects which are far away from the origin */
     for(auto* base = _scene.children().first(); base;) {
         auto* obj = dynamic_cast<Object3D*>(base);
@@ -210,7 +220,12 @@ void MyApplication::drawEvent() {
     swapBuffers();
     _timeline.nextFrame();
 
-    _boxInstanceData.begin()->serialize();
+    // Erase the contents of the file before starting a new series of serialization
+    EmptySerializedFile();
+    for (auto iData: _boxInstanceData) {
+        iData.serialize();
+    }
+
     redraw();
 }
 
@@ -268,6 +283,11 @@ void MyApplication::pointerPressEvent(PointerEvent& event) {/* Shoot an object o
     object->rigidBody().setLinearVelocity(btVector3{direction*25.f});
 
     event.setAccepted();
+}
+
+void MyApplication::EmptySerializedFile() {
+    std::ofstream out("serialized.txt", std::ios::binary | std::ios::trunc);
+    out.close();
 }
 
 MAGNUM_APPLICATION_MAIN(MyApplication)

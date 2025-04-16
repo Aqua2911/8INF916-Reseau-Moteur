@@ -26,10 +26,19 @@ void InstanceData::serialize() const {
     }
 }
 
-/*
-void InstanceData::deserialize() {
-    //transformationMatrix = Serializable::deserializeMatrix4(in);
-    //normalMatrix = Serializable::deserializeMatrix3x3(in);
-    //color = Serializable::deserializeColor3(in);
+void InstanceData::deserialize(std::streampos position) {
+    std::ifstream in("serialized.txt", std::ios::binary);
+    in.seekg(position);
+    if (in.is_open()) {
+        Matrix4 matrix;
+        in.read(reinterpret_cast<char*>(&matrix), sizeof(matrix));
+        in.close();
+
+        if (matrix == transformationMatrix)
+            std::cerr << "equal" << std::endl;
+        else
+            std::cerr << "not equal" << std::endl;
+    } else {
+        std::cerr << "Failed to open file for deserialization!" << std::endl;
+    }
 }
-*/
