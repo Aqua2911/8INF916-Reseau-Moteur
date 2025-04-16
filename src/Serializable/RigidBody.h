@@ -41,6 +41,10 @@ public:
         _bRigidBody->setWorldTransform(btTransform(transformationMatrix()));
     }
 
+    void serialize(std::ostream& out) const override {}
+
+    void deserialize(std::istream& in) override {}
+
 private:
     btDynamicsWorld& _bWorld;
     Containers::Pointer<btRigidBody> _bRigidBody;

@@ -19,17 +19,20 @@
 typedef Magnum::SceneGraph::Scene<Magnum::SceneGraph::MatrixTransformation3D> Scene3DParent;
 
 
-class Scene3D : public virtual Scene3DParent, public Serializable {
+class Scene3D : public virtual Scene3DParent, Serializable{
 public:
     using Scene3DParent::Scene3DParent;
 
-    void serialize(std::ostream& out) const override {
-    }
+    void serialize(std::ostream& out) const override;
 
-    void deserialize(std::istream& in) override {
-    }
+    void deserialize(std::istream& in) override;
 };
 
+inline void Scene3D::serialize(std::ostream &out) const {
+}
+
+inline void Scene3D::deserialize(std::istream &in) {
+}
 
 
 #endif //SCENE3D_H
