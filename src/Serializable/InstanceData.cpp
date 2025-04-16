@@ -12,13 +12,13 @@ void InstanceData::serialize() const {
     if (out.is_open()) {
         // Serialize each part correctly
         std::vector<char> matrix4_buffer = Serializable::serializeMatrix4(transformationMatrix);
-        //std::string matrix3_x3_string = Serializable::serializeMatrix3x3(normalMatrix);
-        //std::string color_string = Serializable::serializeColor3(color);
+        std::vector<char> matrix3_x3_buffer = Serializable::serializeMatrix3x3(normalMatrix);
+        std::vector<char> color_buffer = Serializable::serializeColor3(color);
 
         // Write the serialized data to the file
         out.write(matrix4_buffer.data(), matrix4_buffer.size());  // Write Matrix4
-        //out.write(matrix3_x3_string.data(), matrix3_x3_string.size());  // Write Matrix3x3
-        //out.write(color_string.data(), color_string.size());  // Write Color3
+        out.write(matrix3_x3_buffer.data(), matrix3_x3_buffer.size());  // Write Matrix3x3
+        out.write(color_buffer.data(), color_buffer.size());  // Write Color3
 
         out.close();
     } else {
@@ -30,11 +30,15 @@ void InstanceData::deserialize(std::streampos position) {
     std::ifstream in("serialized.txt", std::ios::binary);
     in.seekg(position);
     if (in.is_open()) {
-        Matrix4 matrix;
-        in.read(reinterpret_cast<char*>(&matrix), sizeof(matrix));
+        Matrix4 updatedMatrix;
+        Matrix3x3 updatedNormalMatrix;
+        Color3 updatedColor;
+        in.read(reinterpret_cast<char*>(&updatedMatrix), sizeof(updatedMatrix));
+        in.read(reinterpret_cast<char*>(&updatedNormalMatrix), sizeof(updatedNormalMatrix));
+        in.read(reinterpret_cast<char*>(&updatedColor), sizeof(updatedColor));
         in.close();
 
-        if (matrix == transformationMatrix)
+        if (updatedMatrix == transformationMatrix)
             std::cerr << "equal" << std::endl;
         else
             std::cerr << "not equal" << std::endl;

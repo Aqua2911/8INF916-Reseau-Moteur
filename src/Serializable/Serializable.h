@@ -20,8 +20,8 @@ public:
     virtual void serialize() const = 0;
     virtual void deserialize() = 0;
 
-    static std::string serializeColor3(Magnum::Math::Color3<Magnum::Float> c);
-    static std::string  serializeMatrix3x3(Magnum::Math::Matrix3x3<Magnum::Float> m);
+    static std::vector<char>  serializeColor3(Magnum::Math::Color3<Magnum::Float> c);
+    static std::vector<char>   serializeMatrix3x3(Magnum::Math::Matrix3x3<Magnum::Float> m);
     static std::vector<char>   serializeMatrix4(Magnum::Math::Matrix4<Magnum::Float> m);
 
     static Magnum::Math::Color3<Magnum::Float> deserializeColor3();

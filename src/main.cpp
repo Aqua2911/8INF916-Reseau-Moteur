@@ -165,7 +165,7 @@ void MyApplication::drawEvent() {
         iData.deserialize(currentPos);
 
         // Move to the next position in the file for the next object
-        currentPos += sizeof(Matrix4);
+        currentPos += sizeof(InstanceData);
     }
 
     /* Housekeeping: remove any objects which are far away from the origin */
@@ -225,7 +225,6 @@ void MyApplication::drawEvent() {
     for (auto iData: _boxInstanceData) {
         iData.serialize();
     }
-
     redraw();
 }
 

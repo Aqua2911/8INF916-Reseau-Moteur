@@ -4,12 +4,16 @@
 
 #include "Serializable.h"
 
-std::string Serializable::serializeColor3(Magnum::Color3 c) {
-    return std::string(reinterpret_cast<const char*>(&c), sizeof(c));
+std::vector<char>  Serializable::serializeColor3(Magnum::Color3 c){
+    std::vector<char> buffer(sizeof(Magnum::Color3));
+    std::memcpy(buffer.data(), &c, sizeof(Magnum::Color3));
+    return buffer;
 }
 
-std::string Serializable::serializeMatrix3x3(Magnum::Matrix3x3 m) {
-    return std::string(reinterpret_cast<const char*>(&m), sizeof(m));
+std::vector<char>  Serializable::serializeMatrix3x3(Magnum::Matrix3x3 m) {
+    std::vector<char> buffer(sizeof(Magnum::Matrix3x3));
+    std::memcpy(buffer.data(), &m, sizeof(Magnum::Matrix3x3));
+    return buffer;
 }
 
 std::vector<char>  Serializable::serializeMatrix4(Magnum::Matrix4 m) {
