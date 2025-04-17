@@ -4,6 +4,7 @@ project(MagnumBootstrap)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/modules/" ${CMAKE_MODULE_PATH})
 
 add_subdirectory(externals)
+include_directories(${PROJECT_SOURCE_DIR}/externals/enet6/include)
 
 find_package(Magnum REQUIRED
         GL
@@ -16,9 +17,7 @@ find_package(Magnum REQUIRED
 find_package(MagnumIntegration REQUIRED ImGui Bullet)
 find_package(Bullet REQUIRED Dynamics)
 
-# ENet6 setup
-include_directories(externals/enet6/include)
-link_directories(${PROJECT_SOURCE_DIR}/externals/enet6/lib)  # Adjust the path if necessary
+
 
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
@@ -30,7 +29,13 @@ add_executable(MagnumBootstrap
 )
 
 # Include directories for other components
+message(STATUS "ENet include path: ${PROJECT_SOURCE_DIR}/externals/enet6/include")
+target_include_directories(MagnumBootstrap PRIVATE
+        $<TARGET_PROPERTY:enet,INTERFACE_INCLUDE_DIRECTORIES>
+)
 target_include_directories(MagnumBootstrap PUBLIC inc)
+target_include_directories(MagnumBootstrap PRIVATE ${PROJECT_SOURCE_DIR}/externals/enet6/include)
+
 
 set_property(TARGET MagnumBootstrap PROPERTY CXX_STANDARD 20)
 
@@ -51,4 +56,4 @@ target_link_libraries(MagnumBootstrap PRIVATE
         BulletCollision
         LinearMath
         Bullet3Common
-        enet6)  # Link ENet6 library built from source
+        enet)  # Link ENet6 library built from source

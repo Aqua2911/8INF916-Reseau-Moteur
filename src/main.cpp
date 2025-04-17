@@ -10,6 +10,7 @@
 #include <Magnum/Shaders/PhongGL.h>
 #include <Magnum/Trade/MeshData.h>
 
+#include "../externals/enet6/include/enet6/enet.h"
 #include "Serializable/InstanceData.h"
 #include "Serializable/Object3D.h"
 #include "Serializable/Scene3D.h"
@@ -29,7 +30,14 @@ using namespace Math::Literals;
 
 class MyApplication: public Platform::GlfwApplication
 {
+    ENetHost* server;
+    ENetPeer* client;
+
     public:
+    void initServer();
+    void updateServer();
+    void shutdownServer();
+
         explicit MyApplication(const Arguments& arguments);
 
     private:
@@ -66,10 +74,58 @@ class MyApplication: public Platform::GlfwApplication
 };
 
 
+void MyApplication::initServer() {
+    // Initialisation de ENet
+    if (enet_initialize() != 0) {
+        std::cerr << "An error occurred while initializing ENet." << std::endl;
+        return;
+    }
+
+    ENetAddress address;
+    enet_address_set_host(&address, ENET_ADDRESS_TYPE_ANY,"127.0.0.1");  // Adresse de serveur local
+    address.port = 12345;  // Choisissez un port libre
+
+    // Création de l'hôte serveur
+    server = enet_host_create(ENET_ADDRESS_TYPE_ANY, &address, 4, 2, 0, 0);
+    if (server == nullptr) {
+        std::cerr << "An error occurred while trying to create an ENet server host." << std::endl;
+        return;
+    }
+}
+
+void MyApplication::updateServer() {
+    ENetEvent event;
+    while (enet_host_service(server, &event, 0) > 0) {
+        switch (event.type) {
+            case ENET_EVENT_TYPE_CONNECT:
+                std::cout << "Client connected to server." << std::endl;
+            break;
+            case ENET_EVENT_TYPE_RECEIVE:
+                std::cout << "Received packet: " << event.packet->data << std::endl;
+            // Traiter les données reçues ici...
+            enet_packet_destroy(event.packet);
+            break;
+            case ENET_EVENT_TYPE_DISCONNECT:
+                std::cout << "Client disconnected." << std::endl;
+            break;
+            default:
+                break;
+        }
+    }
+}
+
+void MyApplication::shutdownServer() {
+    if (server) {
+        enet_host_destroy(server);
+    }
+    enet_deinitialize();
+}
+
 
 MyApplication::MyApplication(const Arguments& arguments):
     Platform::GlfwApplication(arguments, NoCreate)
 {
+    initServer();
     EmptySerializedFile();
     /* Try 8x MSAA, fall back to zero samples if not possible. Enable only 2x
        MSAA if we have enough DPI. */
