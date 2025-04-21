@@ -58,6 +58,7 @@ enet_host_create (ENetAddressType type, const ENetAddress * address, size_t peer
 
     if (host -> socket == ENET_SOCKET_NULL || (address != NULL && enet_socket_bind (host -> socket, address) < 0))
     {
+      int err = WSAGetLastError();
        if (host -> socket != ENET_SOCKET_NULL)
          enet_socket_destroy (host -> socket);
 

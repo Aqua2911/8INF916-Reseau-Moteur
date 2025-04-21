@@ -14,32 +14,29 @@ find_package(Magnum REQUIRED
         Trade
         MeshTools
         SceneGraph)
+
 find_package(MagnumIntegration REQUIRED ImGui Bullet)
 find_package(Bullet REQUIRED Dynamics)
 
-
-
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
-# Main executable
+# =======================
+# Main GUI Application
+# =======================
 add_executable(MagnumBootstrap
         src/main.cpp
         src/Serializable/InstanceData.cpp
         src/Serializable/Serializable.cpp
 )
 
-# Include directories for other components
-message(STATUS "ENet include path: ${PROJECT_SOURCE_DIR}/externals/enet6/include")
 target_include_directories(MagnumBootstrap PRIVATE
         $<TARGET_PROPERTY:enet,INTERFACE_INCLUDE_DIRECTORIES>
+        inc
+        ${PROJECT_SOURCE_DIR}/externals/enet6/include
 )
-target_include_directories(MagnumBootstrap PUBLIC inc)
-target_include_directories(MagnumBootstrap PRIVATE ${PROJECT_SOURCE_DIR}/externals/enet6/include)
-
 
 set_property(TARGET MagnumBootstrap PROPERTY CXX_STANDARD 20)
 
-# Link required libraries
 target_link_libraries(MagnumBootstrap PRIVATE
         Magnum::Application
         Magnum::GL
@@ -50,10 +47,37 @@ target_link_libraries(MagnumBootstrap PRIVATE
         Magnum::Shaders
         Magnum::Trade
         MagnumIntegration::Bullet
-        Bullet::Dynamics
         MagnumIntegration::ImGui
+        Bullet::Dynamics
         BulletDynamics
         BulletCollision
         LinearMath
         Bullet3Common
-        enet)  # Link ENet6 library built from source
+        enet
+)
+
+# =======================
+# Dedicated Server Target
+# =======================
+add_executable(MagnumDedicatedServer
+        src/server_main.cpp
+)
+
+# Console subsystem for Windows (avoids WinMain issue)
+if (WIN32)
+    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        target_link_options(MagnumDedicatedServer PRIVATE -mconsole -Wl,--subsystem,console)
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        target_link_options(MagnumDedicatedServer PRIVATE /SUBSYSTEM:CONSOLE)
+    endif()
+endif()
+
+
+set_property(TARGET MagnumDedicatedServer PROPERTY CXX_STANDARD 20)
+
+target_link_libraries(MagnumDedicatedServer PRIVATE
+        enet
+        Bullet::Dynamics
+        BulletCollision
+        LinearMath
+)

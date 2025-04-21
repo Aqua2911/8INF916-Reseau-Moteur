@@ -38,9 +38,7 @@ void InstanceData::deserialize(std::streampos position) {
         in.read(reinterpret_cast<char*>(&updatedColor), sizeof(updatedColor));
         in.close();
 
-        if (updatedMatrix == transformationMatrix)
-            std::cerr << "equal" << std::endl;
-        else
+        if (updatedMatrix != transformationMatrix)
             std::cerr << "not equal" << std::endl;
     } else {
         std::cerr << "Failed to open file for deserialization!" << std::endl;

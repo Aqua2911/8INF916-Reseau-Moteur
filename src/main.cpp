@@ -82,11 +82,11 @@ void MyApplication::initServer() {
     }
 
     ENetAddress address;
-    enet_address_set_host(&address, ENET_ADDRESS_TYPE_ANY,"127.0.0.1");  // Adresse de serveur local
+    enet_address_set_host(&address, ENET_ADDRESS_TYPE_IPV6,"::1");  // Adresse de serveur local
     address.port = 12345;  // Choisissez un port libre
 
     // Création de l'hôte serveur
-    server = enet_host_create(ENET_ADDRESS_TYPE_ANY, &address, 4, 2, 0, 0);
+    server = enet_host_create(ENET_ADDRESS_TYPE_IPV6, &address, 4, 2, 0, 0);
     if (server == nullptr) {
         std::cerr << "An error occurred while trying to create an ENet server host." << std::endl;
         return;
