@@ -23,6 +23,7 @@ public:
     void initClient();
     void updateClient();
     void shutdownClient();
+    void sendMessageToServer(const char* message);
 
     explicit BulletClient(const Arguments& arguments);
 
@@ -65,7 +66,6 @@ void BulletClient::initClient() {
         std::cout << "Successfully connected to the server." << std::endl;
     } else {
         std::cerr << "Failed to connect to the server." << std::endl;
-        return;
     }
 }
 
@@ -94,6 +94,18 @@ void BulletClient::shutdownClient() {
     enet_deinitialize();
 }
 
+void BulletClient::sendMessageToServer(const char* message) {
+    // Create the packet. The size is the length of the message.
+    ENetPacket* packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
+
+    // Send the packet to the server
+    // `serverPeer` is the peer representing the server the client is connected to
+    enet_peer_send(server, 0, packet); // 0 is the channel ID
+
+    // Flush the packet to send immediately
+    enet_host_flush(client);
+}
+
 BulletClient::BulletClient(const Arguments& arguments) : Platform::GlfwApplication(arguments, NoCreate) {
     initClient();
     // Additional setup for graphics, scene, and camera
@@ -107,6 +119,10 @@ BulletClient::BulletClient(const Arguments& arguments) : Platform::GlfwApplicati
 
 void BulletClient::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color | GL::FramebufferClear::Depth);
+
+    const char* message = "Hello World!";
+    sendMessageToServer(message);
+    updateClient();
 
     // Draw the scene based on the received data from the server
     // For example, update instance data with positions and transformations

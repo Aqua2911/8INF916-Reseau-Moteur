@@ -36,6 +36,9 @@ class BulletServer: public Platform::GlfwApplication
     public:
     void initServer();
     void updateServer();
+
+    void sendMessageToClient(const char *message);
+
     void shutdownServer();
 
         explicit BulletServer(const Arguments& arguments);
@@ -82,7 +85,7 @@ void BulletServer::initServer() {
     }
 
     ENetAddress address;
-    enet_address_set_host(&address, ENET_ADDRESS_TYPE_IPV6,"::1");  // Adresse de serveur local
+    enet_address_set_host(&address, ENET_ADDRESS_TYPE_IPV6,"::");  // Adresse de serveur local
     address.port = 12345;  // Choisissez un port libre
 
     // Création de l'hôte serveur
@@ -96,14 +99,26 @@ void BulletServer::initServer() {
 void BulletServer::updateServer() {
     ENetEvent event;
     while (enet_host_service(server, &event, 0) > 0) {
+        std::cout << "Received ENetEvent of type: " << event.type;
         switch (event.type) {
             case ENET_EVENT_TYPE_CONNECT:
                 std::cout << "Client connected to server." << std::endl;
             break;
             case ENET_EVENT_TYPE_RECEIVE:
-                std::cout << "Received packet: " << event.packet->data << std::endl;
-            // Traiter les données reçues ici...
-            enet_packet_destroy(event.packet);
+            {
+                // Safely copy the data into a null-terminated string for printing
+                std::string receivedMsg(reinterpret_cast<char*>(event.packet->data), event.packet->dataLength);
+                std::cout << "Received packet: " << receivedMsg << std::endl;
+
+                // Prepare a response
+                const char* message = "Message received!";
+                ENetPacket* responsePacket = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
+                enet_peer_send(event.peer, 0, responsePacket);
+
+                // Traiter les données reçues ici...
+                enet_packet_destroy(event.packet);
+            }
+
             break;
             case ENET_EVENT_TYPE_DISCONNECT:
                 std::cout << "Client disconnected." << std::endl;
@@ -112,6 +127,18 @@ void BulletServer::updateServer() {
                 break;
         }
     }
+}
+
+void BulletServer::sendMessageToClient(const char* message) {
+    // Create the packet. The size is the length of the message.
+    ENetPacket* packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
+
+    // Send the packet to the server
+    // `serverPeer` is the peer representing the server the client is connected to
+    enet_peer_send(client, 0, packet); // 0 is the channel ID
+
+    // Flush the packet to send immediately
+    enet_host_flush(server);
 }
 
 void BulletServer::shutdownServer() {
@@ -215,6 +242,9 @@ BulletServer::BulletServer(const Arguments& arguments):
 
 void BulletServer::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color|GL::FramebufferClear::Depth);
+
+    // Handle ENet server networking events each frame
+    updateServer();
 
     int currentPos = 0;
     for (auto iData: _boxInstanceData) {
