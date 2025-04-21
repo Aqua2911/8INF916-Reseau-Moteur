@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MagnumBootstrap)
+project(MagnumServer)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/modules/" ${CMAKE_MODULE_PATH})
 
@@ -23,21 +23,21 @@ set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 # =======================
 # Main GUI Application
 # =======================
-add_executable(MagnumBootstrap
-        src/main.cpp
+add_executable(MagnumServer
+        src/server_main.cpp
         src/Serializable/InstanceData.cpp
         src/Serializable/Serializable.cpp
 )
 
-target_include_directories(MagnumBootstrap PRIVATE
+target_include_directories(MagnumServer PRIVATE
         $<TARGET_PROPERTY:enet,INTERFACE_INCLUDE_DIRECTORIES>
         inc
         ${PROJECT_SOURCE_DIR}/externals/enet6/include
 )
 
-set_property(TARGET MagnumBootstrap PROPERTY CXX_STANDARD 20)
+set_property(TARGET MagnumServer PROPERTY CXX_STANDARD 20)
 
-target_link_libraries(MagnumBootstrap PRIVATE
+target_link_libraries(MagnumServer PRIVATE
         Magnum::Application
         Magnum::GL
         Magnum::Magnum
@@ -56,28 +56,41 @@ target_link_libraries(MagnumBootstrap PRIVATE
         enet
 )
 
-# =======================
-# Dedicated Server Target
-# =======================
-add_executable(MagnumDedicatedServer
-        src/server_main.cpp
+# ==========================
+# Define the client application
+# ==========================
+add_executable(MagnumClient
+        src/client_main.cpp
+        src/Serializable/InstanceData.cpp
+        src/Serializable/Serializable.cpp
 )
 
-# Console subsystem for Windows (avoids WinMain issue)
-if (WIN32)
-    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-        target_link_options(MagnumDedicatedServer PRIVATE -mconsole -Wl,--subsystem,console)
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        target_link_options(MagnumDedicatedServer PRIVATE /SUBSYSTEM:CONSOLE)
-    endif()
-endif()
+# Include directories for Magnum, Bullet, ImGui, and ENet
+target_include_directories(MagnumClient PRIVATE
+        $<TARGET_PROPERTY:enet,INTERFACE_INCLUDE_DIRECTORIES>
+        ${PROJECT_SOURCE_DIR}/externals/enet6/include
+        inc
+)
 
+# Set C++ standard to C++20
+set_property(TARGET MagnumClient PROPERTY CXX_STANDARD 20)
 
-set_property(TARGET MagnumDedicatedServer PROPERTY CXX_STANDARD 20)
-
-target_link_libraries(MagnumDedicatedServer PRIVATE
-        enet
+# Link necessary libraries for the client application
+target_link_libraries(MagnumClient PRIVATE
+        Magnum::Application
+        Magnum::GL
+        Magnum::Magnum
+        Magnum::MeshTools
+        Magnum::Primitives
+        Magnum::SceneGraph
+        Magnum::Shaders
+        Magnum::Trade
+        MagnumIntegration::Bullet
+        MagnumIntegration::ImGui
         Bullet::Dynamics
+        BulletDynamics
         BulletCollision
         LinearMath
+        Bullet3Common
+        enet
 )
