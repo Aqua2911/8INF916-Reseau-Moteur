@@ -46,17 +46,6 @@ void BulletApp::drawEvent() {
         currentPos += sizeof(InstanceData);
     }
     */
-
-    /* Housekeeping: remove any objects which are far away from the origin */
-    for(auto* base = _scene.children().first(); base;) {
-        auto* obj = dynamic_cast<Object3D*>(base);
-        auto* nextBase = base->nextSibling();
-
-        if(obj && obj->transformation().translation().dot() > 100*100)
-            delete obj;
-
-        base = nextBase;
-    }
 }
 
 
@@ -82,35 +71,5 @@ void BulletApp::keyPressEvent(KeyEvent& event) {
 }
 
 void BulletApp::pointerPressEvent(PointerEvent& event) {/* Shoot an object on click */
-    if(!event.isPrimary() ||
-       !(event.pointer() & Pointer::MouseLeft))
-        return;
 
-    /* First scale the position from being relative to window size to being
-       relative to framebuffer size as those two can be different on HiDPI
-       systems */
-    const Vector2 position = event.position()*Vector2{framebufferSize()}/Vector2{windowSize()};
-    const Vector2 clickPoint = Vector2::yScale(-1.0f)*(position/Vector2{framebufferSize()} - Vector2{0.5f})*_camera->projectionSize();
-    const Vector3 direction = (_cameraObject->absoluteTransformation().rotationScaling()*Vector3{clickPoint, -1.0f}).normalized();
-
-    auto* object = new RigidBody{
-        &_scene,
-        5.0f,
-        &_bSphereShape,
-        _bWorld};
-    object->translate(_cameraObject->absoluteTransformation().translation());
-    /* Has to be done explicitly after the translate() above, as Magnum ->
-       Bullet updates are implicitly done only for kinematic bodies */
-    object->syncPose();
-
-    /* Create either a box or a sphere */
-    new ColoredDrawable{*object,
-        _sphereInstanceData,
-        0x220000_rgbf,
-        Matrix4::scaling(Vector3{0.25f}), _drawables};
-
-    /* Give it an initial velocity */
-    object->rigidBody().setLinearVelocity(btVector3{direction*25.f});
-
-    event.setAccepted();
 }

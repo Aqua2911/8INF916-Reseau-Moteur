@@ -121,7 +121,7 @@ void BulletServer::sendMessageToClient(const char* message) {
 }
 
 void BulletServer::sendMessageToClient(const void* data, size_t length) {
-    if (!client) return;
+    if (client == nullptr) return;
     ENetPacket* packet = enet_packet_create(data, length, ENET_PACKET_FLAG_RELIABLE);
     enet_peer_send(client, 0, packet);
     enet_host_flush(server);
@@ -163,6 +163,8 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
+    _serializables.emplace_back(ObjectData(DataType_Camera, _cameraRig, nullptr));
+
     /* Shaders + meshes */
     _shader = Shaders::PhongGL{Shaders::PhongGL::Configuration{}
         .setFlags(Shaders::PhongGL::Flag::VertexColor|
@@ -200,8 +202,10 @@ BulletServer::BulletServer(const Arguments& arguments):
 
     // Création du sol
     auto* ground = new RigidBody{&_scene, 0.0f, &_bGroundShape, _bWorld};
-    new ColoredDrawable{*ground, _boxInstanceData, 0xffffff_rgbf,
+    auto* cd = new ColoredDrawable{*ground, _boxInstanceData, 0xffffff_rgbf,
         Matrix4::scaling({4.0f, 0.5f, 4.0f}), _drawables};
+
+    _serializables.emplace_back(ObjectData(DataType_Ground, ground, cd));
 
     // Cubes de la scène
     Deg hue = 42.0_degf;
@@ -211,9 +215,10 @@ BulletServer::BulletServer(const Arguments& arguments):
                 auto* o = new RigidBody{&_scene, 1.0f, &_bBoxShape, _bWorld};
                 o->translate({i - 2.0f, j + 4.0f, k - 2.0f});
                 o->syncPose();
-                new ColoredDrawable{*o, _boxInstanceData,
+                auto* cdo = new ColoredDrawable{*o, _boxInstanceData,
                     Color3::fromHsv({hue += 137.5_degf, 0.75f, 0.9f}),
                     Matrix4::scaling(Vector3{0.5f}), _drawables};
+                _serializables.emplace_back(ObjectData(DataType_Cube, o, cdo));
             }
 }
 
@@ -222,6 +227,25 @@ void BulletServer::drawEvent() {
     updateServer();
 
     BulletApp::drawEvent();
+
+    /* Housekeeping: remove any objects which are far away from the origin */
+    for(auto* base = _scene.children().first(); base;) {
+        auto* obj = dynamic_cast<Object3D*>(base);
+        auto* nextBase = base->nextSibling();
+
+        if(obj && obj->transformation().translation().dot() > 100*100)
+        {
+            int i = 0;
+            for (auto o: _serializables) {
+                if (o.object == obj) {
+                    _serializables.erase(_serializables.begin() + i);
+                }
+                i++;
+            }
+            delete obj;
+        }
+        base = nextBase;
+    }
 
     /* Step bullet simulation */
     _bWorld.stepSimulation(_timeline.previousFrameDuration(), 5);
@@ -263,14 +287,18 @@ void BulletServer::drawEvent() {
     swapBuffers();
     _timeline.nextFrame();
 
+    int counter = _serializables.size();
+    std::cout << "Count : "<< counter << "-----------------------------" << std::endl;
+
     // Erase the contents of the file before starting a new series of serialization
     //EmptySerializedFile();
+
     std::vector<char> fullBuffer;
     for (auto iData: _boxInstanceData) {
         auto instBuffer = iData.serialize();
         fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
     }
-    sendMessageToClient(fullBuffer.data(), fullBuffer.size());
+    //sendMessageToClient(fullBuffer.data(), fullBuffer.size());
     redraw();
 }
 
@@ -319,10 +347,12 @@ void BulletServer::pointerPressEvent(PointerEvent& event) {/* Shoot an object on
     object->syncPose();
 
     /* Create either a box or a sphere */
-    new ColoredDrawable{*object,
+    auto* cd = new ColoredDrawable{*object,
         _sphereInstanceData,
         0x220000_rgbf,
         Matrix4::scaling(Vector3{0.25f}), _drawables};
+
+    _serializables.emplace_back(ObjectData(DataType_Sphere, object, cd));
 
     /* Give it an initial velocity */
     object->rigidBody().setLinearVelocity(btVector3{direction*25.f});

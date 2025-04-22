@@ -28,6 +28,7 @@ add_executable(MagnumServer
         src/Serializable/InstanceData.cpp
         src/Serializable/Serializable.cpp
         src/BulletApp.cpp
+        src/Serializable/ObjectData.cpp
 )
 
 target_include_directories(MagnumServer PRIVATE
@@ -65,6 +66,7 @@ add_executable(MagnumClient
         src/Serializable/InstanceData.cpp
         src/Serializable/Serializable.cpp
         src/BulletApp.cpp
+        src/Serializable/ObjectData.cpp
 )
 
 # Include directories for Magnum, Bullet, ImGui, and ENet

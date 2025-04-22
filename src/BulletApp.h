@@ -17,6 +17,7 @@
 #include <Magnum/Shaders/PhongGL.h>
 #include <Magnum/Trade/MeshData.h>
 
+#include "Serializable/ObjectData.h"
 #include "../externals/enet6/include/enet6/enet.h"
 #include "Serializable/InstanceData.h"
 #include "Serializable/Object3D.h"
@@ -59,7 +60,6 @@ class BulletApp: public Platform::GlfwApplication
 
         btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
 
-        Scene3D _scene;
         SceneGraph::Camera3D* _camera;
         SceneGraph::DrawableGroup3D _drawables;
         Timeline _timeline;
@@ -71,6 +71,9 @@ class BulletApp: public Platform::GlfwApplication
         btBoxShape _bGroundShape{{4.0f, 0.5f, 4.0f}};
 
         bool _drawCubes{true}, _drawDebug{true};
+
+        //store object Data at the same place
+        std::vector<ObjectData> _serializables;
 };
 
 #endif //BULLETAPP_H
