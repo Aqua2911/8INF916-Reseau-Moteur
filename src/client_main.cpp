@@ -25,6 +25,7 @@ private:
     void pointerPressEvent(PointerEvent& event) override;
 
     // Add game-specific data and rendering logic here
+    Scene3D _scene;
 };
 
 void BulletClient::initClient() {
@@ -159,20 +160,59 @@ BulletClient::BulletClient(const Arguments& arguments) : BulletApp::BulletApp(ar
 }
 
 void BulletClient::drawEvent() {
+    // Clear the screen
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color | GL::FramebufferClear::Depth);
 
-    //const char* message = "Hello World!";
+    // Receive updates from server
+    updateClient(); // This should update _clientObjects or _serializable
+    auto message = "Hello World!";
     //sendMessageToServer(message);
-    updateClient();
 
-    // Draw the scene based on the received data from the server
-    // For example, update instance data with positions and transformations
-    // _camera->draw(_drawables);
-    // Use a shader and draw objects here
+    // Prepare camera
+    _camera->draw(_drawables);
+    _shader.setProjectionMatrix(_camera->projectionMatrix());
 
+    if (_drawCubes) {
+        // Clear instance buffers
+        arrayResize(_boxInstanceData, 0);
+        arrayResize(_sphereInstanceData, 0);
+
+        /* Populate instance buffers from received data
+        for (const auto& obj : _serializables) {
+            if (obj.type == DataType_Cube) {
+                _boxInstanceData.emplace_back(obj.transform, obj.normalMatrix, obj.color);
+            } else if (obj.type == DataType_Sphere) {
+                _sphereInstanceData.emplace_back(obj.transform, obj.normalMatrix, obj.color);
+            }
+        }
+        */
+
+        // Send data to GPU
+        _boxInstanceBuffer.setData(_boxInstanceData, GL::BufferUsage::DynamicDraw);
+        _box.setInstanceCount(_boxInstanceData.size());
+        _shader.draw(_box);
+
+        _sphereInstanceBuffer.setData(_sphereInstanceData, GL::BufferUsage::DynamicDraw);
+        _sphere.setInstanceCount(_sphereInstanceData.size());
+        _shader.draw(_sphere);
+    }
+
+    /* Optional: Draw debug lines sent from the server
+    if (_drawDebug) {
+        GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::LessOrEqual);
+        _debugDraw.setTransformationProjectionMatrix(
+            _camera->projectionMatrix() * _camera->cameraMatrix());
+        _debugDraw.draw(_clientDebugLines); // if you're receiving those
+        GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::Less);
+    }
+    */
+
+    // Finalize frame
     swapBuffers();
+    _timeline.nextFrame();
     redraw();
 }
+
 
 void BulletClient::keyPressEvent(KeyEvent& event) {
     if (event.key() == Key::W) {

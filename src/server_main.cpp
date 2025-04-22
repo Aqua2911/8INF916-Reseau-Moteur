@@ -14,7 +14,7 @@ using namespace Math::Literals;
 class BulletServer: public BulletApp
 {
     ENetHost* server;
-    ENetPeer* client;
+    ENetPeer* client = nullptr;
 
     public:
     void initServer();
@@ -89,7 +89,7 @@ void BulletServer::updateServer() {
                 // Prepare a response
                 const char* message = "Message received!";
                 ENetPacket* responsePacket = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-                enet_peer_send(event.peer, 0, responsePacket);
+                enet_peer_send(client, 0, responsePacket);
 
                 // Traiter les données reçues ici...
                 enet_packet_destroy(event.packet);
@@ -288,17 +288,18 @@ void BulletServer::drawEvent() {
     _timeline.nextFrame();
 
     int counter = _serializables.size();
-    std::cout << "Count : "<< counter << "-----------------------------" << std::endl;
+    //std::cout << "Count : "<< counter << "-----------------------------" << std::endl;
 
     // Erase the contents of the file before starting a new series of serialization
-    //EmptySerializedFile();
+    EmptySerializedFile();
 
     std::vector<char> fullBuffer;
-    for (auto iData: _boxInstanceData) {
+    for (auto iData: _serializables) {
         auto instBuffer = iData.serialize();
         fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
     }
-    //sendMessageToClient(fullBuffer.data(), fullBuffer.size());
+    if (client != nullptr)
+        sendMessageToClient(fullBuffer.data(), fullBuffer.size());
     redraw();
 }
 

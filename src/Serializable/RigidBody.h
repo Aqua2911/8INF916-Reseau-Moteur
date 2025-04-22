@@ -41,9 +41,9 @@ public:
         _bRigidBody->setWorldTransform(btTransform(transformationMatrix()));
     }
 
-    std::vector<char> serialize() override {return std::vector<char>(-1);}
+    //std::vector<char> serialize() override {return std::vector<char>(-1);}
 
-    void deserialize() override {}
+    //void deserialize() override {}
 
 private:
     btDynamicsWorld& _bWorld;
