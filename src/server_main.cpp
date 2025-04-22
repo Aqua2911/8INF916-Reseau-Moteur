@@ -1,3 +1,4 @@
+#include <imgui.h>
 #include <Magnum/Timeline.h>
 #include <Magnum/GL/DefaultFramebuffer.h>
 #include <Magnum/GL/Renderer.h>
@@ -17,6 +18,8 @@
 #include "Serializable/ColoredDrawable.h"
 #include "Serializable/RigidBody.h"
 
+#include "BulletApp.h"
+
 #ifdef BT_USE_DOUBLE_PRECISION
 #error sorry, this example does not support Bullet with double precision enabled
 #endif
@@ -28,7 +31,7 @@ using namespace Math::Literals;
 //typedef SceneGraph::Object<SceneGraph::MatrixTransformation3D> Object3D;
 //typedef SceneGraph::Scene<SceneGraph::MatrixTransformation3D> Scene3D;
 
-class BulletServer: public Platform::GlfwApplication
+class BulletServer: public BulletApp
 {
     ENetHost* server;
     ENetPeer* client;
@@ -41,7 +44,7 @@ class BulletServer: public Platform::GlfwApplication
 
     void shutdownServer();
 
-        explicit BulletServer(const Arguments& arguments);
+    explicit BulletServer(const Arguments& arguments);
 
     private:
         void drawEvent() override;
@@ -99,11 +102,20 @@ void BulletServer::initServer() {
 void BulletServer::updateServer() {
     ENetEvent event;
     while (enet_host_service(server, &event, 0) > 0) {
-        std::cout << "Received ENetEvent of type: " << event.type;
+        std::cout << "Received ENetEvent of type: ";
         switch (event.type) {
             case ENET_EVENT_TYPE_CONNECT:
-                std::cout << "Client connected to server." << std::endl;
-            break;
+            {
+                std::cout << "Client connected";
+
+                // ✅ Save the peer pointer somewhere, e.g., in a member variable
+                client = event.peer;
+
+                // Optional: You can assign some custom data to this peer too
+                event.peer->data = (void*)"Client 1";
+                break;
+            }
+
             case ENET_EVENT_TYPE_RECEIVE:
             {
                 // Safely copy the data into a null-terminated string for printing
@@ -130,6 +142,9 @@ void BulletServer::updateServer() {
 }
 
 void BulletServer::sendMessageToClient(const char* message) {
+    if (client == nullptr)
+        return;
+
     // Create the packet. The size is the length of the message.
     ENetPacket* packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
 
@@ -150,22 +165,20 @@ void BulletServer::shutdownServer() {
 
 
 BulletServer::BulletServer(const Arguments& arguments):
-    Platform::GlfwApplication(arguments, NoCreate)
+    BulletApp(arguments, NoCreate)
 {
     initServer();
     EmptySerializedFile();
-    /* Try 8x MSAA, fall back to zero samples if not possible. Enable only 2x
-       MSAA if we have enough DPI. */
-    {
-        const Vector2 dpiScaling = this->dpiScaling({});
-        Configuration conf;
-        conf.setTitle("Bullet Server")
-            .setSize(conf.size(), dpiScaling);
-        GLConfiguration glConf;
-        glConf.setSampleCount(dpiScaling.max() < 2.0f ? 8 : 2);
-        if(!tryCreate(conf, glConf))
-            create(conf, glConf.setSampleCount(0));
-    }
+
+    /* Configuration window + GL context */
+    const Vector2 dpiScaling = this->dpiScaling({});
+    Configuration conf;
+    conf.setTitle("Bullet Server")
+        .setSize(conf.size(), dpiScaling);
+    GLConfiguration glConf;
+    glConf.setSampleCount(dpiScaling.max() < 2.0f ? 8 : 2);
+    if (!tryCreate(conf, glConf))
+        create(conf, glConf.setSampleCount(0));
 
     /* Camera setup */
     (*(_cameraRig = new Object3D{&_scene}))
@@ -179,7 +192,7 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
-    /* Create an instanced shader */
+    /* Shaders + meshes */
     _shader = Shaders::PhongGL{Shaders::PhongGL::Configuration{}
         .setFlags(Shaders::PhongGL::Flag::VertexColor|
                   Shaders::PhongGL::Flag::InstancedTransformation)};
@@ -187,7 +200,6 @@ BulletServer::BulletServer(const Arguments& arguments):
            .setSpecularColor(0x330000_rgbf)
            .setLightPositions({{10.0f, 15.0f, 5.0f, 0.0f}});
 
-    /* Box and sphere mesh, with an (initially empty) instance buffer */
     _box = MeshTools::compile(Primitives::cubeSolid());
     _sphere = MeshTools::compile(Primitives::uvSphereSolid(16, 32));
     _boxInstanceBuffer = GL::Buffer{};
@@ -201,27 +213,29 @@ BulletServer::BulletServer(const Arguments& arguments):
         Shaders::PhongGL::NormalMatrix{},
         Shaders::PhongGL::Color3{});
 
-    /* Setup the renderer so we can draw the debug lines on top */
     GL::Renderer::enable(GL::Renderer::Feature::DepthTest);
     GL::Renderer::enable(GL::Renderer::Feature::FaceCulling);
     GL::Renderer::enable(GL::Renderer::Feature::PolygonOffsetFill);
     GL::Renderer::setPolygonOffset(2.0f, 0.5f);
 
-    /* Bullet setup */
     _debugDraw = BulletIntegration::DebugDraw{};
     _debugDraw.setMode(BulletIntegration::DebugDraw::Mode::DrawWireframe);
     _bWorld.setGravity({0.0f, -10.0f, 0.0f});
     //_bWorld.setDebugDrawer(&_debugDraw);
 
-    /* Create the ground */
+    setSwapInterval(1);
+    setMinimalLoopPeriod(16.0_msec);
+    _timeline.start();
+
+    // Création du sol
     auto* ground = new RigidBody{&_scene, 0.0f, &_bGroundShape, _bWorld};
     new ColoredDrawable{*ground, _boxInstanceData, 0xffffff_rgbf,
         Matrix4::scaling({4.0f, 0.5f, 4.0f}), _drawables};
 
-    /* Create boxes with random colors */
+    // Cubes de la scène
     Deg hue = 42.0_degf;
-    for(Int i = 0; i != 5; ++i) {
-        for(Int j = 0; j != 5; ++j) {
+    for(Int i = 0; i != 5; ++i)
+        for(Int j = 0; j != 5; ++j)
             for(Int k = 0; k != 5; ++k) {
                 auto* o = new RigidBody{&_scene, 1.0f, &_bBoxShape, _bWorld};
                 o->translate({i - 2.0f, j + 4.0f, k - 2.0f});
@@ -230,41 +244,13 @@ BulletServer::BulletServer(const Arguments& arguments):
                     Color3::fromHsv({hue += 137.5_degf, 0.75f, 0.9f}),
                     Matrix4::scaling(Vector3{0.5f}), _drawables};
             }
-        }
-    }
-
-    /* Loop at 60 Hz max */
-    setSwapInterval(1);
-    setMinimalLoopPeriod(16.0_msec);
-    _timeline.start();
-
 }
 
 void BulletServer::drawEvent() {
-    GL::defaultFramebuffer.clear(GL::FramebufferClear::Color|GL::FramebufferClear::Depth);
-
     // Handle ENet server networking events each frame
     updateServer();
 
-    int currentPos = 0;
-    for (auto iData: _boxInstanceData) {
-        iData.deserialize(currentPos);
-
-        // Move to the next position in the file for the next object
-        currentPos += sizeof(InstanceData);
-    }
-
-    /* Housekeeping: remove any objects which are far away from the origin */
-    for(auto* base = _scene.children().first(); base;) {
-        auto* obj = dynamic_cast<Object3D*>(base);
-        auto* nextBase = base->nextSibling();
-
-        if(obj && obj->transformation().translation().dot() > 100*100)
-            delete obj;
-
-        base = nextBase;
-    }
-
+    BulletApp::drawEvent();
 
     /* Step bullet simulation */
     _bWorld.stepSimulation(_timeline.previousFrameDuration(), 5);
@@ -308,9 +294,12 @@ void BulletServer::drawEvent() {
 
     // Erase the contents of the file before starting a new series of serialization
     EmptySerializedFile();
+    std::vector<char> fullBuffer;
     for (auto iData: _boxInstanceData) {
-        iData.serialize();
+        auto instBuffer = iData.serialize();
+        fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
     }
+    sendMessageToClient(fullBuffer.data());
     redraw();
 }
 

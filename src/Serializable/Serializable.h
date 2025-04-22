@@ -24,9 +24,24 @@ public:
     static std::vector<char>   serializeMatrix3x3(Magnum::Math::Matrix3x3<Magnum::Float> m);
     static std::vector<char>   serializeMatrix4(Magnum::Math::Matrix4<Magnum::Float> m);
 
-    static Magnum::Math::Color3<Magnum::Float> deserializeColor3();
-    static Magnum::Math::Matrix3x3<Magnum::Float> deserializeMatrix3x3();
-    static Magnum::Math::Matrix4<Magnum::Float> deserializeMatrix4();
+    static Magnum::Math::Color3<Magnum::Float> deserializeColor3(const char *buffer, int& offset);
+    static Magnum::Math::Matrix3x3<Magnum::Float> deserializeMatrix3x3(const char *buffer, int& offset);
+    static Magnum::Math::Matrix4<Magnum::Float> deserializeMatrix4(const char *buffer, int& offset);
 };
+
+template<typename T>
+std::vector<char> serializeMatrix(const T &matrix) {
+    std::vector<char> buffer(sizeof(T));
+    std::memcpy(buffer.data(), &matrix, sizeof(T));
+    return buffer;
+}
+
+template <typename T>
+T deserializeMatrix(const char* buffer, int& offset) {
+    T matrix;
+    std::memcpy(&matrix, buffer + offset, sizeof(T));
+    offset += sizeof(T);
+    return matrix;
+}
 
 #endif //SERIALIZABLE_H

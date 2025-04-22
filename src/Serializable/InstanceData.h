@@ -17,8 +17,9 @@ struct InstanceData {
     Matrix3x3 normalMatrix;
     Color3 color;
 
-    void serialize() const ;
-    void deserialize(std::streampos position) ;
+    std::vector<char> serialize() const ;
+    InstanceData deserialize(std::streampos position) ;
+    InstanceData deserialize(const char *buffer, int &offset);
 };
 
 #endif //INSTANCEDATA_H

@@ -6,6 +6,8 @@
 #include <Magnum/GL/Renderer.h>
 #include <Magnum/SceneGraph/Camera.h>
 #include <Magnum/Shaders/PhongGL.h>
+
+#include "BulletApp.h"
 #include "../externals/enet6/include/enet6/enet.h"
 #include "Serializable/InstanceData.h"
 #include "Serializable/Object3D.h"
@@ -15,7 +17,7 @@
 using namespace Magnum;
 using namespace Math::Literals;
 
-class BulletClient : public Platform::GlfwApplication {
+class BulletClient : public BulletApp {
     ENetHost* client;
     ENetPeer* server;
 
@@ -106,22 +108,71 @@ void BulletClient::sendMessageToServer(const char* message) {
     enet_host_flush(client);
 }
 
-BulletClient::BulletClient(const Arguments& arguments) : Platform::GlfwApplication(arguments, NoCreate) {
+BulletClient::BulletClient(const Arguments& arguments) : BulletApp::BulletApp(arguments, NoCreate) {
     initClient();
     // Additional setup for graphics, scene, and camera
-
     Configuration conf;
     conf.setTitle("Bullet Client")
         .setSize({800, 600});
     GLConfiguration glConf;
     create(conf, glConf);
+
+
+     /* Camera setup */
+    (*(_cameraRig = new Object3D{&_scene}))
+        .translate(Vector3::yAxis(3.0f))
+        .rotateY(40.0_degf);
+    (*(_cameraObject = new Object3D{_cameraRig}))
+        .translate(Vector3::zAxis(20.0f))
+        .rotateX(-25.0_degf);
+    (_camera = new SceneGraph::Camera3D(*_cameraObject))
+        ->setAspectRatioPolicy(SceneGraph::AspectRatioPolicy::Extend)
+        .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
+        .setViewport(GL::defaultFramebuffer.viewport().size());
+
+    /* Shaders + meshes */
+    _shader = Shaders::PhongGL{Shaders::PhongGL::Configuration{}
+        .setFlags(Shaders::PhongGL::Flag::VertexColor|
+                  Shaders::PhongGL::Flag::InstancedTransformation)};
+    _shader.setAmbientColor(0x111111_rgbf)
+           .setSpecularColor(0x330000_rgbf)
+           .setLightPositions({{10.0f, 15.0f, 5.0f, 0.0f}});
+
+    _box = MeshTools::compile(Primitives::cubeSolid());
+    _sphere = MeshTools::compile(Primitives::uvSphereSolid(16, 32));
+    _boxInstanceBuffer = GL::Buffer{};
+    _sphereInstanceBuffer = GL::Buffer{};
+    _box.addVertexBufferInstanced(_boxInstanceBuffer, 1, 0,
+        Shaders::PhongGL::TransformationMatrix{},
+        Shaders::PhongGL::NormalMatrix{},
+        Shaders::PhongGL::Color3{});
+    _sphere.addVertexBufferInstanced(_sphereInstanceBuffer, 1, 0,
+        Shaders::PhongGL::TransformationMatrix{},
+        Shaders::PhongGL::NormalMatrix{},
+        Shaders::PhongGL::Color3{});
+
+    GL::Renderer::enable(GL::Renderer::Feature::DepthTest);
+    GL::Renderer::enable(GL::Renderer::Feature::FaceCulling);
+    GL::Renderer::enable(GL::Renderer::Feature::PolygonOffsetFill);
+    GL::Renderer::setPolygonOffset(2.0f, 0.5f);
+
+    _debugDraw = BulletIntegration::DebugDraw{};
+    _debugDraw.setMode(BulletIntegration::DebugDraw::Mode::DrawWireframe);
+    _bWorld.setGravity({0.0f, -10.0f, 0.0f});
+    //_bWorld.setDebugDrawer(&_debugDraw);
+
+    setSwapInterval(1);
+    setMinimalLoopPeriod(16.0_msec);
+    _timeline.start();
+
+
 }
 
 void BulletClient::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color | GL::FramebufferClear::Depth);
 
-    const char* message = "Hello World!";
-    sendMessageToServer(message);
+    //const char* message = "Hello World!";
+    //sendMessageToServer(message);
     updateClient();
 
     // Draw the scene based on the received data from the server
