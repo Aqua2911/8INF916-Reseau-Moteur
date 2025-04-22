@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Telemetry</title>
+</head>
+<body>
+<h1>📡 Telemetry Dashboard</h1>
+<ul id="log"></ul>
+
+<script>
+    const socket = new WebSocket("ws://localhost:5009/telemetry");
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        const item = document.createElement("li");
+        item.textContent = JSON.stringify(data);
+        document.getElementById("log").appendChild(item);
+    };
+
+    socket.onopen = () => console.log("Connected to telemetry");
+    socket.onclose = () => console.log("Disconnected");
+</script>
+</body>
+</html>

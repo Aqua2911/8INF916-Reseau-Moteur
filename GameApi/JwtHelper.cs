@@ -6,13 +6,14 @@ using Microsoft.IdentityModel.Tokens;
 public static class JwtHelper {
     private static string SecretKey = "ThisIsASuperLongSecretKey1234567890";
 
-    public static string GenerateToken(string username) {
+    public static string GenerateToken(string username, Guid uid) {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(SecretKey);
 
         var tokenDescriptor = new SecurityTokenDescriptor {
             Subject = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name, username)
+                new Claim(ClaimTypes.Name, username),
+                new Claim("uid", uid.ToString())
             }),
             Expires = DateTime.UtcNow.AddHours(1),
             SigningCredentials = new SigningCredentials(
