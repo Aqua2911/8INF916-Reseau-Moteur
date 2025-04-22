@@ -17,7 +17,7 @@ public:
     std::ofstream out = std::ofstream("serialized.txt", std::ios::binary); // open in binary mode
     virtual ~Serializable() = default;
 
-    virtual void serialize() const = 0;
+    virtual std::vector<char> serialize() = 0;
     virtual void deserialize() = 0;
 
     static std::vector<char>  serializeColor3(Magnum::Math::Color3<Magnum::Float> c);

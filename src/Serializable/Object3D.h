@@ -18,7 +18,7 @@ class Object3D : public virtual Object3DParent, public virtual Serializable {
 public:
     using Object3DParent::Object3DParent; // inherit constructors
 
-    void serialize() const override { /* ... */ }
+    std::vector<char> serialize() override { /* ... */return std::vector<char>(-1); }
     void deserialize() override { /* ... */ }
 };
 

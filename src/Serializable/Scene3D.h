@@ -12,6 +12,8 @@
 #include <Corrade/Utility/Assert.h>
 #include <iostream>
 #include <fstream>
+
+#include "ColoredDrawable.h"
 #include "Serializable.h"
 #include "Magnum/SceneGraph/Scene.h"
 
@@ -23,13 +25,16 @@ class Scene3D : public virtual Scene3DParent, Serializable{
 public:
     using Scene3DParent::Scene3DParent;
 
-    void serialize() const override;
+    std::vector<char> serialize() override;
 
     void deserialize() override;
 };
 
-inline void Scene3D::serialize() const {
+inline std::vector<char> Scene3D::serialize()  {
+    std::vector<char> buffer;
+    return buffer;
 }
+
 
 inline void Scene3D::deserialize() {
 }

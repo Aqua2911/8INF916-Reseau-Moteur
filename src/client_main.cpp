@@ -1,18 +1,8 @@
 ﻿//
 // Created by grave on 2025-04-21.
 //
-#include <Magnum/Platform/GlfwApplication.h>
-#include <Magnum/GL/DefaultFramebuffer.h>
-#include <Magnum/GL/Renderer.h>
-#include <Magnum/SceneGraph/Camera.h>
-#include <Magnum/Shaders/PhongGL.h>
 
 #include "BulletApp.h"
-#include "../externals/enet6/include/enet6/enet.h"
-#include "Serializable/InstanceData.h"
-#include "Serializable/Object3D.h"
-#include "Serializable/Scene3D.h"
-#include "Serializable/ColoredDrawable.h"
 
 using namespace Magnum;
 using namespace Math::Literals;

@@ -1,23 +1,3 @@
-#include <imgui.h>
-#include <Magnum/Timeline.h>
-#include <Magnum/GL/DefaultFramebuffer.h>
-#include <Magnum/GL/Renderer.h>
-#include <Magnum/Math/Time.h>
-#include <Magnum/MeshTools/Compile.h>
-#include <Magnum/Platform/GlfwApplication.h>
-#include <Magnum/Primitives/Cube.h>
-#include <Magnum/Primitives/UVSphere.h>
-#include <Magnum/SceneGraph/Camera.h>
-#include <Magnum/Shaders/PhongGL.h>
-#include <Magnum/Trade/MeshData.h>
-
-#include "../externals/enet6/include/enet6/enet.h"
-#include "Serializable/InstanceData.h"
-#include "Serializable/Object3D.h"
-#include "Serializable/Scene3D.h"
-#include "Serializable/ColoredDrawable.h"
-#include "Serializable/RigidBody.h"
-
 #include "BulletApp.h"
 
 #ifdef BT_USE_DOUBLE_PRECISION
@@ -42,6 +22,8 @@ class BulletServer: public BulletApp
 
     void sendMessageToClient(const char *message);
 
+    void sendMessageToClient(const void *data, size_t length);
+
     void shutdownServer();
 
     explicit BulletServer(const Arguments& arguments);
@@ -52,31 +34,13 @@ class BulletServer: public BulletApp
         void pointerPressEvent(PointerEvent& event) override;
         void EmptySerializedFile();
 
-        GL::Mesh _box{NoCreate}, _sphere{NoCreate};
-        GL::Buffer _boxInstanceBuffer{NoCreate}, _sphereInstanceBuffer{NoCreate};
-        Shaders::PhongGL _shader{NoCreate};
-        BulletIntegration::DebugDraw _debugDraw{NoCreate};
-        Containers::Array<InstanceData> _boxInstanceData, _sphereInstanceData;
-
-        btDbvtBroadphase _bBroadphase;
-        btDefaultCollisionConfiguration _bCollisionConfig;
-        btCollisionDispatcher _bDispatcher{&_bCollisionConfig};
-        btSequentialImpulseConstraintSolver _bSolver;
-
         btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
 
         Scene3D _scene;
-        SceneGraph::Camera3D* _camera;
         SceneGraph::DrawableGroup3D _drawables;
         Timeline _timeline;
 
-        Object3D *_cameraRig, *_cameraObject;
-
-        btBoxShape _bBoxShape{{0.5f, 0.5f, 0.5f}};
-        btSphereShape _bSphereShape{0.25f};
         btBoxShape _bGroundShape{{4.0f, 0.5f, 4.0f}};
-
-        bool _drawCubes{true}, _drawDebug{true};
 };
 
 
@@ -153,6 +117,13 @@ void BulletServer::sendMessageToClient(const char* message) {
     enet_peer_send(client, 0, packet); // 0 is the channel ID
 
     // Flush the packet to send immediately
+    enet_host_flush(server);
+}
+
+void BulletServer::sendMessageToClient(const void* data, size_t length) {
+    if (!client) return;
+    ENetPacket* packet = enet_packet_create(data, length, ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(client, 0, packet);
     enet_host_flush(server);
 }
 
@@ -293,13 +264,13 @@ void BulletServer::drawEvent() {
     _timeline.nextFrame();
 
     // Erase the contents of the file before starting a new series of serialization
-    EmptySerializedFile();
+    //EmptySerializedFile();
     std::vector<char> fullBuffer;
     for (auto iData: _boxInstanceData) {
         auto instBuffer = iData.serialize();
         fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
     }
-    sendMessageToClient(fullBuffer.data());
+    sendMessageToClient(fullBuffer.data(), fullBuffer.size());
     redraw();
 }
 
