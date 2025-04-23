@@ -17,10 +17,6 @@ public:
     std::unordered_map<std::string, float> stats;
     void AddStat(const std::string& name, float value);
 
-    std::vector<std::string> unlockedAchievements;
-    bool HasAchievement(const std::string& id);
-    void UnlockAchievement(const std::string &name);
-
 private:
 };
 
