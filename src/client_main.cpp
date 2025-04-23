@@ -254,10 +254,12 @@ void BulletClient::pointerPressEvent(PointerEvent& event) {
     }
     Debug{} << "SHOOT";
     // Send a shooting action to the server
-    ENetPacket* packet = enet_packet_create("SHOOT", strlen("SHOOT") + 1, ENET_PACKET_FLAG_RELIABLE);
-    enet_peer_send(server, 0, packet);
+    Vector2 pos = event.position();
+    std::string message = "SHOOT " + std::to_string(pos.x()) + " " + std::to_string(pos.y());
 
-    event.setAccepted();
+    ENetPacket* packet = enet_packet_create(
+        message.c_str(), message.length() + 1, ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(server, 0, packet);
 }
 
 void BulletClient::ReadySerializables(const char* buffer, size_t length) {

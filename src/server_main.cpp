@@ -349,10 +349,16 @@ void BulletServer::EmptySerializedFile() {
 }
 
 void BulletServer::onClientMessage(const std::string msg) {
-    if(msg == "SHOOT") {
-        // Simulate a central screen click (or you can send the click position from client)
-        Vector2 simulatedClick = Vector2{windowSize()} * 0.5f;
-        shoot(simulatedClick);
+    std::istringstream ss(msg);
+    std::string command;
+    ss >> command;
+    if(command == "SHOOT") {
+        float x, y;
+        if(ss >> x >> y) {
+            shoot(Vector2{x, y});
+        } else {
+            Debug{} << "Malformed SHOOT message!";
+        }
     }
 }
 
