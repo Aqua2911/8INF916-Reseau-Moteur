@@ -69,7 +69,3 @@ void BulletApp::keyPressEvent(KeyEvent& event) {
 
     event.setAccepted();
 }
-
-void BulletApp::pointerPressEvent(PointerEvent& event) {/* Shoot an object on click */
-
-}

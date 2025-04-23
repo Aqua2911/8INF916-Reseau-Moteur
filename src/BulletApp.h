@@ -45,7 +45,6 @@ class BulletApp: public Platform::GlfwApplication
     protected:
         void drawEvent() override;
         void keyPressEvent(KeyEvent& event) override;
-        void pointerPressEvent(PointerEvent& event) override;
 
         GL::Mesh _box{NoCreate}, _sphere{NoCreate};
         GL::Buffer _boxInstanceBuffer{NoCreate}, _sphereInstanceBuffer{NoCreate};

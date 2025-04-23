@@ -16,7 +16,15 @@ using namespace Magnum;
 
 class ColoredDrawable: public SceneGraph::Drawable3D{
 public:
-    explicit ColoredDrawable(Object3D& object, Containers::Array<InstanceData>& instanceData, const Color3& color, const Matrix4& primitiveTransformation, SceneGraph::DrawableGroup3D& drawables): SceneGraph::Drawable3D{object, &drawables}, _instanceData(instanceData), _color{color}, _primitiveTransformation{primitiveTransformation} {}
+    ColoredDrawable(Object3D& object, Containers::Array<InstanceData>& instanceData,
+                    const Color3& color, const Matrix4& primitiveTransformation,
+                    SceneGraph::DrawableGroup3D& drawables)
+        : SceneGraph::Drawable3D{object, &drawables},
+          _color{color},
+          _primitiveTransformation{primitiveTransformation},
+          _instanceData(instanceData)
+    {}
+
 
     Color3 _color;
     Matrix4 _primitiveTransformation;

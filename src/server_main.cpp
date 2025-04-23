@@ -287,7 +287,7 @@ void BulletServer::drawEvent() {
     swapBuffers();
     _timeline.nextFrame();
 
-    int counter = _serializables.size();
+    //int counter = _serializables.size();
     //std::cout << "Count : "<< counter << "-----------------------------" << std::endl;
 
     // Erase the contents of the file before starting a new series of serialization

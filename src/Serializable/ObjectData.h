@@ -26,9 +26,11 @@ class ObjectData{
     ObjectData(DataType type, Object3D* object, /*RigidBody* rb,*/ ColoredDrawable* cd);
 
     std::vector<char> serialize();
-    //static ObjectData deserialize(const char* data, size_t size, size_t& offset);
 
     static inline int nextID = 0;
+
+  // Static method declaration (no 'inline' needed here)
+  static ObjectData deserialize(const char* data, size_t size, size_t& offset);
 };
 
 

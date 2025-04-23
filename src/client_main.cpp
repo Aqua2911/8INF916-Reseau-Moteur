@@ -23,6 +23,7 @@ private:
     void drawEvent() override;
     void keyPressEvent(KeyEvent& event) override;
     void pointerPressEvent(PointerEvent& event) override;
+    void ReadySerializables(const char* buffer, size_t length);
 
     // Add game-specific data and rendering logic here
     Scene3D _scene;
@@ -67,10 +68,17 @@ void BulletClient::updateClient() {
     while (enet_host_service(client, &event, 0) > 0) {
         switch (event.type) {
             case ENET_EVENT_TYPE_RECEIVE:
-                std::cout << "Received data: " << event.packet->data << std::endl;
+            {
+                std::cout << "Received data (" << event.packet->dataLength << " bytes): ";
+                for (size_t i = 0; i < event.packet->dataLength; ++i) {
+                    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(event.packet->data[i]) << " ";
+                }
+                std::cout << std::dec << std::endl; // Reset to decimal output
                 // Process the received packet here (e.g., update game state)
+                ReadySerializables(reinterpret_cast<const char*>(event.packet->data), event.packet->dataLength);
                 enet_packet_destroy(event.packet);
                 break;
+            }
             case ENET_EVENT_TYPE_DISCONNECT:
                 std::cout << "Disconnected from server." << std::endl;
                 break;
@@ -165,8 +173,6 @@ void BulletClient::drawEvent() {
 
     // Receive updates from server
     updateClient(); // This should update _clientObjects or _serializable
-    auto message = "Hello World!";
-    //sendMessageToServer(message);
 
     // Prepare camera
     _camera->draw(_drawables);
@@ -234,6 +240,23 @@ void BulletClient::pointerPressEvent(PointerEvent& event) {
     enet_peer_send(server, 0, packet);
 
     event.setAccepted();
+}
+
+void BulletClient::ReadySerializables(const char* buffer, size_t length) {
+    _serializables.clear();
+    _serializables.reserve(length);
+
+    size_t offset = 0;
+    while (offset < length) {
+        try {
+            ObjectData obj = ObjectData::deserialize(buffer, length, offset);
+            _serializables.push_back(obj);
+        } catch (const std::exception& e) {
+            std::cerr << "Deserialization error: " << e.what() << std::endl;
+            break;
+        }
+    }
+
 }
 
 MAGNUM_APPLICATION_MAIN(BulletClient)
