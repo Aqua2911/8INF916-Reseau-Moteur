@@ -97,5 +97,6 @@ ClientObjectData ObjectData::deserialize(const char* data, size_t size, size_t& 
   offset += sizeof(Color3);
   obj->_color = color;
 
+
   return *obj;
 }

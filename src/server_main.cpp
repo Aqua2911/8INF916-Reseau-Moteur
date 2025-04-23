@@ -82,17 +82,11 @@ void BulletServer::updateServer() {
                 event.peer->data = (void*)"Client 1";
                 break;
             }
-
             case ENET_EVENT_TYPE_RECEIVE:
             {
                 // Safely copy the data into a null-terminated string for printing
                 std::string receivedMsg(reinterpret_cast<char*>(event.packet->data), event.packet->dataLength);
                 std::cout << "Received packet: " << receivedMsg << std::endl;
-
-                // Prepare a response
-                const char* message = "Message received!";
-                ENetPacket* responsePacket = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-                enet_peer_send(client, 0, responsePacket);
 
                 // Traiter les données reçues ici...
                 enet_packet_destroy(event.packet);
@@ -166,7 +160,10 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
-    _serializables.emplace_back(ObjectData(DataType_Camera, _cameraRig, nullptr));
+    _serializables.emplace_back(ObjectData(DataType_CameraRig, _cameraRig, nullptr));
+    _serializables.emplace_back(ObjectData(DataType_CameraObject, _cameraObject, nullptr));
+
+
 
     /* Shaders + meshes */
     _shader = Shaders::PhongGL{Shaders::PhongGL::Configuration{}

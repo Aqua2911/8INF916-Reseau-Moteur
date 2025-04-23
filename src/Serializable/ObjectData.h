@@ -12,7 +12,8 @@ enum DataType {
   DataType_Cube = 0,
   DataType_Ground = 1,
   DataType_Sphere = 3,
-  DataType_Camera = 4,
+  DataType_CameraObject = 4,
+  DataType_CameraRig = 5,
   DataType_None = 5
 };
 

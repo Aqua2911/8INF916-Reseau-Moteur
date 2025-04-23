@@ -194,26 +194,22 @@ void BulletClient::drawEvent() {
             const Matrix3 normalMatrix = finalTransform.normalMatrix();
             const Color3 color = data._color;
 
-            if (data.type == DataType_Camera )
+
+            if (data.type == DataType_CameraRig)
             {
                 //Debug{} << "CameraRig Transform Matrix:\n" << _cameraRig->transformation();
 
                 _cameraRig->setTransformation(data._transform);
+            }
+            else if (data.type == DataType_CameraObject)
+            {
+                _cameraObject->setTransformation(data._transform);
             }
             if(data.type == DataType_Cube || data.type == DataType_Ground )
                 arrayAppend(_boxInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
             else if(data.type == DataType_Sphere)
                 arrayAppend(_sphereInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
         }
-        std::cout << "Cube instances: " << _boxInstanceData.size() << std::endl;
-        std::cout << "Sphere instances: " << _sphereInstanceData.size() << std::endl;
-        if (!_boxInstanceData.empty()) {
-            for (auto cube: _boxInstanceData) {
-              //Debug{} << "cube Color:" << cube.color;
-            }
-
-        }
-
         // Send data to GPU
         _boxInstanceBuffer.setData(_boxInstanceData, GL::BufferUsage::DynamicDraw);
         _box.setInstanceCount(_boxInstanceData.size());
@@ -256,7 +252,7 @@ void BulletClient::pointerPressEvent(PointerEvent& event) {
     if (!event.isPrimary() || !(event.pointer() & Pointer::MouseLeft)) {
         return;
     }
-
+    Debug{} << "SHOOT";
     // Send a shooting action to the server
     ENetPacket* packet = enet_packet_create("SHOOT", strlen("SHOOT") + 1, ENET_PACKET_FLAG_RELIABLE);
     enet_peer_send(server, 0, packet);
