@@ -34,7 +34,10 @@ class BulletServer: public BulletApp
         void pointerPressEvent(PointerEvent& event) override;
         void EmptySerializedFile();
 
-        btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
+        void onClientMessage(const std::string msg);
+        void shoot(const Vector2& position);
+
+    btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
 
         Scene3D _scene;
         SceneGraph::DrawableGroup3D _drawables;
@@ -85,9 +88,9 @@ void BulletServer::updateServer() {
             case ENET_EVENT_TYPE_RECEIVE:
             {
                 // Safely copy the data into a null-terminated string for printing
-                std::string receivedMsg(reinterpret_cast<char*>(event.packet->data), event.packet->dataLength);
+                std::string receivedMsg(reinterpret_cast<char*>(event.packet->data));
                 std::cout << "Received packet: " << receivedMsg << std::endl;
-
+                onClientMessage(receivedMsg);
                 // Traiter les données reçues ici...
                 enet_packet_destroy(event.packet);
             }
@@ -336,34 +339,7 @@ void BulletServer::pointerPressEvent(PointerEvent& event) {/* Shoot an object on
        !(event.pointer() & Pointer::MouseLeft))
         return;
 
-    /* First scale the position from being relative to window size to being
-       relative to framebuffer size as those two can be different on HiDPI
-       systems */
-    const Vector2 position = event.position()*Vector2{framebufferSize()}/Vector2{windowSize()};
-    const Vector2 clickPoint = Vector2::yScale(-1.0f)*(position/Vector2{framebufferSize()} - Vector2{0.5f})*_camera->projectionSize();
-    const Vector3 direction = (_cameraObject->absoluteTransformation().rotationScaling()*Vector3{clickPoint, -1.0f}).normalized();
-
-    auto* object = new RigidBody{
-        &_scene,
-        5.0f,
-        &_bSphereShape,
-        _bWorld};
-    object->translate(_cameraObject->absoluteTransformation().translation());
-    /* Has to be done explicitly after the translate() above, as Magnum ->
-       Bullet updates are implicitly done only for kinematic bodies */
-    object->syncPose();
-
-    /* Create either a box or a sphere */
-    auto* cd = new ColoredDrawable{*object,
-        _sphereInstanceData,
-        0x220000_rgbf,
-        Matrix4::scaling(Vector3{0.25f}), _drawables};
-
-    _serializables.emplace_back(ObjectData(DataType_Sphere, object, cd));
-
-    /* Give it an initial velocity */
-    object->rigidBody().setLinearVelocity(btVector3{direction*25.f});
-
+    shoot(event.position());
     event.setAccepted();
 }
 
@@ -372,4 +348,30 @@ void BulletServer::EmptySerializedFile() {
     out.close();
 }
 
+void BulletServer::onClientMessage(const std::string msg) {
+    if(msg == "SHOOT") {
+        // Simulate a central screen click (or you can send the click position from client)
+        Vector2 simulatedClick = Vector2{windowSize()} * 0.5f;
+        shoot(simulatedClick);
+    }
+}
+
+void BulletServer::shoot(const Vector2& position){
+        const Vector2 scaledPos = position * Vector2{framebufferSize()} / Vector2{windowSize()};
+        const Vector2 clickPoint = Vector2::yScale(-1.0f)*(scaledPos / Vector2{framebufferSize()} - Vector2{0.5f}) * _camera->projectionSize();
+        const Vector3 direction = (_cameraObject->absoluteTransformation().rotationScaling() * Vector3{clickPoint, -1.0f}).normalized();
+
+        auto* object = new RigidBody{&_scene, 5.0f, &_bSphereShape, _bWorld};
+        object->translate(_cameraObject->absoluteTransformation().translation());
+        object->syncPose();
+
+        auto* cd = new ColoredDrawable{*object, _sphereInstanceData, 0x220000_rgbf,
+                                       Matrix4::scaling(Vector3{0.25f}), _drawables};
+
+        _serializables.emplace_back(ObjectData(DataType_Sphere, object, cd));
+        object->rigidBody().setLinearVelocity(btVector3{direction * 25.f});
+}
+
 MAGNUM_APPLICATION_MAIN(BulletServer)
+
+
