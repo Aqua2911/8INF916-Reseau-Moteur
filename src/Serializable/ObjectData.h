@@ -13,24 +13,36 @@ enum DataType {
   DataType_Ground = 1,
   DataType_Sphere = 3,
   DataType_Camera = 4,
+  DataType_None = 5
 };
 
-class ObjectData{
+class ClientObjectData{
   public:
     int ID;
     DataType type;
-    Object3D* object;
-    //RigidBody* rb;
-    ColoredDrawable* cd;
+    Matrix4 _transform;
+    Matrix4 _primitiveTransform;
+    Color3 _color;
 
-    ObjectData(DataType type, Object3D* object, /*RigidBody* rb,*/ ColoredDrawable* cd);
+    ClientObjectData();
+};
 
-    std::vector<char> serialize();
+class ObjectData{
+public:
+  int ID;
+  DataType type;
+  Object3D* object;
+  //RigidBody* rb;
+  ColoredDrawable* cd;
 
-    static inline int nextID = 0;
+  ObjectData(DataType type, Object3D* object, /*RigidBody* rb,*/ ColoredDrawable* cd);
+
+  std::vector<char> serialize();
+
+  static inline int nextID = 0;
 
   // Static method declaration (no 'inline' needed here)
-  static ObjectData deserialize(const char* data, size_t size, size_t& offset);
+  static ClientObjectData deserialize(const char* data, size_t size, size_t& offset);
 };
 
 

@@ -4,6 +4,15 @@
 
 #include "ObjectData.h"
 
+ClientObjectData::ClientObjectData() {
+  ID = -1;
+  type = DataType_None;
+  _transform = Matrix4();
+  _primitiveTransform = Matrix4();
+  _color = Color3();
+}
+
+
 ObjectData::ObjectData(DataType type, Object3D* object, /*RigidBody* rb,*/ ColoredDrawable* cd){
   ID = ObjectData::nextID++;
   this->type = type;
@@ -14,38 +23,54 @@ ObjectData::ObjectData(DataType type, Object3D* object, /*RigidBody* rb,*/ Color
 
 std::vector<char> ObjectData::serialize() {
   std::vector<char> buffer;
-  int s = buffer.size();
+
   // 1. Serialize ID
   buffer.insert(buffer.end(), reinterpret_cast<char*>(&ID), reinterpret_cast<char*>(&ID) + sizeof(ID));
-  s = buffer.size();
+
   // 2. Serialize DataType
   int typeInt = static_cast<int>(type);
   buffer.insert(buffer.end(), reinterpret_cast<char*>(&typeInt), reinterpret_cast<char*>(&typeInt) + sizeof(int));
-  s = buffer.size();
-  // 3. Serialize Object3D transform (Matrix4)
+
+  // 3. Serialize Object3D transform
   if (object) {
     std::vector<char> transform = this->object->serializeTransform();
-    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&transform), reinterpret_cast<const char*>(&transform) + sizeof(Matrix4));
-    s = buffer.size();
+    buffer.insert(buffer.end(), transform.begin(), transform.end());
+  } else {
+    // If object missing, write identity matrix
+    Matrix4 identity;
+    std::memset(&identity, 0, sizeof(Matrix4));
+    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&identity), reinterpret_cast<const char*>(&identity) + sizeof(Matrix4));
   }
 
-  // 4. Serialize ColoredDrawable color and primitive transform
+  // 4. Serialize ColoredDrawable
   if (cd) {
-    // Color3: 3 floats
+    //Debug{} << "cube Color:" << this->cd->_color;
     std::vector<char> cdb = this->cd->serialize();
-    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&cdb), reinterpret_cast<const char*>(&cdb) + sizeof(Color3) + sizeof(Matrix4));
-    s = buffer.size();
+    buffer.insert(buffer.end(), cdb.begin(), cdb.end());
+  } else {
+    // Write dummy data for primitiveTransform and color
+    Matrix4 dummyMatrix;
+    std::memset(&dummyMatrix, 0, sizeof(Matrix4));
+    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&dummyMatrix), reinterpret_cast<const char*>(&dummyMatrix) + sizeof(Matrix4));
+
+    Color3 dummyColor;
+    std::memset(&dummyColor, 0, sizeof(Color3));
+    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&dummyColor), reinterpret_cast<const char*>(&dummyColor) + sizeof(Color3));
   }
 
-  s = buffer.size();
   return buffer;
 }
 
-ObjectData ObjectData::deserialize(const char* data, size_t size, size_t& offset) {
+
+ClientObjectData ObjectData::deserialize(const char* data, size_t size, size_t& offset) {
+  ClientObjectData* obj = new ClientObjectData();
+
   // 1. Deserialize ID
   int id;
   std::memcpy(&id, data + offset, sizeof(int));
   offset += sizeof(int);
+
+  obj->ID = id;
 
   // 2. Deserialize DataType
   int typeInt;
@@ -53,14 +78,16 @@ ObjectData ObjectData::deserialize(const char* data, size_t size, size_t& offset
   offset += sizeof(int);
   DataType type = static_cast<DataType>(typeInt);
 
+  obj->type = type;
+
   // 3. Deserialize Matrix4 transform
   Matrix4 transform;
   std::memcpy(&transform, data + offset, sizeof(Matrix4));
   offset += sizeof(Matrix4);
 
-  // 6. Create dummy object, you’ll reassign these later
-  ObjectData obj(type, nullptr, nullptr);
-  obj.ID = id;
+  obj->_transform = transform;
+
+
 
   if (type != DataType_Camera)
   {
@@ -69,9 +96,14 @@ ObjectData ObjectData::deserialize(const char* data, size_t size, size_t& offset
       std::memcpy(&primitiveTransform, data + offset, sizeof(Matrix4));
       offset += sizeof(Matrix4);
 
+      obj->_primitiveTransform = primitiveTransform;
+
       Color3 color;
       std::memcpy(&color, data + offset, sizeof(Color3));
       offset += sizeof(Color3);
+
+      obj->_color = color;
+      //Debug{} << "cube Color:" << color;
 
       // We store deserialized data for now — the actual Object3D* and ColoredDrawable*
       // will be created later from this info in BulletClient::drawEvent()
@@ -85,5 +117,5 @@ ObjectData ObjectData::deserialize(const char* data, size_t size, size_t& offset
       // This assumes ColoredDrawable has a constructor taking those args
   }
 
-  return obj;
+  return *obj;
 }

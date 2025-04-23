@@ -25,7 +25,6 @@ public:
           _instanceData(instanceData)
     {}
 
-
     Color3 _color;
     Matrix4 _primitiveTransformation;
     std::vector<char> serialize() const ;
@@ -35,13 +34,11 @@ private:
         arrayAppend(_instanceData, InPlaceInit, t, t.normalMatrix(), _color);
     }
 
-
     //void deserialize() override;
 
     Containers::Array<InstanceData>& _instanceData;
 
 };
-
 
 
 #endif //COLOREDDRAWABLE_H

@@ -41,6 +41,9 @@ class BulletServer: public BulletApp
         Timeline _timeline;
 
         btBoxShape _bGroundShape{{4.0f, 0.5f, 4.0f}};
+
+    //store object Data at the same place
+    std::vector<ObjectData> _serializables;
 };
 
 
@@ -163,7 +166,7 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
-    _serializables.emplace_back(ObjectData(DataType_Camera, _cameraRig, nullptr));
+    //_serializables.emplace_back(ObjectData(DataType_Camera, _cameraRig, nullptr));
 
     /* Shaders + meshes */
     _shader = Shaders::PhongGL{Shaders::PhongGL::Configuration{}
@@ -283,7 +286,13 @@ void BulletServer::drawEvent() {
             GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::Less);
     }
 
-
+    /*
+    if (!_boxInstanceData.empty()) {
+        for (auto cube: _boxInstanceData) {
+            Debug{} << "cube Color:" << cube.color;
+        }
+    }
+    */
     swapBuffers();
     _timeline.nextFrame();
 

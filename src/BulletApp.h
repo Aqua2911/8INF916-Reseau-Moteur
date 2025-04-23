@@ -70,9 +70,6 @@ class BulletApp: public Platform::GlfwApplication
         btBoxShape _bGroundShape{{4.0f, 0.5f, 4.0f}};
 
         bool _drawCubes{true}, _drawDebug{true};
-
-        //store object Data at the same place
-        std::vector<ObjectData> _serializables;
 };
 
 #endif //BULLETAPP_H

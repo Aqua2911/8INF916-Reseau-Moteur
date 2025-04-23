@@ -27,6 +27,9 @@ private:
 
     // Add game-specific data and rendering logic here
     Scene3D _scene;
+    //store object Data at the same place
+    std::vector<ClientObjectData> _serializables;
+    std::vector<ObjectData> _serializables2;
 };
 
 void BulletClient::initClient() {
@@ -69,11 +72,13 @@ void BulletClient::updateClient() {
         switch (event.type) {
             case ENET_EVENT_TYPE_RECEIVE:
             {
+                /*
                 std::cout << "Received data (" << event.packet->dataLength << " bytes): ";
                 for (size_t i = 0; i < event.packet->dataLength; ++i) {
                     std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(event.packet->data[i]) << " ";
                 }
                 std::cout << std::dec << std::endl; // Reset to decimal output
+                */
                 // Process the received packet here (e.g., update game state)
                 ReadySerializables(reinterpret_cast<const char*>(event.packet->data), event.packet->dataLength);
                 enet_packet_destroy(event.packet);
@@ -117,7 +122,7 @@ BulletClient::BulletClient(const Arguments& arguments) : BulletApp::BulletApp(ar
     create(conf, glConf);
 
 
-     /* Camera setup */
+    /* Camera setup */
     (*(_cameraRig = new Object3D{&_scene}))
         .translate(Vector3::yAxis(3.0f))
         .rotateY(40.0_degf);
@@ -163,8 +168,6 @@ BulletClient::BulletClient(const Arguments& arguments) : BulletApp::BulletApp(ar
     setSwapInterval(1);
     setMinimalLoopPeriod(16.0_msec);
     _timeline.start();
-
-
 }
 
 void BulletClient::drawEvent() {
@@ -177,21 +180,43 @@ void BulletClient::drawEvent() {
     // Prepare camera
     _camera->draw(_drawables);
     _shader.setProjectionMatrix(_camera->projectionMatrix());
+    _shader.setTransformationMatrix(_camera->cameraMatrix());
+
 
     if (_drawCubes) {
         // Clear instance buffers
         arrayResize(_boxInstanceData, 0);
         arrayResize(_sphereInstanceData, 0);
 
-        /* Populate instance buffers from received data
-        for (const auto& obj : _serializables) {
-            if (obj.type == DataType_Cube) {
-                _boxInstanceData.emplace_back(obj.transform, obj.normalMatrix, obj.color);
-            } else if (obj.type == DataType_Sphere) {
-                _sphereInstanceData.emplace_back(obj.transform, obj.normalMatrix, obj.color);
+        // Assume you have a list of deserialized ObjectData or similar
+        for(const auto& data : _serializables) {
+            const Matrix4 finalTransform = data._transform * data._primitiveTransform;
+            const Matrix3 normalMatrix = finalTransform.normalMatrix();
+            const Color3 color = data._color;
+            //Debug{} << "cube Color:" << color;
+
+            if(data.type == DataType_Ground )
+            {
+                Debug{} << "Ground Color:" << data._color;
+                Debug{} << "Ground Transform:" << data._transform;
+                Debug{} << "Ground Primitive:" << data._primitiveTransform;
+                Debug{} << "Ground finalTransform:" << finalTransform;
+                Debug{} << "Ground normalMatrix:" << normalMatrix;
             }
+
+            if(data.type == DataType_Cube || data.type == DataType_Ground )
+                arrayAppend(_boxInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
+            else if(data.type == DataType_Sphere)
+                arrayAppend(_sphereInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
         }
-        */
+        std::cout << "Cube instances: " << _boxInstanceData.size() << std::endl;
+        std::cout << "Sphere instances: " << _sphereInstanceData.size() << std::endl;
+        if (!_boxInstanceData.empty()) {
+            for (auto cube: _boxInstanceData) {
+              //Debug{} << "cube Color:" << cube.color;
+            }
+
+        }
 
         // Send data to GPU
         _boxInstanceBuffer.setData(_boxInstanceData, GL::BufferUsage::DynamicDraw);
@@ -203,7 +228,8 @@ void BulletClient::drawEvent() {
         _shader.draw(_sphere);
     }
 
-    /* Optional: Draw debug lines sent from the server
+    /*
+     Optional: Draw debug lines sent from the server
     if (_drawDebug) {
         GL::Renderer::setDepthFunction(GL::Renderer::DepthFunction::LessOrEqual);
         _debugDraw.setTransformationProjectionMatrix(
@@ -249,7 +275,7 @@ void BulletClient::ReadySerializables(const char* buffer, size_t length) {
     size_t offset = 0;
     while (offset < length) {
         try {
-            ObjectData obj = ObjectData::deserialize(buffer, length, offset);
+            ClientObjectData obj = ObjectData::deserialize(buffer, length, offset);
             _serializables.push_back(obj);
         } catch (const std::exception& e) {
             std::cerr << "Deserialization error: " << e.what() << std::endl;
