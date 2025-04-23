@@ -1,4 +1,5 @@
-﻿#include <ixwebsocket/IXWebSocket.h>
+﻿ /*
+#include <ixwebsocket/IXWebSocket.h>
 #include <iostream>
 #include <json.hpp>
 #include <thread>
@@ -36,3 +37,5 @@ int main() {
     ws.stop();
     return 0;
 }
+*/
+   */
