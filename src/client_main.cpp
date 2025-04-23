@@ -193,17 +193,13 @@ void BulletClient::drawEvent() {
             const Matrix4 finalTransform = data._transform * data._primitiveTransform;
             const Matrix3 normalMatrix = finalTransform.normalMatrix();
             const Color3 color = data._color;
-            //Debug{} << "cube Color:" << color;
 
-            if(data.type == DataType_Ground )
+            if (data.type == DataType_Camera )
             {
-                Debug{} << "Ground Color:" << data._color;
-                Debug{} << "Ground Transform:" << data._transform;
-                Debug{} << "Ground Primitive:" << data._primitiveTransform;
-                Debug{} << "Ground finalTransform:" << finalTransform;
-                Debug{} << "Ground normalMatrix:" << normalMatrix;
-            }
+                //Debug{} << "CameraRig Transform Matrix:\n" << _cameraRig->transformation();
 
+                _cameraRig->setTransformation(data._transform);
+            }
             if(data.type == DataType_Cube || data.type == DataType_Ground )
                 arrayAppend(_boxInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
             else if(data.type == DataType_Sphere)

@@ -87,35 +87,15 @@ ClientObjectData ObjectData::deserialize(const char* data, size_t size, size_t& 
 
   obj->_transform = transform;
 
-
-
-  if (type != DataType_Camera)
-  {
-      // 5. Deserialize primitive transform
-      Matrix4 primitiveTransform;
-      std::memcpy(&primitiveTransform, data + offset, sizeof(Matrix4));
-      offset += sizeof(Matrix4);
-
-      obj->_primitiveTransform = primitiveTransform;
-
-      Color3 color;
-      std::memcpy(&color, data + offset, sizeof(Color3));
-      offset += sizeof(Color3);
-
-      obj->_color = color;
-      //Debug{} << "cube Color:" << color;
-
-      // We store deserialized data for now — the actual Object3D* and ColoredDrawable*
-      // will be created later from this info in BulletClient::drawEvent()
-      // You could add members to hold them temporarily if you want: deserializedTransform, deserializedColor, etc.
-
-      // For now, let’s inject them directly if you want:
-      //obj.object = new Object3D();  // optionally pass parent
-      //obj.object->setTransformationMatrix(transform);
-
-      //obj.cd = new ColoredDrawable(*obj.object, primitiveTransform, color, _shader); // assuming _shader is available
-      // This assumes ColoredDrawable has a constructor taking those args
-  }
+  // 5. Deserialize primitive transform
+  Matrix4 primitiveTransform;
+  std::memcpy(&primitiveTransform, data + offset, sizeof(Matrix4));
+  offset += sizeof(Matrix4);
+  obj->_primitiveTransform = primitiveTransform;
+  Color3 color;
+  std::memcpy(&color, data + offset, sizeof(Color3));
+  offset += sizeof(Color3);
+  obj->_color = color;
 
   return *obj;
 }
