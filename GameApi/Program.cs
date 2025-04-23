@@ -38,7 +38,7 @@ var users = new List<Player>{
     new Player("alice")
 };
 var matchQueue = new List<MatchRequest>();
-var sessions = new Dictionary<string, string>(); // username → server IP (later)
+var sessions = new Dictionary<string, string>(); // username → server IP
 var gameServers = new List<GameServer>();
 var store = new List<Skin> {
     new Skin(1, "Dragon Sword", 100),
@@ -189,7 +189,7 @@ app.MapGet("/config", () =>
     {
         maxPlayers = 4,
         tickRate = 20,
-        networkProtocol = "ENet"
+        networkProtocol = "ENet6"
     };
 
     return Results.Ok(config);

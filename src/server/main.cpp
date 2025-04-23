@@ -13,7 +13,7 @@ using json = nlohmann::json;
 int main() {
     //std::vector<GameServer> gameServers;
 
-    httplib::Client cli("localhost", 5009);
+    httplib::Client api("localhost", 5009);
 
     json payload = {
             { "ip", "127.0.0.1" },
@@ -21,7 +21,7 @@ int main() {
             { "capacity", 4 }
     };
 
-    auto res = cli.Post("/register-server", payload.dump(), "application/json");
+    auto res = api.Post("/register-server", payload.dump(), "application/json");
 
     if (res && res->status == 200) {
         std::cout << "Server registered!\n";
