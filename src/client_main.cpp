@@ -25,6 +25,10 @@ private:
     void pointerPressEvent(PointerEvent& event) override;
     void ReadySerializables(const char* buffer, size_t length);
 
+    void exitEvent(ExitEvent &event) override{
+        shutdownClient();
+    }
+
     // Add game-specific data and rendering logic here
     Scene3D _scene;
     //store object Data at the same place
@@ -95,6 +99,7 @@ void BulletClient::updateClient() {
 
 void BulletClient::shutdownClient() {
     if (client) {
+        enet_peer_disconnect(server, 0);
         enet_host_destroy(client);
     }
     enet_deinitialize();

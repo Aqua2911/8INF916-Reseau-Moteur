@@ -95,7 +95,23 @@ void BulletServer::updateServer() {
 
             break;
             case ENET_EVENT_TYPE_DISCONNECT:
-                std::cout << "Client disconnected." << std::endl;
+                for (ENetPeer* peer : clients) {
+                    if (peer == event.peer)
+                    {
+                        std::remove(clients.begin(), clients.end(), peer);
+                        std::cout << "Client disconnected." << std::endl;
+                    }
+                }
+
+            break;
+            case ENET_EVENT_TYPE_DISCONNECT_TIMEOUT:
+                for (ENetPeer* peer : clients) {
+                    if (peer == event.peer)
+                    {
+                        std::remove(clients.begin(), clients.end(), peer);
+                        std::cout << "Client disconnected Time Out." << std::endl;
+                    }
+                }
             break;
             default:
                 break;
