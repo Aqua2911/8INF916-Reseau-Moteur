@@ -72,4 +72,19 @@ class BulletApp: public Platform::GlfwApplication
         bool _drawCubes{true}, _drawDebug{true};
 };
 
+struct ClientCamera {
+    ENetPeer* _peer;
+    Object3D *_cameraRig;
+    Object3D *_cameraObject;
+    SceneGraph::Camera3D* _camera;
+
+    ClientCamera(ENetPeer* client, Object3D* cameraRig, Object3D* cameraObject, SceneGraph::Camera3D* camera)
+    {
+        _peer = client;
+        _cameraRig = cameraRig;
+        _cameraObject = cameraObject;
+        _camera = camera;
+    }
+};
+
 #endif //BULLETAPP_H

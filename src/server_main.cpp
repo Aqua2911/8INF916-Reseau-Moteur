@@ -27,6 +27,8 @@ class BulletServer: public BulletApp
     explicit BulletServer(const Arguments& arguments);
 
     private:
+        void CreateClientCamera(ENetPeer* client);
+
         void drawEvent() override;
         void keyPressEvent(KeyEvent& event) override;
         void pointerPressEvent(PointerEvent& event) override;
@@ -45,6 +47,7 @@ class BulletServer: public BulletApp
 
     //store object Data at the same place
     std::vector<ObjectData> _serializables;
+    std::vector<ClientCamera*> _serializablesCameras;
 };
 
 
@@ -74,10 +77,11 @@ void BulletServer::updateServer() {
         switch (event.type) {
             case ENET_EVENT_TYPE_CONNECT:
             {
-                std::cout << "Client connected";
+                std::cout << "Client connected" << std::endl;
 
                 // ✅ Save the peer pointer somewhere, e.g., in a member variable
                 clients.emplace_back() = event.peer;
+                CreateClientCamera(event.peer);
 
                 // Optional: You can assign some custom data to this peer too
                 event.peer->data = (void*)clients.size();
@@ -98,18 +102,27 @@ void BulletServer::updateServer() {
                 for (ENetPeer* peer : clients) {
                     if (peer == event.peer)
                     {
-                        std::remove(clients.begin(), clients.end(), peer);
+                        std::erase(clients, peer);
+                        std::erase_if(_serializablesCameras, [&](auto camera) {
+                            return camera->_peer == event.peer;
+                        });
+
                         std::cout << "Client disconnected." << std::endl;
+                        break;
                     }
                 }
-
             break;
             case ENET_EVENT_TYPE_DISCONNECT_TIMEOUT:
                 for (ENetPeer* peer : clients) {
                     if (peer == event.peer)
                     {
-                        std::remove(clients.begin(), clients.end(), peer);
+                        std::erase(clients, peer);
+                        std::erase_if(_serializablesCameras, [&](auto camera) {
+                            return camera->_peer == event.peer;
+                        });
+
                         std::cout << "Client disconnected Time Out." << std::endl;
+                        break;
                     }
                 }
             break;
@@ -222,6 +235,26 @@ BulletServer::BulletServer(const Arguments& arguments):
                     Matrix4::scaling(Vector3{0.5f}), _drawables};
                 _serializables.emplace_back(ObjectData(DataType_Cube, o, cdo));
             }
+}
+
+void BulletServer::CreateClientCamera(ENetPeer* client) {
+    /* Camera setup */
+    Object3D* _cameraRigClient;
+    Object3D* _cameraObjectClient;
+    SceneGraph::Camera3D* _cameraClient;
+    (*(_cameraRigClient = new Object3D{&_scene}))
+        .translate(Vector3::yAxis(3.0f))
+        .rotateY(40.0_degf);
+    (*(_cameraObjectClient = new Object3D{_cameraRigClient}))
+        .translate(Vector3::zAxis(20.0f))
+        .rotateX(-25.0_degf);
+    (_cameraClient = new SceneGraph::Camera3D(*_cameraObjectClient))
+        ->setAspectRatioPolicy(SceneGraph::AspectRatioPolicy::Extend)
+        .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
+        .setViewport(GL::defaultFramebuffer.viewport().size());
+
+    auto cc = new ClientCamera(client, _cameraRigClient, _cameraObjectClient, _cameraClient);
+    _serializablesCameras.emplace_back(cc);
 }
 
 void BulletServer::drawEvent() {

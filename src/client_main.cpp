@@ -76,14 +76,6 @@ void BulletClient::updateClient() {
         switch (event.type) {
             case ENET_EVENT_TYPE_RECEIVE:
             {
-                /*
-                std::cout << "Received data (" << event.packet->dataLength << " bytes): ";
-                for (size_t i = 0; i < event.packet->dataLength; ++i) {
-                    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(event.packet->data[i]) << " ";
-                }
-                std::cout << std::dec << std::endl; // Reset to decimal output
-                */
-                // Process the received packet here (e.g., update game state)
                 ReadySerializables(reinterpret_cast<const char*>(event.packet->data), event.packet->dataLength);
                 enet_packet_destroy(event.packet);
                 break;
