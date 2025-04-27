@@ -14,15 +14,13 @@ using namespace Math::Literals;
 class BulletServer: public BulletApp
 {
     ENetHost* server;
-    ENetPeer* client = nullptr;
+    std::vector<ENetPeer*> clients;
 
     public:
     void initServer();
     void updateServer();
 
-    void sendMessageToClient(const char *message);
-
-    void sendMessageToClient(const void *data, size_t length);
+    void sendMessageToClient(const void *data, size_t length, ENetPeer* client);
 
     void shutdownServer();
 
@@ -79,10 +77,10 @@ void BulletServer::updateServer() {
                 std::cout << "Client connected";
 
                 // ✅ Save the peer pointer somewhere, e.g., in a member variable
-                client = event.peer;
+                clients.emplace_back() = event.peer;
 
                 // Optional: You can assign some custom data to this peer too
-                event.peer->data = (void*)"Client 1";
+                event.peer->data = (void*)clients.size();
                 break;
             }
             case ENET_EVENT_TYPE_RECEIVE:
@@ -105,22 +103,7 @@ void BulletServer::updateServer() {
     }
 }
 
-void BulletServer::sendMessageToClient(const char* message) {
-    if (client == nullptr)
-        return;
-
-    // Create the packet. The size is the length of the message.
-    ENetPacket* packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-
-    // Send the packet to the server
-    // `serverPeer` is the peer representing the server the client is connected to
-    enet_peer_send(client, 0, packet); // 0 is the channel ID
-
-    // Flush the packet to send immediately
-    enet_host_flush(server);
-}
-
-void BulletServer::sendMessageToClient(const void* data, size_t length) {
+void BulletServer::sendMessageToClient(const void* data, size_t length, ENetPeer* client) {
     if (client == nullptr) return;
     ENetPacket* packet = enet_packet_create(data, length, ENET_PACKET_FLAG_RELIABLE);
     enet_peer_send(client, 0, packet);
@@ -307,8 +290,10 @@ void BulletServer::drawEvent() {
         auto instBuffer = iData.serialize();
         fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
     }
-    if (client != nullptr)
-        sendMessageToClient(fullBuffer.data(), fullBuffer.size());
+    for (auto client: clients) {
+        if (client != nullptr)
+            sendMessageToClient(fullBuffer.data(), fullBuffer.size(), client);
+    }
     redraw();
 }
 
