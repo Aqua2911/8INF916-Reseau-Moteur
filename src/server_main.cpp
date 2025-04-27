@@ -175,8 +175,8 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
-    _serializables.emplace_back(ObjectData(DataType_CameraRig, _cameraRig, nullptr));
-    _serializables.emplace_back(ObjectData(DataType_CameraObject, _cameraObject, nullptr));
+    //_serializables.emplace_back(ObjectData(DataType_CameraRig, _cameraRig, nullptr));
+    //_serializables.emplace_back(ObjectData(DataType_CameraObject, _cameraObject, nullptr));
 
 
 
@@ -334,14 +334,31 @@ void BulletServer::drawEvent() {
     // Erase the contents of the file before starting a new series of serialization
     EmptySerializedFile();
 
-    std::vector<char> fullBuffer;
-    for (auto iData: _serializables) {
-        auto instBuffer = iData.serialize();
-        fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
-    }
+    std::vector<ObjectData> noCamSerializables;
     for (auto client: clients) {
+        noCamSerializables = _serializables;
+        std::vector<char> fullClientBuffer;
         if (client != nullptr)
-            sendMessageToClient(fullBuffer.data(), fullBuffer.size(), client);
+        {
+            auto camIt = std::find_if(_serializablesCameras.begin(), _serializablesCameras.end(), [client](ClientCamera* obj) {
+                return obj->_peer == client; // Compare _peer with the client
+            });
+
+
+            if (camIt != _serializablesCameras.end())
+            {
+                // Dereference the iterator to access the ClientCamera object
+                ClientCamera* cam = *camIt;
+                noCamSerializables.emplace_back(ObjectData(DataType_CameraRig, cam->_cameraRig, nullptr));
+                noCamSerializables.emplace_back(ObjectData(DataType_CameraObject, cam->_cameraObject, nullptr));
+            }
+
+            for (auto iData: _serializables) {
+                auto instBuffer = iData.serialize();
+                fullClientBuffer.insert(fullClientBuffer.end(), instBuffer.begin(), instBuffer.end());
+            }
+        }
+            sendMessageToClient(fullClientBuffer.data(), fullClientBuffer.size(), client);
     }
     redraw();
 }
