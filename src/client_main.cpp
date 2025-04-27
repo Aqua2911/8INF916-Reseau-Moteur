@@ -249,13 +249,23 @@ void BulletClient::pointerPressEvent(PointerEvent& event) {
     if (!event.isPrimary() || !(event.pointer() & Pointer::MouseLeft)) {
         return;
     }
-    Debug{} << "SHOOT";
-    // Send a shooting action to the server
-    Vector2 pos = event.position();
-    std::string message = "SHOOT " + std::to_string(pos.x()) + " " + std::to_string(pos.y());
 
-    ENetPacket* packet = enet_packet_create(
-        message.c_str(), message.length() + 1, ENET_PACKET_FLAG_RELIABLE);
+    Vector2 pos = event.position();
+
+    // Create a binary packet: Command (1 byte), x (float), y (float)
+    uint8_t command = 1;  // 1 could represent SHOOT command
+    float x = pos.x();
+    float y = pos.y();
+
+    // Create the packet with a size of 1 byte for command + 2 floats (4 bytes each)
+    ENetPacket* packet = enet_packet_create(nullptr, sizeof(command) + sizeof(x) + sizeof(y), ENET_PACKET_FLAG_RELIABLE);
+    auto data = reinterpret_cast<uint8_t*>(packet->data);
+
+    // Write data into the packet
+    data[0] = command;  // Command byte
+    std::memcpy(data + 1, &x, sizeof(x));  // x position as float
+    std::memcpy(data + 1 + sizeof(x), &y, sizeof(y));  // y position as float
+
     enet_peer_send(server, 0, packet);
 }
 

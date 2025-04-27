@@ -34,7 +34,7 @@ class BulletServer: public BulletApp
         void pointerPressEvent(PointerEvent& event) override;
         void EmptySerializedFile();
 
-        void onClientMessage(const std::string msg);
+        void onClientMessage(const char* buffer, size_t length);
         void shoot(const Vector2& position);
 
     btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
@@ -92,7 +92,7 @@ void BulletServer::updateServer() {
                 // Safely copy the data into a null-terminated string for printing
                 std::string receivedMsg(reinterpret_cast<char*>(event.packet->data));
                 std::cout << "Received packet: " << receivedMsg << std::endl;
-                onClientMessage(receivedMsg);
+                onClientMessage(reinterpret_cast<const char*>(event.packet->data), event.packet->dataLength);
                 // Traiter les données reçues ici...
                 enet_packet_destroy(event.packet);
             }
@@ -399,17 +399,26 @@ void BulletServer::EmptySerializedFile() {
     out.close();
 }
 
-void BulletServer::onClientMessage(const std::string msg) {
-    std::istringstream ss(msg);
-    std::string command;
-    ss >> command;
-    if(command == "SHOOT") {
+void BulletServer::onClientMessage(const char* buffer, size_t length) {
+    if (length < sizeof(uint8_t) + sizeof(float) * 2) {
+        Debug{} << "Received invalid message length!";
+        return;
+    }
+
+    // Start by reading the command byte (first byte)
+    uint8_t command = buffer[0];
+
+    // Check for the SHOOT command (represented by 1)
+    if (command == 1) {
+        // Extract the x and y coordinates
         float x, y;
-        if(ss >> x >> y) {
-            shoot(Vector2{x, y});
-        } else {
-            Debug{} << "Malformed SHOOT message!";
-        }
+        std::memcpy(&x, buffer + 1, sizeof(x));  // Read x position as float
+        std::memcpy(&y, buffer + 1 + sizeof(x), sizeof(y));  // Read y position as float
+
+        // Now you can perform the shooting action with the x, y position
+        shoot(Vector2{x, y});
+    } else {
+        Debug{} << "Unknown command!";
     }
 }
 
