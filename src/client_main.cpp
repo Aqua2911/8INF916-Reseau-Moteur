@@ -194,13 +194,13 @@ void BulletClient::drawEvent() {
 
             if (data.type == DataType_CameraRig)
             {
-                //Debug{} << "CameraRig Transform Matrix:\n" << _cameraRig->transformation();
-
                 _cameraRig->setTransformation(data._transform);
+                //Debug{} << "Client CameraRig Transform Matrix:\n" << _cameraRig->transformation();
             }
             else if (data.type == DataType_CameraObject)
             {
                 _cameraObject->setTransformation(data._transform);
+               //Debug{} << "Client CameraObject Transform Matrix:\n" << _cameraObject->transformation();
             }
             if(data.type == DataType_Cube || data.type == DataType_Ground )
                 arrayAppend(_boxInstanceData, InPlaceInit, finalTransform, normalMatrix, color);
@@ -236,11 +236,34 @@ void BulletClient::drawEvent() {
 
 
 void BulletClient::keyPressEvent(KeyEvent& event) {
-    if (event.key() == Key::W) {
-        // Send movement data to the server (e.g., player movement)
-        ENetPacket* packet = enet_packet_create("MOVE_FORWARD", strlen("MOVE_FORWARD") + 1, ENET_PACKET_FLAG_RELIABLE);
-        enet_peer_send(server, 0, packet);
-    }
+    Debug{} << "Client keyPressEvent";
+    uint8_t command = 2;
+    int move;
+    /* Movement */
+    if(event.key() == Key::S) {
+        move = 1;
+    } else if(event.key() == Key::W) {
+        move = 2;
+    } else if(event.key() == Key::A) {
+        move = 3;
+    } else if(event.key() == Key::D) {
+        move = 4;
+    } else if(event.key() == Key::Q) {
+        // Move forward
+        move = 5;
+    } else if(event.key() == Key::E) {
+        // Move backward
+        move = 6;
+    } else return;
+
+    // Create the packet with a size of 1 byte for command + 2 floats (4 bytes each)
+    ENetPacket* packet = enet_packet_create(nullptr, sizeof(command) + sizeof(move), ENET_PACKET_FLAG_RELIABLE);
+    auto data = reinterpret_cast<uint8_t*>(packet->data);
+
+    // Write data into the packet
+    data[0] = command;  // Command byte
+    std::memcpy(data + 1, &move, sizeof(move));  // x position as float
+    enet_peer_send(server, 0, packet);
 
     event.setAccepted();
 }
