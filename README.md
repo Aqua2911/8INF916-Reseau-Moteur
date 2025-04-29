@@ -22,7 +22,7 @@ In a new terminal, run the server
 cd cmake-build-release/Release/bin/
 ```
 ```bash
-./BulletServer.exe
+./MagnumServer.exe
 ```
 
 In another terminal, run the client
@@ -30,7 +30,7 @@ In another terminal, run the client
 cd cmake-build-release/Release/bin/
 ```
 ```bash
-./BulletClient.exe
+./LauncherApp.exe
 ```
 
 ## Linux
@@ -48,7 +48,7 @@ In a new terminal, run the server
 cd cmake-build-release/Release/bin/
 ```
 ```bash
-./BulletServer
+./MagnumServer
 ```
 
 In another terminal, run the client
@@ -56,5 +56,5 @@ In another terminal, run the client
 cd cmake-build-release/Release/bin/
 ```
 ```bash
-./BulletClient
+./LauncherApp
 ```

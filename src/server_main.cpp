@@ -1,4 +1,5 @@
 #include "BulletApp.h"
+#include "client/OnlineClient.h"
 
 #ifdef BT_USE_DOUBLE_PRECISION
 #error sorry, this example does not support Bullet with double precision enabled
@@ -47,6 +48,8 @@ class BulletServer: public BulletApp
 
     //store object Data at the same place
     std::vector<ObjectData> _serializables;
+
+    OnlineClient onlineClient;
 };
 
 
@@ -67,6 +70,9 @@ void BulletServer::initServer() {
         std::cerr << "An error occurred while trying to create an ENet server host." << std::endl;
         return;
     }
+
+    onlineClient = OnlineClient("localhost", 5009);
+    onlineClient.registerServer("::", address.port, 4);
 }
 
 void BulletServer::updateServer() {

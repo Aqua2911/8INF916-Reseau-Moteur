@@ -36,12 +36,16 @@ add_executable(MagnumServer
         src/BulletApp.cpp
         src/Serializable/ObjectData.cpp
         src/Serializable/ColoredDrawable.cpp
+        src/client/OnlineClient.cpp
+        src/client/OnlineClient.h
 )
 
 target_include_directories(MagnumServer PRIVATE
         $<TARGET_PROPERTY:enet,INTERFACE_INCLUDE_DIRECTORIES>
         inc
         ${PROJECT_SOURCE_DIR}/externals/enet6/include
+        ${PROJECT_SOURCE_DIR}/externals/cpp-httplib
+        ${PROJECT_SOURCE_DIR}/externals/nlohmann
 )
 
 set_property(TARGET MagnumServer PROPERTY CXX_STANDARD 20)
