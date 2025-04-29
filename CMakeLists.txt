@@ -113,12 +113,49 @@ target_link_libraries(MagnumClient PRIVATE
 
 # SERVER APP
 add_subdirectory(src/server)
-
 # CLIENT APP
 add_subdirectory(src/client)
-
 # WEBSOCKET
 add_subdirectory(src/telemetry-client)
-
 # GAME LAUNCHER
 add_subdirectory(src/launcher)
+
+# === Windows-specific: copy MinGW DLLs next to executables ===
+# Auto-copy MinGW runtime DLLs (only on Windows + MinGW)
+if (WIN32 AND MINGW)
+    get_filename_component(MINGW_BIN_DIR "${CMAKE_CXX_COMPILER}" DIRECTORY)
+
+    foreach(dll libstdc++-6.dll libgcc_s_seh-1.dll libwinpthread-1.dll)
+        add_custom_command(TARGET MagnumServer POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${MINGW_BIN_DIR}/${dll}"
+                "$<TARGET_FILE_DIR:MagnumServer>"
+        )
+        add_custom_command(TARGET MagnumClient POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${MINGW_BIN_DIR}/${dll}"
+                "$<TARGET_FILE_DIR:MagnumClient>"
+        )
+    endforeach()
+endif()
+
+function(copy_dlls TARGET)
+    add_custom_command(TARGET ${TARGET} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:Corrade::Utility>
+            $<TARGET_FILE:Magnum::Magnum>
+            $<TARGET_FILE:Magnum::GL>
+            $<TARGET_FILE:Magnum::Shaders>
+            $<TARGET_FILE:Magnum::Trade>
+            $<TARGET_FILE:Magnum::MeshTools>
+            $<TARGET_FILE:Magnum::SceneGraph>
+            $<TARGET_FILE:MagnumIntegration::ImGui>
+            $<TARGET_FILE:MagnumIntegration::Bullet>
+            $<TARGET_FILE_DIR:${TARGET}>
+    )
+endfunction()
+
+
+copy_dlls(MagnumServer)
+copy_dlls(MagnumClient )
+# Function to copy DLLs after build

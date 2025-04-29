@@ -15,28 +15,31 @@ using namespace Math::Literals;
 class BulletServer: public BulletApp
 {
     ENetHost* server;
-    ENetPeer* client = nullptr;
+    std::vector<ENetPeer*> clients;
 
     public:
     void initServer();
     void updateServer();
 
-    void sendMessageToClient(const char *message);
-
-    void sendMessageToClient(const void *data, size_t length);
+    void sendMessageToClient(const void *data, size_t length, ENetPeer* client);
 
     void shutdownServer();
 
     explicit BulletServer(const Arguments& arguments);
 
     private:
+        void CreateClientCamera(ENetPeer* client);
+
         void drawEvent() override;
         void keyPressEvent(KeyEvent& event) override;
+
+        void MoveCameraClient(ENetPeer *client, int CamMove);
+
         void pointerPressEvent(PointerEvent& event) override;
         void EmptySerializedFile();
 
-        void onClientMessage(const std::string msg);
-        void shoot(const Vector2& position);
+        void onClientMessage(const char* buffer, size_t length, ENetPeer* client);
+        void shoot(const Vector2& position, Object3D* co = nullptr, SceneGraph::Camera3D* c = nullptr);
 
     btDiscreteDynamicsWorld _bWorld{&_bDispatcher, &_bBroadphase, &_bSolver, &_bCollisionConfig};
 
@@ -48,6 +51,7 @@ class BulletServer: public BulletApp
 
     //store object Data at the same place
     std::vector<ObjectData> _serializables;
+    std::vector<ClientCamera*> _serializablesCameras;
 
     OnlineClient onlineClient;
 };
@@ -82,13 +86,14 @@ void BulletServer::updateServer() {
         switch (event.type) {
             case ENET_EVENT_TYPE_CONNECT:
             {
-                std::cout << "Client connected";
+                std::cout << "Client connected" << std::endl;
 
                 // ✅ Save the peer pointer somewhere, e.g., in a member variable
-                client = event.peer;
+                clients.emplace_back() = event.peer;
+                CreateClientCamera(event.peer);
 
                 // Optional: You can assign some custom data to this peer too
-                event.peer->data = (void*)"Client 1";
+                event.peer->data = (void*)clients.size();
                 break;
             }
             case ENET_EVENT_TYPE_RECEIVE:
@@ -96,14 +101,39 @@ void BulletServer::updateServer() {
                 // Safely copy the data into a null-terminated string for printing
                 std::string receivedMsg(reinterpret_cast<char*>(event.packet->data));
                 std::cout << "Received packet: " << receivedMsg << std::endl;
-                onClientMessage(receivedMsg);
+                onClientMessage(reinterpret_cast<const char*>(event.packet->data), event.packet->dataLength, event.peer);
                 // Traiter les données reçues ici...
                 enet_packet_destroy(event.packet);
             }
 
             break;
             case ENET_EVENT_TYPE_DISCONNECT:
-                std::cout << "Client disconnected." << std::endl;
+                for (ENetPeer* peer : clients) {
+                    if (peer == event.peer)
+                    {
+                        std::erase(clients, peer);
+                        std::erase_if(_serializablesCameras, [&](auto camera) {
+                            return camera->_peer == event.peer;
+                        });
+
+                        std::cout << "Client disconnected." << std::endl;
+                        break;
+                    }
+                }
+            break;
+            case ENET_EVENT_TYPE_DISCONNECT_TIMEOUT:
+                for (ENetPeer* peer : clients) {
+                    if (peer == event.peer)
+                    {
+                        std::erase(clients, peer);
+                        std::erase_if(_serializablesCameras, [&](auto camera) {
+                            return camera->_peer == event.peer;
+                        });
+
+                        std::cout << "Client disconnected Time Out." << std::endl;
+                        break;
+                    }
+                }
             break;
             default:
                 break;
@@ -111,22 +141,7 @@ void BulletServer::updateServer() {
     }
 }
 
-void BulletServer::sendMessageToClient(const char* message) {
-    if (client == nullptr)
-        return;
-
-    // Create the packet. The size is the length of the message.
-    ENetPacket* packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-
-    // Send the packet to the server
-    // `serverPeer` is the peer representing the server the client is connected to
-    enet_peer_send(client, 0, packet); // 0 is the channel ID
-
-    // Flush the packet to send immediately
-    enet_host_flush(server);
-}
-
-void BulletServer::sendMessageToClient(const void* data, size_t length) {
+void BulletServer::sendMessageToClient(const void* data, size_t length, ENetPeer* client) {
     if (client == nullptr) return;
     ENetPacket* packet = enet_packet_create(data, length, ENET_PACKET_FLAG_RELIABLE);
     enet_peer_send(client, 0, packet);
@@ -169,8 +184,8 @@ BulletServer::BulletServer(const Arguments& arguments):
         .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
         .setViewport(GL::defaultFramebuffer.viewport().size());
 
-    _serializables.emplace_back(ObjectData(DataType_CameraRig, _cameraRig, nullptr));
-    _serializables.emplace_back(ObjectData(DataType_CameraObject, _cameraObject, nullptr));
+    //_serializables.emplace_back(ObjectData(DataType_CameraRig, _cameraRig, nullptr));
+    //_serializables.emplace_back(ObjectData(DataType_CameraObject, _cameraObject, nullptr));
 
 
 
@@ -229,6 +244,26 @@ BulletServer::BulletServer(const Arguments& arguments):
                     Matrix4::scaling(Vector3{0.5f}), _drawables};
                 _serializables.emplace_back(ObjectData(DataType_Cube, o, cdo));
             }
+}
+
+void BulletServer::CreateClientCamera(ENetPeer* client) {
+    /* Camera setup */
+    Object3D* _cameraRigClient;
+    Object3D* _cameraObjectClient;
+    SceneGraph::Camera3D* _cameraClient;
+    (*(_cameraRigClient = new Object3D{&_scene}))
+        .translate(Vector3::yAxis(3.0f))
+        .rotateY(40.0_degf);
+    (*(_cameraObjectClient = new Object3D{_cameraRigClient}))
+        .translate(Vector3::zAxis(20.0f))
+        .rotateX(-25.0_degf);
+    (_cameraClient = new SceneGraph::Camera3D(*_cameraObjectClient))
+        ->setAspectRatioPolicy(SceneGraph::AspectRatioPolicy::Extend)
+        .setProjectionMatrix(Matrix4::perspectiveProjection(35.0_degf, 1.0f, 0.001f, 100.0f))
+        .setViewport(GL::defaultFramebuffer.viewport().size());
+
+    auto cc = new ClientCamera(client, _cameraRigClient, _cameraObjectClient, _cameraClient);
+    _serializablesCameras.emplace_back(cc);
 }
 
 void BulletServer::drawEvent() {
@@ -308,13 +343,34 @@ void BulletServer::drawEvent() {
     // Erase the contents of the file before starting a new series of serialization
     EmptySerializedFile();
 
-    std::vector<char> fullBuffer;
-    for (auto iData: _serializables) {
-        auto instBuffer = iData.serialize();
-        fullBuffer.insert(fullBuffer.end(), instBuffer.begin(), instBuffer.end());
+    std::vector<ObjectData> noCamSerializables;
+    for (auto client: clients) {
+        noCamSerializables = _serializables;
+        std::vector<char> fullClientBuffer;
+        if (client != nullptr)
+        {
+            auto camIt = std::find_if(_serializablesCameras.begin(), _serializablesCameras.end(), [client](ClientCamera* obj) {
+                return obj->_peer == client; // Compare _peer with the client
+            });
+
+
+            if (camIt != _serializablesCameras.end())
+            {
+                // Dereference the iterator to access the ClientCamera object
+                ClientCamera* cam = *camIt;
+                noCamSerializables.emplace_back(ObjectData(DataType_CameraRig, cam->_cameraRig, nullptr));
+                noCamSerializables.emplace_back(ObjectData(DataType_CameraObject, cam->_cameraObject, nullptr));
+                //Debug{} << "Server CameraRig Transform Matrix:\n" << cam->_cameraRig->transformation();
+                //Debug{} << "Server CameraObject Transform Matrix:\n" << cam->_cameraObject->transformation();
+            }
+
+            for (auto iData: noCamSerializables) {
+                auto instBuffer = iData.serialize();
+                fullClientBuffer.insert(fullClientBuffer.end(), instBuffer.begin(), instBuffer.end());
+            }
+        }
+            sendMessageToClient(fullClientBuffer.data(), fullClientBuffer.size(), client);
     }
-    if (client != nullptr)
-        sendMessageToClient(fullBuffer.data(), fullBuffer.size());
     redraw();
 }
 
@@ -340,6 +396,37 @@ void BulletServer::keyPressEvent(KeyEvent& event) {
     event.setAccepted();
 }
 
+void BulletServer::MoveCameraClient(ENetPeer* client, int CamMove){
+
+    auto camIt = std::find_if(_serializablesCameras.begin(), _serializablesCameras.end(), [client](ClientCamera* obj) {
+                return obj->_peer == client; // Compare _peer with the client
+            });
+
+
+    if (camIt != _serializablesCameras.end())
+    {
+        // Dereference the iterator to access the ClientCamera object
+        ClientCamera* cam = *camIt;
+
+        /* Movement */
+        if(CamMove == 1) {
+            cam->_cameraObject->rotateX(5.0_degf);
+        } else if(CamMove == 2) {
+            cam->_cameraObject->rotateX(-5.0_degf);
+        } else if(CamMove == 3) {
+            cam->_cameraRig->rotateY(-5.0_degf);
+        } else if(CamMove == 4) {
+            cam->_cameraRig->rotateY(5.0_degf);
+        } else if(CamMove == 5) {
+            // Move forward
+            cam->_cameraRig->translate(_cameraRig->transformation().backward() * -1);
+        } else if(CamMove == 6) {
+            // Move backward
+           cam->_cameraRig->translate(_cameraRig->transformation().backward());
+        }
+    }
+}
+
 void BulletServer::pointerPressEvent(PointerEvent& event) {/* Shoot an object on click */
     if(!event.isPrimary() ||
        !(event.pointer() & Pointer::MouseLeft))
@@ -354,27 +441,63 @@ void BulletServer::EmptySerializedFile() {
     out.close();
 }
 
-void BulletServer::onClientMessage(const std::string msg) {
-    std::istringstream ss(msg);
-    std::string command;
-    ss >> command;
-    if(command == "SHOOT") {
-        float x, y;
-        if(ss >> x >> y) {
-            shoot(Vector2{x, y});
-        } else {
-            Debug{} << "Malformed SHOOT message!";
+void BulletServer::onClientMessage(const char* buffer, size_t length, ENetPeer* peer) {
+    // Start by reading the command byte (first byte)
+    ClientCamera* cam;
+    uint8_t command = buffer[0];
+    auto camIt = std::find_if(_serializablesCameras.begin(), _serializablesCameras.end(), [peer](ClientCamera* obj) {
+                return obj->_peer == peer; // Compare _peer with the client
+            });
+
+
+    if (camIt != _serializablesCameras.end()) {
+        // Dereference the iterator to access the ClientCamera object
+        cam = *camIt;
+
+        // Use switch statement to handle commands 1 through 8
+        switch (command) {
+            case 1: { // SHOOT
+                Debug{} << "SHOOT command received.";
+                // Extract the x and y coordinates
+                float x, y;
+                std::memcpy(&x, buffer + 1, sizeof(x));  // Read x position as float
+                std::memcpy(&y, buffer + 1 + sizeof(x), sizeof(y));  // Read y position as float
+
+                // Perform the shooting action with the x, y position
+                shoot(Vector2{x, y}, cam->_cameraObject, cam->_camera);
+                break;
+            }
+            case 2: {
+                // Handle MOVE command or other data (add appropriate parsing logic)
+                Debug{} << "MOVE command received.";
+                int move;
+                std::memcpy(&move, buffer + 1, sizeof(move));  // Read move position as int
+                MoveCameraClient(peer, move);
+                break;
+            }
+            default: {
+                Debug{} << "Unknown command!";
+                break;
+            }
         }
     }
 }
 
-void BulletServer::shoot(const Vector2& position){
+void BulletServer::shoot(const Vector2& position, Object3D* co, SceneGraph::Camera3D* c){
+    // If the passed pointers are null, use the class member defaults
+    if (co == nullptr) {
+        co = _cameraObject;
+    }
+    if (c == nullptr) {
+        c = _camera;
+    }
+
         const Vector2 scaledPos = position * Vector2{framebufferSize()} / Vector2{windowSize()};
-        const Vector2 clickPoint = Vector2::yScale(-1.0f)*(scaledPos / Vector2{framebufferSize()} - Vector2{0.5f}) * _camera->projectionSize();
-        const Vector3 direction = (_cameraObject->absoluteTransformation().rotationScaling() * Vector3{clickPoint, -1.0f}).normalized();
+        const Vector2 clickPoint = Vector2::yScale(-1.0f)*(scaledPos / Vector2{framebufferSize()} - Vector2{0.5f}) * c->projectionSize();
+        const Vector3 direction = (co->absoluteTransformation().rotationScaling() * Vector3{clickPoint, -1.0f}).normalized();
 
         auto* object = new RigidBody{&_scene, 5.0f, &_bSphereShape, _bWorld};
-        object->translate(_cameraObject->absoluteTransformation().translation());
+        object->translate(co->absoluteTransformation().translation());
         object->syncPose();
 
         auto* cd = new ColoredDrawable{*object, _sphereInstanceData, 0x220000_rgbf,
