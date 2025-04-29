@@ -54,6 +54,19 @@ var availableStats = new Dictionary<string, StatRule> {
 
 var playerStats = new Dictionary<string, Dictionary<string, int>>(); // username -> (statName -> value)
 
+// initialize stats for all known players
+foreach (var player in users)
+{
+    if (!playerStats.ContainsKey(player.Uid.ToString())) // if missing
+    {
+        playerStats[player.Uid.ToString()] = new Dictionary<string, int>();
+        foreach (var statName in availableStats.Keys)
+        {
+            playerStats[player.Uid.ToString()][statName] = 0; // init every available stat to 0
+        }
+    }
+}
+
 var achievements = new List<Achievement>
 {
     new("first-win", "First Game Won", "GAMES_WON", 1),
@@ -103,7 +116,7 @@ app.MapPost("/match", [Authorize] (HttpContext ctx) =>
 
     // Try to find a group of 4 with similar level
     const int LEVEL_TOLERANCE = 3;
-    const int PLAYER_PER_MATCH = 4;
+    const int PLAYER_PER_MATCH = 1;
     var group = waitingPlayers
         .Where(p => Math.Abs(p.MatchmakingRanking - playerMMR) <= LEVEL_TOLERANCE)
         .Take(PLAYER_PER_MATCH)

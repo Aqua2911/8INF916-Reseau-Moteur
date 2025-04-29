@@ -1,0 +1,4 @@
+C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur\GameApi\bin\Release\net9.0\linux-x64\publish\appsettings.Development.json
+C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur\GameApi\bin\Release\net9.0\linux-x64\publish\appsettings.json
+C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur\GameApi\bin\Release\net9.0\linux-x64\publish\GameApi.pdb
+C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur\GameApi\bin\Release\net9.0\linux-x64\publish\GameApi

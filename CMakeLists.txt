@@ -108,34 +108,13 @@ target_link_libraries(MagnumClient PRIVATE
 )
 
 # SERVER APP
-add_executable(ServerApp src/server/main.cpp)
-
-target_include_directories(ServerApp PRIVATE
-        ${PROJECT_SOURCE_DIR}/externals/cpp-httplib
-        ${PROJECT_SOURCE_DIR}/externals/nlohmann
-)
-
-target_link_libraries(ServerApp PRIVATE ws2_32)
-set_property(TARGET ServerApp PROPERTY CXX_STANDARD 20)
-
+add_subdirectory(src/server)
 
 # CLIENT APP
-add_executable(ClientApp src/client/main.cpp)
-
-target_include_directories(ClientApp PRIVATE
-        ${PROJECT_SOURCE_DIR}/externals/cpp-httplib
-        ${PROJECT_SOURCE_DIR}/externals/nlohmann
-)
-
-target_link_libraries(ClientApp PRIVATE ws2_32)
-set_property(TARGET ClientApp PROPERTY CXX_STANDARD 20)
+add_subdirectory(src/client)
 
 # WEBSOCKET
-add_executable(WebSocketClient src/telemetry-client/main.cpp)
-target_link_libraries(WebSocketClient PRIVATE ixwebsocket)
-target_include_directories(WebSocketClient PRIVATE
-        ${PROJECT_SOURCE_DIR}/externals/nlohmann
-)
-set_property(TARGET WebSocketClient PROPERTY CXX_STANDARD 20)
+add_subdirectory(src/telemetry-client)
 
-
+# GAME LAUNCHER
+add_subdirectory(src/launcher)

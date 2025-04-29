@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "yZ26QjfmIeq/LZy5MDoIZxo97VXpVgtCl7zfEZ/RRDM=",
+  "Source": "GameApi",
+  "BasePath": "_content/GameApi",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

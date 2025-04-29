@@ -5,9 +5,33 @@
 #include <iostream>
 #include "httplib.h"
 #include "json.hpp"  // nlohmann/json
+#include "OnlineClient.h"
 
 using json = nlohmann::json;
 
+int main(int argc, char** argv) {
+    std::cout << "[ClientApp] main() entered " << "\n";
+
+    OnlineClient onlineClient = OnlineClient("localhost", 5009);
+    onlineClient.login("alice");
+
+    std::unordered_map<std::string, int> statTypes;
+    onlineClient.fetchStatTypes(statTypes);
+
+    onlineClient.updateStat("GAMES_WON", 5);
+
+    onlineClient.startMatchmaking();
+
+    std::string sessionID;
+    onlineClient.pollSession(sessionID);
+
+    std::vector<std::tuple<int, std::string, int>> skins;
+    onlineClient.fetchStore(skins);
+
+    onlineClient.purchaseSkin(1);
+}
+
+/*
 int main(int argc, char** argv) {
     std::cout << "[ClientApp] main() entered " << "\n";
 
@@ -105,3 +129,4 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+ */

@@ -6,5 +6,5 @@ public class GameServer {
     public int Capacity { get; set; }
     public int Load { get; set; } = 0;
 
-    public string WebSocketUrl => $"ws://{Ip}:{Port}";
+    public string WebSocketUrl => $"{Ip}:{Port}";
 }

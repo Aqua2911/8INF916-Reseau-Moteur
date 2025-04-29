@@ -7,13 +7,18 @@
 #include <iostream>
 #include "httplib.h"
 #include "json.hpp"
+#include "../client/OnlineClient.h"
 
 using json = nlohmann::json;
 
 int main() {
     //std::vector<GameServer> gameServers;
 
-    httplib::Client api("localhost", 5009);
+    OnlineClient onlineClient = OnlineClient("localhost", 5009);
+
+    onlineClient.registerServer("127.0.0.1", 7777, 4);
+
+    /*httplib::Client api("localhost", 5009);
 
     json payload = {
             { "ip", "127.0.0.1" },
@@ -30,4 +35,5 @@ int main() {
     }
 
     return 0;
+     */
 }
