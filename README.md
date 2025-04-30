@@ -5,6 +5,9 @@ A self-contained bootstrap for Magnum GLFW with Bullet that compile on Windows, 
 Integration done by Valere at https://github.com/VALERE91/MagnumBootstrap.
 
 
+Done by Clément Berlioz BERC13090100
+and Nicolas Gravel GRAN01120007
+
 # Running the project
 
 ## Windows
