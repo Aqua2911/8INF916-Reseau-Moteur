@@ -11,6 +11,6 @@ opengl32glu32
 -- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL MeshTools Trade GlfwApplication Primitives Shaders SceneGraph
 -- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility
 -- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL Shaders SceneGraph
--- Configuring done (27.1s)
--- Generating done (2.0s)
+-- Configuring done (32.9s)
+-- Generating done (2.1s)
 -- Build files have been written to: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release
