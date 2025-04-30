@@ -1,0 +1,110 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 104,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 108,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumSceneGraph.dll.a"
+			],
+			"targetId" : "MagnumSceneGraph::@dcc1f6dd026d7d586bb0",
+			"targetIndex" : 55,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumSceneGraph.dll"
+			],
+			"targetId" : "MagnumSceneGraph::@dcc1f6dd026d7d586bb0",
+			"targetIndex" : 55,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/SceneGraph",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractFeature.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractFeature.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractGroupedFeature.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractObject.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTransformation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTranslation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTranslationRotation2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTranslationRotation3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTranslationRotationScaling2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AbstractTranslationRotationScaling3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Animable.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Animable.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/AnimableGroup.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Camera.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Camera.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Drawable.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Drawable.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/DualComplexTransformation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/DualQuaternionTransformation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/RigidMatrixTransformation2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/RigidMatrixTransformation2D.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/RigidMatrixTransformation3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/RigidMatrixTransformation3D.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/FeatureGroup.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/FeatureGroup.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/MatrixTransformation2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/MatrixTransformation2D.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/MatrixTransformation3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/MatrixTransformation3D.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Object.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Object.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/Scene.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/SceneGraph.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/TranslationTransformation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/TranslationRotationScalingTransformation2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/TranslationRotationScalingTransformation3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/SceneGraph",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph"
+	}
+}

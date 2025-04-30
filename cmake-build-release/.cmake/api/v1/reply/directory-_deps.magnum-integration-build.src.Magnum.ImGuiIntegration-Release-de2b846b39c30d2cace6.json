@@ -1,0 +1,94 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 95,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 96,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumImGuiIntegration.dll.a"
+			],
+			"targetId" : "MagnumImGuiIntegration::@6f02723c3fa996db52b9",
+			"targetIndex" : 43,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumImGuiIntegration.dll"
+			],
+			"targetId" : "MagnumImGuiIntegration::@6f02723c3fa996db52b9",
+			"targetIndex" : 43,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/ImGuiIntegration",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/Context.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/Context.hpp",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/Integration.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/Widgets.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration/visibility.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/ImGuiIntegration",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-build/src/Magnum/ImGuiIntegration/configure.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-integration-build/src/Magnum/ImGuiIntegration",
+		"source" : "cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration"
+	}
+}

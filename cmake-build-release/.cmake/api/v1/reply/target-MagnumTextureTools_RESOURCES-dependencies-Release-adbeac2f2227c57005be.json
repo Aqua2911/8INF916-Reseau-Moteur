@@ -1,0 +1,82 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"corrade_add_resource"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/modules/UseCorrade.cmake",
+			"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 53,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 655,
+				"parent" : 1
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "Magnum/TextureTools"
+	},
+	"id" : "MagnumTextureTools_RESOURCES-dependencies::@c5f0ae6086c2c2f53217",
+	"name" : "MagnumTextureTools_RESOURCES-dependencies",
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/TextureTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"path" : "cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/FullScreenTriangle.glsl",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/DistanceFieldShader.vert",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/DistanceFieldShader.frag",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/compatibility.glsl",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "UTILITY"
+}

@@ -16,7 +16,7 @@ LauncherApp::LauncherApp(const Arguments& args):
             GL::defaultFramebuffer.viewport().size()
     };
 
-    onlineClient = OnlineClient("localhost", 5009);
+    onlineClient = OnlineClient("localhost", 5000);
 
     _timeline.start();
 }
@@ -121,7 +121,40 @@ void LauncherApp::handleLogin() {
     bool loginStatus = onlineClient.login(_username);
     _state = loginStatus ? State::LoggedIn : State::Error;
 
+    if (!loginStatus) return;
 
+    std::cout << "-----------------------------------------------------------------\n"
+                  << "We were unable to implement our api workflow while in-game \n"
+                  << "(updating stats, unlocking achievements, buying skins, etc.) \n"
+                  << "so in order to show that these actions can be done we will perform them right now : \n" << std::endl;
+
+    std::unordered_map<std::string, int> statTypes;
+    onlineClient.fetchStatTypes(statTypes);
+
+    std::cout << "GET "<< _username << "'s stats : " << "\n";
+    for (auto& [name, rule] : statTypes) {
+        std::cout << "  " << name << " (aggregation rule: " << rule << ")\n";
+    }
+
+    //onlineClient.updateStat("CUBES_CLEARED", 5);
+
+    std::vector<std::tuple<int, std::string, int>> skins;
+    onlineClient.fetchStore(skins);
+    std::cout<<"GET Available skins:\n";
+    for (const auto& s : skins) {
+        std::cout << "  [" << std::get<0>(s) << "] "  // id
+                  << std::get<1>(s) << " - "          // name
+                  << std::get<2>(s) << " coins\n";    // price
+    }
+
+    std::cout << "POST purchasing skin 1 ..." << std::endl;
+    onlineClient.purchaseSkin(1);
+
+    std::vector<int> inventory;
+    onlineClient.fetchInventory(inventory);
+    std::cout <<"GET " << _username << "'s inventory : " << std::endl;
+    for (int id : inventory) std::cout<< "skin "<<id<<' ';
+    std::cout<<"\n";
 }
 
 void LauncherApp::handleMatchmaking() {

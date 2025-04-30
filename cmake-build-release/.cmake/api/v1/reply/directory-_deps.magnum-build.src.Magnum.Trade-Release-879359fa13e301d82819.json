@@ -1,0 +1,102 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 151,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 155,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumTrade.dll.a"
+			],
+			"targetId" : "MagnumTrade::@bc05f17fb260e1e89f6c",
+			"targetIndex" : 67,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumTrade.dll"
+			],
+			"targetId" : "MagnumTrade::@bc05f17fb260e1e89f6c",
+			"targetIndex" : 67,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Trade",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/AbstractImporter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/AbstractImageConverter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/AbstractSceneConverter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/AnimationData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/ArrayAllocator.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/CameraData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/Data.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/FlatMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/ImageData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/LightData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MaterialLayerData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MeshData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/PbrClearCoatMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/PbrMetallicRoughnessMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/PbrSpecularGlossinessMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/PhongMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/SceneData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/SkinData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/TextureData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/Trade.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/AbstractMaterialData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MeshData2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MeshData3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MeshObjectData2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/MeshObjectData3D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/ObjectData2D.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Trade/ObjectData3D.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Trade",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Trade"
+	}
+}

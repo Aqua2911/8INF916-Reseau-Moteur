@@ -1,0 +1,92 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 140,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 144,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumShaders.dll.a"
+			],
+			"targetId" : "MagnumShaders::@345b51b54e6d589d835a",
+			"targetIndex" : 60,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumShaders.dll"
+			],
+			"targetId" : "MagnumShaders::@345b51b54e6d589d835a",
+			"targetIndex" : 60,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Shaders",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/DistanceFieldVector.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Flat.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Generic.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Line.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/MeshVisualizer.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Phong.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Shaders.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/Vector.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/DistanceFieldVectorGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/FlatGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/GenericGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/MeshVisualizerGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/PhongGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/VectorGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/VertexColorGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/glShaderWrapper.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/LineGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Shaders/VertexColor.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Shaders",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Shaders"
+	}
+}

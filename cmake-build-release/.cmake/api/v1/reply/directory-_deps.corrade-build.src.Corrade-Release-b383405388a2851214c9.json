@@ -1,0 +1,80 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 90,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 141,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Corrade.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Cpu.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Tags.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-build/src/Corrade/configure.h",
+				"cmake-build-release/_deps/corrade-build/src/Corrade/version.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libCorradeMain.a"
+			],
+			"targetId" : "CorradeMain::@d2dcb52c7074ac50f7b7",
+			"targetIndex" : 21,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade"
+	}
+}

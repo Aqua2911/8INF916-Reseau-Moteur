@@ -17,7 +17,7 @@ using json = nlohmann::json;
 int main(int argc, char** argv) {
     std::cout << "[ClientApp] main() entered " << "\n";
 
-    OnlineClient onlineClient = OnlineClient("localhost", 5009);
+    OnlineClient onlineClient = OnlineClient("localhost", 5000);
     onlineClient.login("alice");
 
     std::unordered_map<std::string, int> statTypes;

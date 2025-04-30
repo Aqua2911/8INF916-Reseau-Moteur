@@ -1,0 +1,86 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 157,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 161,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumDebugTools.dll.a"
+			],
+			"targetId" : "MagnumDebugTools::@19fbc3dc881203512736",
+			"targetIndex" : 37,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumDebugTools.dll"
+			],
+			"targetId" : "MagnumDebugTools::@19fbc3dc881203512736",
+			"targetIndex" : 37,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/DebugTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/ColorMap.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/DebugTools.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/FrameProfiler.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/Profiler.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/ResourceManager.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/Screenshot.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/TextureImage.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/BufferData.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/ForceRenderer.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/ObjectRenderer.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/CompareImage.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools/CompareMaterial.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/DebugTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools"
+	}
+}

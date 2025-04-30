@@ -1,0 +1,16 @@
+"C:\Program Files\JetBrains\CLion 2024.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.3.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur -B C:\Users\jpkpg\CLEMENT-DEV\.GIT-REMOTE\8INF916-Reseau-Moteur\cmake-build-release
+OPENGL FOUND
+opengl32glu32
+-- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility Main TestSuite
+-- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility PluginManager
+-- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility
+-- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src
+-- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL SceneGraph Shaders
+-- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL Shaders
+-- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility PluginManager
+-- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL MeshTools Trade GlfwApplication Primitives Shaders SceneGraph
+-- Found Corrade: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src  found components: Containers rc Utility
+-- Found Magnum: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-src/src  found components: GL Shaders SceneGraph
+-- Configuring done (27.1s)
+-- Generating done (2.0s)
+-- Build files have been written to: C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release

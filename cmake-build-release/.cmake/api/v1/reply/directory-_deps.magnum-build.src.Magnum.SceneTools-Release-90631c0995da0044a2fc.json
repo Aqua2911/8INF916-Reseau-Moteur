@@ -1,0 +1,81 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 103,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 107,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumSceneTools.dll.a"
+			],
+			"targetId" : "MagnumSceneTools::@7db2b79372097103ddf1",
+			"targetIndex" : 57,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumSceneTools.dll"
+			],
+			"targetId" : "MagnumSceneTools::@7db2b79372097103ddf1",
+			"targetIndex" : 57,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/SceneTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/Combine.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/Filter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/Hierarchy.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/Map.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/FlattenMeshHierarchy.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/FlattenTransformationHierarchy.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools/OrderClusterParents.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/SceneTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools"
+	}
+}

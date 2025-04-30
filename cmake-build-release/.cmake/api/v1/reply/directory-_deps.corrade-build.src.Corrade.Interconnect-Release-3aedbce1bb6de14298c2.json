@@ -1,0 +1,79 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 71,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 75,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libCorradeInterconnect.dll.a"
+			],
+			"targetId" : "CorradeInterconnect::@52cd9f8826cf08be2986",
+			"targetIndex" : 20,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libCorradeInterconnect.dll"
+			],
+			"targetId" : "CorradeInterconnect::@52cd9f8826cf08be2986",
+			"targetIndex" : 20,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade/Interconnect",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/Connection.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/Emitter.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/Interconnect.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/Receiver.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/StateMachine.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/Interconnect",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect"
+	}
+}

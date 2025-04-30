@@ -1,0 +1,61 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-integration-src/modules/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 53,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 55,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "share/cmake/MagnumIntegration",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-src/modules/FindMagnumIntegration.cmake",
+				"cmake-build-release/_deps/magnum-integration-src/modules/MagnumIntegrationConfig.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "share/cmake/MagnumIntegration/dependencies",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-src/modules/FindBullet.cmake",
+				"cmake-build-release/_deps/magnum-integration-src/modules/FindImGui.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-integration-build/modules",
+		"source" : "cmake-build-release/_deps/magnum-integration-src/modules"
+	}
+}

@@ -19,7 +19,7 @@ using json = nlohmann::json;
 int main() {
     //std::vector<GameServer> gameServers;
 
-    OnlineClient onlineClient = OnlineClient("localhost", 5009);
+    OnlineClient onlineClient = OnlineClient("localhost", 5000);
 
     onlineClient.registerServer("127.0.0.1", 7777, 4);
 

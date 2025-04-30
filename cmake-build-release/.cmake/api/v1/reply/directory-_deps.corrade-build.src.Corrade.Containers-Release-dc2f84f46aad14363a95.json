@@ -1,0 +1,88 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade/Containers",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/AnyReference.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Array.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ArrayTuple.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ArrayView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ArrayViewStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ArrayViewStlSpan.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/BigEnumSet.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/BigEnumSet.hpp",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/BitArray.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/BitArrayView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/constructHelpers.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Containers.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/EnumSet.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/EnumSet.hpp",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Function.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/GrowableArray.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/initializeHelpers.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/iterableHelpers.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Iterable.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/LinkedList.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/MoveReference.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Optional.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/OptionalStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Pair.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/PairStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Pointer.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/PointerStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Reference.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ReferenceStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/ScopeGuard.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/sequenceHelpers.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StaticArray.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StridedArrayView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StridedArrayViewStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StridedBitArrayView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StridedDimensions.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/String.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StringIterable.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StringStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StringStlHash.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StringStlView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StringView.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/StructuredBindings.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Triple.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/TripleStl.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/Containers/Tags.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/Containers",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/Containers"
+	}
+}

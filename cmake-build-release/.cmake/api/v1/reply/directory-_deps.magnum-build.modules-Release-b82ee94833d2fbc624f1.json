@@ -1,0 +1,60 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/modules/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 66,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 68,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "share/cmake/Magnum",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/modules/FindMagnum.cmake",
+				"cmake-build-release/_deps/magnum-src/modules/MagnumConfig.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "share/cmake/Magnum/dependencies",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/modules/FindGLFW.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/modules",
+		"source" : "cmake-build-release/_deps/magnum-src/modules"
+	}
+}

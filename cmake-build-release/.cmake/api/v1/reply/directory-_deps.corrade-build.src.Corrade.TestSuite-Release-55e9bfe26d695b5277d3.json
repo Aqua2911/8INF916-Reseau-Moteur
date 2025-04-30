@@ -1,0 +1,77 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 87,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libCorradeTestSuite.dll.a"
+			],
+			"targetId" : "CorradeTestSuite::@7a293d3b73d9d0665d98",
+			"targetIndex" : 24,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libCorradeTestSuite.dll"
+			],
+			"targetId" : "CorradeTestSuite::@7a293d3b73d9d0665d98",
+			"targetIndex" : 24,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade/TestSuite",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Comparator.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Tester.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/TestSuite.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/TestSuite",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite"
+	}
+}

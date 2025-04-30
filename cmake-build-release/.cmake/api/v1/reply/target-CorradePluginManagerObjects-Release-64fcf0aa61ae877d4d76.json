@@ -1,0 +1,300 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/corrade-build/src/Corrade/PluginManager/CMakeFiles/CorradePluginManagerObjects.dir/./AbstractPlugin.cpp.obj"
+		},
+		{
+			"path" : "_deps/corrade-build/src/Corrade/PluginManager/CMakeFiles/CorradePluginManagerObjects.dir/./PluginMetadata.cpp.obj"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"set_property",
+			"include",
+			"target_compile_definitions",
+			"add_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/CMakeLists.txt",
+			"cmake-build-release/_deps/corrade-src/modules/UseCorrade.cmake",
+			"cmake-build-release/_deps/corrade-src/CMakeLists.txt",
+			"cmake-build-release/_deps/corrade-src/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 57,
+				"parent" : 0
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 524,
+				"parent" : 2
+			},
+			{
+				"file" : 1,
+				"parent" : 3
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 336,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 342,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 63,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 343,
+				"parent" : 4
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 40,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 61,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-O3 -DNDEBUG -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-std=c++11"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wold-style-cast"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Winit-self"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Werror=return-type"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wmissing-declarations"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fvisibility=hidden"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fvisibility-inlines-hidden"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-strict-aliasing"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wzero-as-null-pointer-constant"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wdouble-promotion"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-dangling-reference"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 7,
+					"define" : "CorradePluginManagerObjects_EXPORTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "NOMINMAX"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "WIN32_LEAN_AND_MEAN"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "_UNICODE"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-src/src"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/corrade-build/src"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"folder" : 
+	{
+		"name" : "Corrade/PluginManager"
+	},
+	"id" : "CorradePluginManagerObjects::@1dacf0984bb0815dbf95",
+	"name" : "CorradePluginManagerObjects",
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/PluginManager",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/AbstractPlugin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/PluginMetadata.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/AbstractPlugin.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/AbstractManager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/AbstractManagingPlugin.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/Manager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/Manager.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/PluginManager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/PluginMetadata.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/visibility.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager/Implementation/Plugin.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

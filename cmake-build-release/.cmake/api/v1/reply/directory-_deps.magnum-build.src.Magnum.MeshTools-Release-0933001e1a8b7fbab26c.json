@@ -1,0 +1,97 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 138,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 142,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumMeshTools.dll.a"
+			],
+			"targetId" : "MagnumMeshTools::@1a7bff86273a2e1420c5",
+			"targetIndex" : 49,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumMeshTools.dll"
+			],
+			"targetId" : "MagnumMeshTools::@1a7bff86273a2e1420c5",
+			"targetIndex" : 49,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/MeshTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/BoundingVolume.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Combine.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/CompressIndices.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Concatenate.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Copy.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Duplicate.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Filter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/FlipNormals.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/GenerateIndices.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/GenerateLines.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/GenerateNormals.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Interleave.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/InterleaveFlags.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/RemoveDuplicates.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Subdivide.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Tipsify.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Transform.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/CombineIndexedArrays.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/FilterAttributes.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Reference.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/Compile.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/FullScreenTriangle.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools/CompileLines.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/MeshTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools"
+	}
+}

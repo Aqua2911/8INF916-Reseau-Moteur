@@ -1,0 +1,78 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 90,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 94,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumTextureTools.dll.a"
+			],
+			"targetId" : "MagnumTextureTools::@c5f0ae6086c2c2f53217",
+			"targetIndex" : 65,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumTextureTools.dll"
+			],
+			"targetId" : "MagnumTextureTools::@c5f0ae6086c2c2f53217",
+			"targetIndex" : 65,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/TextureTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/Atlas.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/TextureTools.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/DistanceFieldGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools/DistanceField.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/TextureTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools"
+	}
+}

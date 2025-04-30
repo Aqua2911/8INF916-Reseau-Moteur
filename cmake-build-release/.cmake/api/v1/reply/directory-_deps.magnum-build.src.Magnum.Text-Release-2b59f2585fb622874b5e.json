@@ -1,0 +1,89 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Text/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 134,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 138,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumText.dll.a"
+			],
+			"targetId" : "MagnumText::@128bd1b72565cf040e14",
+			"targetIndex" : 63,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumText.dll"
+			],
+			"targetId" : "MagnumText::@128bd1b72565cf040e14",
+			"targetIndex" : 63,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Text",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/AbstractFont.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/AbstractFontConverter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/AbstractGlyphCache.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/AbstractShaper.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Alignment.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Direction.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Feature.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Renderer.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Script.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/Text.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/DistanceFieldGlyphCacheGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/GlyphCacheGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/RendererGL.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/DistanceFieldGlyphCache.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Text/GlyphCache.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Text",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Text"
+	}
+}

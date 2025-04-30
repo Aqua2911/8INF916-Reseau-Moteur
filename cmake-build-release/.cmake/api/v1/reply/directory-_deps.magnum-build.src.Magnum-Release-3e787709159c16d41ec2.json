@@ -1,0 +1,110 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 211,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 215,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 216,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnum.dll.a"
+			],
+			"targetId" : "Magnum::@08832d1b930bd6ed3754",
+			"targetIndex" : 33,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnum.dll"
+			],
+			"targetId" : "Magnum::@08832d1b930bd6ed3754",
+			"targetIndex" : 33,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/AbstractResourceLoader.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/British.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/DimensionTraits.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/FileCallback.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Image.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ImageFlags.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ImageView.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Magnum.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Mesh.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/PixelFormat.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/PixelStorage.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Resource.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ResourceManager.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Sampler.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Tags.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Timeline.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Types.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/VertexFormat.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/visibility.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Array.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-build/src/Magnum/configure.h",
+				"cmake-build-release/_deps/magnum-build/src/Magnum/version.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum"
+	}
+}

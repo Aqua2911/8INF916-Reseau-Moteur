@@ -75,7 +75,7 @@ void BulletServer::initServer() {
         return;
     }
 
-    onlineClient = OnlineClient("localhost", 5009);
+    onlineClient = OnlineClient("localhost", 5000);
     onlineClient.registerServer("::", address.port, 4);
 }
 

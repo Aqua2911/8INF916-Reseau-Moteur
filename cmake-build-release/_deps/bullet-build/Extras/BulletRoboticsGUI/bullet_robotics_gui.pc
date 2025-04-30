@@ -1,0 +1,6 @@
+Name: bullet_robotics_gui
+Description: Bullet GUI extras for robotics
+Requires: bullet
+Version: 3.27
+Libs: -LC:/Program Files (x86)/MagnumServer/ -lBulletRoboticsGUI
+Cflags:  -IC:/Program Files (x86)/MagnumServer/ -IC:/Program Files (x86)/MagnumServer/include/bullet_robotics_gui

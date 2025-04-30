@@ -1,0 +1,93 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 86,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 90,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumBulletIntegration.dll.a"
+			],
+			"targetId" : "MagnumBulletIntegration::@217b45510702f20e6c5c",
+			"targetIndex" : 35,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumBulletIntegration.dll"
+			],
+			"targetId" : "MagnumBulletIntegration::@217b45510702f20e6c5c",
+			"targetIndex" : 35,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/BulletIntegration",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration/DebugDraw.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration/Integration.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration/MotionState.h",
+				"cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration/visibility.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/BulletIntegration",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-integration-build/src/Magnum/BulletIntegration/configure.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-integration-build/src/Magnum/BulletIntegration",
+		"source" : "cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration"
+	}
+}

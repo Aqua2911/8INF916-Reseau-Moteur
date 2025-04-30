@@ -1,0 +1,82 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 136,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 312,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 313,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Platform",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/Gesture.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/Platform.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/Screen.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/ScreenedApplication.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/ScreenedApplication.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/GLContext.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Platform",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Platform/GlfwApplication.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumGlfwApplication.a"
+			],
+			"targetId" : "MagnumGlfwApplication::@9d917e4c3e870e6bd6de",
+			"targetIndex" : 42,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Platform",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Platform"
+	}
+}

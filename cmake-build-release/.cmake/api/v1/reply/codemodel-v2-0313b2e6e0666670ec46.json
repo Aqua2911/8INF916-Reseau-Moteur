@@ -1,0 +1,2042 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						76,
+						77
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						36,
+						58
+					]
+				},
+				{
+					"build" : "externals",
+					"childIndexes" : 
+					[
+						2,
+						28,
+						40,
+						67,
+						75
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals-Release-266e1aa9fd157b2b432d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "externals"
+				},
+				{
+					"build" : "externals/bullet",
+					"childIndexes" : 
+					[
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals.bullet-Release-58a23446059d87de6598.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "externals/bullet"
+				},
+				{
+					"build" : "_deps/bullet-build",
+					"childIndexes" : 
+					[
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.bullet-build-Release-493c7ce7cf6ba3430ef2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src"
+				},
+				{
+					"build" : "_deps/bullet-build/Extras",
+					"childIndexes" : 
+					[
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.bullet-build.Extras-Release-f0cb53eb3059822f8a71.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras"
+				},
+				{
+					"build" : "_deps/bullet-build/src",
+					"childIndexes" : 
+					[
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					],
+					"jsonFile" : "directory-_deps.bullet-build.src-Release-49e731e5dbc965296764.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src"
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/InverseDynamics",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.InverseDynamics-Release-1cf3a05374d62a623d28.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/InverseDynamics",
+					"targetIndexes" : 
+					[
+						11
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/BulletRoboticsGUI",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.bullet-build.Extras.BulletRoboticsGUI-Release-fb24b5ca270f1a93fecd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/BulletRoboticsGUI",
+					"targetIndexes" : 
+					[
+						13
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/BulletRobotics",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.bullet-build.Extras.BulletRobotics-Release-6ac2f3416621f64c1321.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/BulletRobotics",
+					"targetIndexes" : 
+					[
+						12
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/obj2sdf",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.obj2sdf-Release-47066d3c403315791dc0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/obj2sdf",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/Serialize",
+					"childIndexes" : 
+					[
+						14,
+						15,
+						16
+					],
+					"jsonFile" : "directory-_deps.bullet-build.Extras.Serialize-Release-6c99fb1402db71643597.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/Serialize"
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/ConvexDecomposition",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.ConvexDecomposition-Release-e69864c9856bb83f022c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/ConvexDecomposition",
+					"targetIndexes" : 
+					[
+						17
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/HACD",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.HACD-Release-374bcd98fcdf41496ffa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/HACD",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/GIMPACTUtils",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.GIMPACTUtils-Release-9b5bdfa920707a122c18.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/GIMPACTUtils",
+					"targetIndexes" : 
+					[
+						29
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/Serialize/BulletFileLoader",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.Serialize.BulletFileLoader-Release-88a01e2feb000c0442ee.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/Serialize/BulletFileLoader",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/Serialize/BulletXmlWorldImporter",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.Serialize.BulletXmlWorldImporter-Release-d49137bd46d190f8a8d0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/Serialize/BulletXmlWorldImporter",
+					"targetIndexes" : 
+					[
+						16
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/Extras/Serialize/BulletWorldImporter",
+					"jsonFile" : "directory-_deps.bullet-build.Extras.Serialize.BulletWorldImporter-Release-539ea0b6f53f04e0aeb4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/Extras/Serialize/BulletWorldImporter",
+					"targetIndexes" : 
+					[
+						15
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3OpenCL",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3OpenCL-Release-9d931350679cad1bbacb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3OpenCL",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3Serialize/Bullet2FileLoader",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3Serialize.Bullet2FileLoader-Release-10212a94a594dc6085ef.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3Serialize/Bullet2FileLoader",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3Dynamics",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3Dynamics-Release-0d17f093e27abe096429.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3Dynamics",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3Collision",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3Collision-Release-5a2fb5f4fd74f82e72bb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3Collision",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3Geometry",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3Geometry-Release-58a9daaa8418adbeaa83.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3Geometry",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/BulletInverseDynamics",
+					"jsonFile" : "directory-_deps.bullet-build.src.BulletInverseDynamics-Release-f8d82c28b7c16fda0caa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/BulletInverseDynamics",
+					"targetIndexes" : 
+					[
+						10
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/BulletSoftBody",
+					"jsonFile" : "directory-_deps.bullet-build.src.BulletSoftBody-Release-1587ae49f3585dccc002.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/BulletSoftBody",
+					"targetIndexes" : 
+					[
+						14
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/BulletCollision",
+					"jsonFile" : "directory-_deps.bullet-build.src.BulletCollision-Release-c958c25d0d8c8d83979a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/BulletCollision",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/BulletDynamics",
+					"jsonFile" : "directory-_deps.bullet-build.src.BulletDynamics-Release-23abd90ac80fca1e887a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/BulletDynamics",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/LinearMath",
+					"jsonFile" : "directory-_deps.bullet-build.src.LinearMath-Release-5d1b2b69a49e62d9282a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/LinearMath",
+					"targetIndexes" : 
+					[
+						32
+					]
+				},
+				{
+					"build" : "_deps/bullet-build/src/Bullet3Common",
+					"jsonFile" : "directory-_deps.bullet-build.src.Bullet3Common-Release-f4342ad68a2c141764b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 1,
+					"source" : "cmake-build-release/_deps/bullet-src/src/Bullet3Common",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "externals/corrade",
+					"childIndexes" : 
+					[
+						29
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals.corrade-Release-2a35520626de5fa6742c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "externals/corrade"
+				},
+				{
+					"build" : "_deps/corrade-build",
+					"childIndexes" : 
+					[
+						30,
+						31
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build-Release-ae678b119cc7685bf86c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 28,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src"
+				},
+				{
+					"build" : "_deps/corrade-build/modules",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.modules-Release-a68bf7184ba8ce6b0481.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 29,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/modules"
+				},
+				{
+					"build" : "_deps/corrade-build/src",
+					"childIndexes" : 
+					[
+						32,
+						39
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src-Release-4e6d36cf288865fbbe6a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 29,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src"
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade",
+					"childIndexes" : 
+					[
+						33,
+						34,
+						35,
+						36,
+						38
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade-Release-b383405388a2851214c9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 31,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade",
+					"targetIndexes" : 
+					[
+						18,
+						21
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/Containers",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.Containers-Release-dc2f84f46aad14363a95.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 32,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/Containers",
+					"targetIndexes" : 
+					[
+						19
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/Interconnect",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.Interconnect-Release-3aedbce1bb6de14298c2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 32,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/Interconnect",
+					"targetIndexes" : 
+					[
+						20
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/PluginManager",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.PluginManager-Release-8ec83df2e81dc0f0097c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 32,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/PluginManager",
+					"targetIndexes" : 
+					[
+						22,
+						23
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/TestSuite",
+					"childIndexes" : 
+					[
+						37
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.TestSuite-Release-55e9bfe26d695b5277d3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 32,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite",
+					"targetIndexes" : 
+					[
+						24,
+						26
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/TestSuite/Compare",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.TestSuite.Compare-Release-2bd0bce8337c56d4858d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 36,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare",
+					"targetIndexes" : 
+					[
+						25
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/Corrade/Utility",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.Corrade.Utility-Release-0387e08dee0a6ad5caa5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 32,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/Utility",
+					"targetIndexes" : 
+					[
+						27,
+						28,
+						71
+					]
+				},
+				{
+					"build" : "_deps/corrade-build/src/debuggers",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.corrade-build.src.debuggers-Release-5794715284ea52c3f735.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 31,
+					"projectIndex" : 2,
+					"source" : "cmake-build-release/_deps/corrade-src/src/debuggers"
+				},
+				{
+					"build" : "externals/magnum",
+					"childIndexes" : 
+					[
+						41
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals.magnum-Release-8155297e2949870c48c4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "externals/magnum"
+				},
+				{
+					"build" : "_deps/magnum-build",
+					"childIndexes" : 
+					[
+						42,
+						43
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build-Release-5f65db1287d04d77ded2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 40,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src"
+				},
+				{
+					"build" : "_deps/magnum-build/modules",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.modules-Release-b82ee94833d2fbc624f1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 41,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/modules"
+				},
+				{
+					"build" : "_deps/magnum-build/src",
+					"childIndexes" : 
+					[
+						44,
+						48,
+						65,
+						66
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src-Release-d8a4972676e89d1607cc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 41,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src"
+				},
+				{
+					"build" : "_deps/magnum-build/src/MagnumExternal",
+					"childIndexes" : 
+					[
+						45
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.MagnumExternal-Release-23f60450d47a5c1646bb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 43,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/MagnumExternal"
+				},
+				{
+					"build" : "_deps/magnum-build/src/MagnumExternal/OpenGL",
+					"childIndexes" : 
+					[
+						46,
+						47
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.MagnumExternal.OpenGL-Release-ba1f388d05248649e89c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 44,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/MagnumExternal/OpenGL"
+				},
+				{
+					"build" : "_deps/magnum-build/src/MagnumExternal/OpenGL/KHR",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.MagnumExternal.OpenGL.KHR-Release-fb14c5cf968726a83ddd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 45,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/MagnumExternal/OpenGL/KHR"
+				},
+				{
+					"build" : "_deps/magnum-build/src/MagnumExternal/OpenGL/GL",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.MagnumExternal.OpenGL.GL-Release-439ba401e6772085c0cf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 45,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/MagnumExternal/OpenGL/GL",
+					"targetIndexes" : 
+					[
+						39
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum",
+					"childIndexes" : 
+					[
+						49,
+						50,
+						52,
+						53,
+						54,
+						55,
+						56,
+						57,
+						58,
+						59,
+						60,
+						61,
+						62,
+						63,
+						64
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum-Release-3e787709159c16d41ec2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 43,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum",
+					"targetIndexes" : 
+					[
+						33,
+						48,
+						51
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Animation",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Animation-Release-ee59e333fa29b871de96.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Animation",
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Math",
+					"childIndexes" : 
+					[
+						51
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Math-Release-a3b42f90054e851b0734.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Math",
+					"targetIndexes" : 
+					[
+						46
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Math/Algorithms",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Math.Algorithms-Release-1bcbdb0850d920348e14.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 50,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Math/Algorithms",
+					"targetIndexes" : 
+					[
+						47
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Platform",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Platform-Release-3a7e263d10b6cee49199.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Platform",
+					"targetIndexes" : 
+					[
+						42,
+						52,
+						53,
+						69
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/DebugTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.DebugTools-Release-ab06a7d24f866783d90a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/DebugTools",
+					"targetIndexes" : 
+					[
+						37,
+						38
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/GL",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.GL-Release-3dbc49631852c9e56522.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/GL",
+					"targetIndexes" : 
+					[
+						40,
+						41
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/MaterialTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.MaterialTools-Release-ff88fdd1e1583d96b5b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools",
+					"targetIndexes" : 
+					[
+						44,
+						45
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/MeshTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.MeshTools-Release-0933001e1a8b7fbab26c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/MeshTools",
+					"targetIndexes" : 
+					[
+						49,
+						50
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Primitives",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Primitives-Release-626c3f6797574259ec28.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Primitives",
+					"targetIndexes" : 
+					[
+						54
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/SceneGraph",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.SceneGraph-Release-b625dd8da783cb928f27.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/SceneGraph",
+					"targetIndexes" : 
+					[
+						55,
+						56
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/SceneTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.SceneTools-Release-90631c0995da0044a2fc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/SceneTools",
+					"targetIndexes" : 
+					[
+						57
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Shaders",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Shaders-Release-cf5aa8e457b87b942a92.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Shaders",
+					"targetIndexes" : 
+					[
+						60,
+						61,
+						62
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/ShaderTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.ShaderTools-Release-8fadd21bd8a6fe300ca8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools",
+					"targetIndexes" : 
+					[
+						59
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Text",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Text-Release-2b59f2585fb622874b5e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Text",
+					"targetIndexes" : 
+					[
+						63,
+						64
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/TextureTools",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.TextureTools-Release-46e336b6f1d04c75b589.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/TextureTools",
+					"targetIndexes" : 
+					[
+						65,
+						66
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/Magnum/Trade",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.Magnum.Trade-Release-879359fa13e301d82819.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 48,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Trade",
+					"targetIndexes" : 
+					[
+						67,
+						68
+					]
+				},
+				{
+					"build" : "_deps/magnum-build/src/MagnumPlugins",
+					"jsonFile" : "directory-_deps.magnum-build.src.MagnumPlugins-Release-53f09d7b07123eb93c78.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 43,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/MagnumPlugins"
+				},
+				{
+					"build" : "_deps/magnum-build/src/debuggers",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-build.src.debuggers-Release-1f9e4ea07329ad2abf4d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 43,
+					"projectIndex" : 3,
+					"source" : "cmake-build-release/_deps/magnum-src/src/debuggers"
+				},
+				{
+					"build" : "externals/magnum-integration",
+					"childIndexes" : 
+					[
+						68
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals.magnum-integration-Release-24ac85cec83e8ca71214.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "externals/magnum-integration"
+				},
+				{
+					"build" : "_deps/magnum-integration-build",
+					"childIndexes" : 
+					[
+						69,
+						70
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build-Release-efbb44c7f8b179e76efc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 67,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src"
+				},
+				{
+					"build" : "_deps/magnum-integration-build/modules",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build.modules-Release-f81e19e09f77ed4e4ab3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 68,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/modules"
+				},
+				{
+					"build" : "_deps/magnum-integration-build/src",
+					"childIndexes" : 
+					[
+						71,
+						74
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build.src-Release-a4da695e0411fdf8b602.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 68,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/src"
+				},
+				{
+					"build" : "_deps/magnum-integration-build/src/Magnum",
+					"childIndexes" : 
+					[
+						72,
+						73
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build.src.Magnum-Release-384e2ccb372a43efb57f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 70,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/src/Magnum"
+				},
+				{
+					"build" : "_deps/magnum-integration-build/src/Magnum/BulletIntegration",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build.src.Magnum.BulletIntegration-Release-87ad0b797dc8a1f907ca.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 71,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/src/Magnum/BulletIntegration",
+					"targetIndexes" : 
+					[
+						35
+					]
+				},
+				{
+					"build" : "_deps/magnum-integration-build/src/Magnum/ImGuiIntegration",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.magnum-integration-build.src.Magnum.ImGuiIntegration-Release-de2b846b39c30d2cace6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 71,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/src/Magnum/ImGuiIntegration",
+					"targetIndexes" : 
+					[
+						43
+					]
+				},
+				{
+					"build" : "_deps/magnum-integration-build/src/MagnumExternal",
+					"jsonFile" : "directory-_deps.magnum-integration-build.src.MagnumExternal-Release-e0b1b3ecdad1338266b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 70,
+					"projectIndex" : 4,
+					"source" : "cmake-build-release/_deps/magnum-integration-src/src/MagnumExternal"
+				},
+				{
+					"build" : "externals/enet6",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-externals.enet6-Release-df493f33017c9412fca1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 5,
+					"source" : "externals/enet6",
+					"targetIndexes" : 
+					[
+						72
+					]
+				},
+				{
+					"build" : "src/telemetry-client",
+					"jsonFile" : "directory-src.telemetry-client-Release-17ac3bbd52fb68939f62.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/telemetry-client",
+					"targetIndexes" : 
+					[
+						70
+					]
+				},
+				{
+					"build" : "src/launcher",
+					"jsonFile" : "directory-src.launcher-Release-1174f536ad9901604973.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/launcher",
+					"targetIndexes" : 
+					[
+						31
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						28,
+						40,
+						67,
+						76,
+						77
+					],
+					"name" : "MagnumServer",
+					"targetIndexes" : 
+					[
+						31,
+						36,
+						58,
+						70
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					],
+					"name" : "BULLET_PHYSICS",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						29,
+						30,
+						32
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39
+					],
+					"name" : "Corrade",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						71
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48,
+						49,
+						50,
+						51,
+						52,
+						53,
+						54,
+						55,
+						56,
+						57,
+						58,
+						59,
+						60,
+						61,
+						62,
+						63,
+						64,
+						65,
+						66
+					],
+					"name" : "Magnum",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						33,
+						34,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						44,
+						45,
+						46,
+						47,
+						48,
+						49,
+						50,
+						51,
+						52,
+						53,
+						54,
+						55,
+						56,
+						57,
+						59,
+						60,
+						61,
+						62,
+						63,
+						64,
+						65,
+						66,
+						67,
+						68,
+						69
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						68,
+						69,
+						70,
+						71,
+						72,
+						73,
+						74
+					],
+					"name" : "MagnumIntegration",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						35,
+						43
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						75
+					],
+					"name" : "enet",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						72
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 9,
+					"id" : "App_obj2sdf::@5a1c156ec2a95ddcf4a5",
+					"jsonFile" : "target-App_obj2sdf-Release-f69e2c9ad4c21ee1bfab.json",
+					"name" : "App_obj2sdf",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 18,
+					"id" : "Bullet2FileLoader::@1c2ac7274125262a8932",
+					"jsonFile" : "target-Bullet2FileLoader-Release-40fb7b1552b1e891f8be.json",
+					"name" : "Bullet2FileLoader",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 20,
+					"id" : "Bullet3Collision::@b9b3dd1de84cd558a739",
+					"jsonFile" : "target-Bullet3Collision-Release-392beced8ed0cf2bfa73.json",
+					"name" : "Bullet3Collision",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 27,
+					"id" : "Bullet3Common::@963bb0fc0c6f87a9f538",
+					"jsonFile" : "target-Bullet3Common-Release-3520da4a042e25da52dd.json",
+					"name" : "Bullet3Common",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 19,
+					"id" : "Bullet3Dynamics::@c0a0b5941ed8abd6cb18",
+					"jsonFile" : "target-Bullet3Dynamics-Release-5489061a6509e660c506.json",
+					"name" : "Bullet3Dynamics",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 21,
+					"id" : "Bullet3Geometry::@f6838457df0b919a6955",
+					"jsonFile" : "target-Bullet3Geometry-Release-09a4ad129a36b68aafde.json",
+					"name" : "Bullet3Geometry",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "Bullet3OpenCL_clew::@76ecaca7b010bac978f2",
+					"jsonFile" : "target-Bullet3OpenCL_clew-Release-2f4b02a4ca143a6b9982.json",
+					"name" : "Bullet3OpenCL_clew",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 24,
+					"id" : "BulletCollision::@0b2d23b4ef4cd2356ac5",
+					"jsonFile" : "target-BulletCollision-Release-5c241ad478eb07832a94.json",
+					"name" : "BulletCollision",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 25,
+					"id" : "BulletDynamics::@137948321e81c43cff64",
+					"jsonFile" : "target-BulletDynamics-Release-34c3454e036e7a10d89e.json",
+					"name" : "BulletDynamics",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "BulletFileLoader::@143702417a212d16d983",
+					"jsonFile" : "target-BulletFileLoader-Release-eaa515c4fbe803e32762.json",
+					"name" : "BulletFileLoader",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 22,
+					"id" : "BulletInverseDynamics::@7dd714f324e0eeb8c273",
+					"jsonFile" : "target-BulletInverseDynamics-Release-459deffec81944671153.json",
+					"name" : "BulletInverseDynamics",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "BulletInverseDynamicsUtils::@8c4cc86c195339e56775",
+					"jsonFile" : "target-BulletInverseDynamicsUtils-Release-33103e5f6bcb43e86d79.json",
+					"name" : "BulletInverseDynamicsUtils",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "BulletRobotics::@626fad5e699c4bfda360",
+					"jsonFile" : "target-BulletRobotics-Release-3c4716b99380e4665539.json",
+					"name" : "BulletRobotics",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "BulletRoboticsGUI::@7ad7872effca4f4d6d1f",
+					"jsonFile" : "target-BulletRoboticsGUI-Release-fae968130aa8c19aed6b.json",
+					"name" : "BulletRoboticsGUI",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 23,
+					"id" : "BulletSoftBody::@eb88a0d9a20358a583cc",
+					"jsonFile" : "target-BulletSoftBody-Release-723288ce45a39f249e52.json",
+					"name" : "BulletSoftBody",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "BulletWorldImporter::@888b652a055c1d08421a",
+					"jsonFile" : "target-BulletWorldImporter-Release-475baf8255d2b9828073.json",
+					"name" : "BulletWorldImporter",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "BulletXmlWorldImporter::@e857f521c05dac283126",
+					"jsonFile" : "target-BulletXmlWorldImporter-Release-b7c2ab8620429b1676d7.json",
+					"name" : "BulletXmlWorldImporter",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "ConvexDecomposition::@ada1f03d8352c5256d3b",
+					"jsonFile" : "target-ConvexDecomposition-Release-a06df31727ccac2a02cc.json",
+					"name" : "ConvexDecomposition",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 32,
+					"id" : "Corrade::@d2dcb52c7074ac50f7b7",
+					"jsonFile" : "target-Corrade-Release-8be845bf83673cbe0a6d.json",
+					"name" : "Corrade",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 33,
+					"id" : "CorradeContainers-headers::@f529c39b575c1fd3aaf6",
+					"jsonFile" : "target-CorradeContainers-headers-Release-7246b8510f2a4c0b9b13.json",
+					"name" : "CorradeContainers-headers",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 34,
+					"id" : "CorradeInterconnect::@52cd9f8826cf08be2986",
+					"jsonFile" : "target-CorradeInterconnect-Release-25f58ac5f7dbe58bc450.json",
+					"name" : "CorradeInterconnect",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 32,
+					"id" : "CorradeMain::@d2dcb52c7074ac50f7b7",
+					"jsonFile" : "target-CorradeMain-Release-46fbcafd0e06716a53d7.json",
+					"name" : "CorradeMain",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 35,
+					"id" : "CorradePluginManager::@1dacf0984bb0815dbf95",
+					"jsonFile" : "target-CorradePluginManager-Release-c833adf132cb3c71d30c.json",
+					"name" : "CorradePluginManager",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 35,
+					"id" : "CorradePluginManagerObjects::@1dacf0984bb0815dbf95",
+					"jsonFile" : "target-CorradePluginManagerObjects-Release-64fcf0aa61ae877d4d76.json",
+					"name" : "CorradePluginManagerObjects",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 36,
+					"id" : "CorradeTestSuite::@7a293d3b73d9d0665d98",
+					"jsonFile" : "target-CorradeTestSuite-Release-552ec8de753df56fe250.json",
+					"name" : "CorradeTestSuite",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 37,
+					"id" : "CorradeTestSuiteCompare::@e400984ae57874867cbe",
+					"jsonFile" : "target-CorradeTestSuiteCompare-Release-2a3578413a09ace18a24.json",
+					"name" : "CorradeTestSuiteCompare",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 36,
+					"id" : "CorradeTestSuiteObjects::@7a293d3b73d9d0665d98",
+					"jsonFile" : "target-CorradeTestSuiteObjects-Release-079b0160bd75b1222fa7.json",
+					"name" : "CorradeTestSuiteObjects",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 38,
+					"id" : "CorradeUtility::@d61cb7e2700672687a0d",
+					"jsonFile" : "target-CorradeUtility-Release-c15e70ba1887b8175e2c.json",
+					"name" : "CorradeUtility",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 38,
+					"id" : "CorradeUtilityObjects::@d61cb7e2700672687a0d",
+					"jsonFile" : "target-CorradeUtilityObjects-Release-311ec929a24aa30a8be4.json",
+					"name" : "CorradeUtilityObjects",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "GIMPACTUtils::@4c1bd13ae3c36d9842b7",
+					"jsonFile" : "target-GIMPACTUtils-Release-a2e63dec94f644adb59c.json",
+					"name" : "GIMPACTUtils",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "HACD::@cfa53bcddfb3342ca804",
+					"jsonFile" : "target-HACD-Release-72497b9fad2314be7e8b.json",
+					"name" : "HACD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 77,
+					"id" : "LauncherApp::@c66cdf36eefd40e79e40",
+					"jsonFile" : "target-LauncherApp-Release-e8829e7ddf2bddcf3bf2.json",
+					"name" : "LauncherApp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 26,
+					"id" : "LinearMath::@e786a5790580a49369ce",
+					"jsonFile" : "target-LinearMath-Release-c67947042c393748e7d8.json",
+					"name" : "LinearMath",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 48,
+					"id" : "Magnum::@08832d1b930bd6ed3754",
+					"jsonFile" : "target-Magnum-Release-d5d2d8754546470cd2f1.json",
+					"name" : "Magnum",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 49,
+					"id" : "MagnumAnimation::@ed49c8c29fdceaab49ae",
+					"jsonFile" : "target-MagnumAnimation-Release-03a53b5b3819cad17bbb.json",
+					"name" : "MagnumAnimation",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 72,
+					"id" : "MagnumBulletIntegration::@217b45510702f20e6c5c",
+					"jsonFile" : "target-MagnumBulletIntegration-Release-2037253febd05b570142.json",
+					"name" : "MagnumBulletIntegration",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MagnumClient::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MagnumClient-Release-db111d4eb0f08f59c418.json",
+					"name" : "MagnumClient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 53,
+					"id" : "MagnumDebugTools::@19fbc3dc881203512736",
+					"jsonFile" : "target-MagnumDebugTools-Release-63115f60d3cb7f3a8834.json",
+					"name" : "MagnumDebugTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 53,
+					"id" : "MagnumDebugToolsObjects::@19fbc3dc881203512736",
+					"jsonFile" : "target-MagnumDebugToolsObjects-Release-5d01b7749a5d69ec3753.json",
+					"name" : "MagnumDebugToolsObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 47,
+					"id" : "MagnumFlextGLObjects::@1ca828f8d89a21e91efc",
+					"jsonFile" : "target-MagnumFlextGLObjects-Release-ae75481b831ac56002cb.json",
+					"name" : "MagnumFlextGLObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 54,
+					"id" : "MagnumGL::@268806c9b7125e0d5796",
+					"jsonFile" : "target-MagnumGL-Release-1c214cf4640996535d4c.json",
+					"name" : "MagnumGL",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 54,
+					"id" : "MagnumGLObjects::@268806c9b7125e0d5796",
+					"jsonFile" : "target-MagnumGLObjects-Release-0ede0f63d302ac651296.json",
+					"name" : "MagnumGLObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 52,
+					"id" : "MagnumGlfwApplication::@9d917e4c3e870e6bd6de",
+					"jsonFile" : "target-MagnumGlfwApplication-Release-a2bb2ea9bdec7015fcb0.json",
+					"name" : "MagnumGlfwApplication",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 73,
+					"id" : "MagnumImGuiIntegration::@6f02723c3fa996db52b9",
+					"jsonFile" : "target-MagnumImGuiIntegration-Release-2c3507f268e45c65fddb.json",
+					"name" : "MagnumImGuiIntegration",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 55,
+					"id" : "MagnumMaterialTools::@f71ab39c8db72d367fc1",
+					"jsonFile" : "target-MagnumMaterialTools-Release-cf510384035b21018b75.json",
+					"name" : "MagnumMaterialTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 55,
+					"id" : "MagnumMaterialToolsObjects::@f71ab39c8db72d367fc1",
+					"jsonFile" : "target-MagnumMaterialToolsObjects-Release-882ccfc1f6330ada667e.json",
+					"name" : "MagnumMaterialToolsObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 50,
+					"id" : "MagnumMath::@a3a2aa9d44b35517775f",
+					"jsonFile" : "target-MagnumMath-Release-71519bf6fcc6e17001b8.json",
+					"name" : "MagnumMath",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 51,
+					"id" : "MagnumMathAlgorithms::@c60f0862e301360d5c44",
+					"jsonFile" : "target-MagnumMathAlgorithms-Release-99af49b1dcf7964e2282.json",
+					"name" : "MagnumMathAlgorithms",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 48,
+					"id" : "MagnumMathObjects::@08832d1b930bd6ed3754",
+					"jsonFile" : "target-MagnumMathObjects-Release-df00af102c0937951ddc.json",
+					"name" : "MagnumMathObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 56,
+					"id" : "MagnumMeshTools::@1a7bff86273a2e1420c5",
+					"jsonFile" : "target-MagnumMeshTools-Release-bef5bcbf8862eac14796.json",
+					"name" : "MagnumMeshTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 56,
+					"id" : "MagnumMeshToolsObjects::@1a7bff86273a2e1420c5",
+					"jsonFile" : "target-MagnumMeshToolsObjects-Release-60de889c001240f8b6d4.json",
+					"name" : "MagnumMeshToolsObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 48,
+					"id" : "MagnumObjects::@08832d1b930bd6ed3754",
+					"jsonFile" : "target-MagnumObjects-Release-6ca72fa6fc473be82afa.json",
+					"name" : "MagnumObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 52,
+					"id" : "MagnumPlatform::@9d917e4c3e870e6bd6de",
+					"jsonFile" : "target-MagnumPlatform-Release-e18fe48ccd3a217f406a.json",
+					"name" : "MagnumPlatform",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 52,
+					"id" : "MagnumPlatformObjects::@9d917e4c3e870e6bd6de",
+					"jsonFile" : "target-MagnumPlatformObjects-Release-47eeed7711596f1a9c32.json",
+					"name" : "MagnumPlatformObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 57,
+					"id" : "MagnumPrimitives::@e49b507f48cfc33072da",
+					"jsonFile" : "target-MagnumPrimitives-Release-1bcb78959ba9c7ace9e7.json",
+					"name" : "MagnumPrimitives",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 58,
+					"id" : "MagnumSceneGraph::@dcc1f6dd026d7d586bb0",
+					"jsonFile" : "target-MagnumSceneGraph-Release-6c99958cc779b821989b.json",
+					"name" : "MagnumSceneGraph",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 58,
+					"id" : "MagnumSceneGraphObjects::@dcc1f6dd026d7d586bb0",
+					"jsonFile" : "target-MagnumSceneGraphObjects-Release-b2118e00ba831e4d230f.json",
+					"name" : "MagnumSceneGraphObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 59,
+					"id" : "MagnumSceneTools::@7db2b79372097103ddf1",
+					"jsonFile" : "target-MagnumSceneTools-Release-96d5d7b93e4812828e6c.json",
+					"name" : "MagnumSceneTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MagnumServer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MagnumServer-Release-eac2319add13165c32fc.json",
+					"name" : "MagnumServer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 61,
+					"id" : "MagnumShaderTools::@c60ac98c8af158362b93",
+					"jsonFile" : "target-MagnumShaderTools-Release-799536869a671967bd92.json",
+					"name" : "MagnumShaderTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 60,
+					"id" : "MagnumShaders::@345b51b54e6d589d835a",
+					"jsonFile" : "target-MagnumShaders-Release-e61ea30e805f43fbf62f.json",
+					"name" : "MagnumShaders",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 60,
+					"id" : "MagnumShadersObjects::@345b51b54e6d589d835a",
+					"jsonFile" : "target-MagnumShadersObjects-Release-911d06b9f6cea9be3eef.json",
+					"name" : "MagnumShadersObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 60,
+					"id" : "MagnumShaders_RESOURCES_GL-dependencies::@345b51b54e6d589d835a",
+					"jsonFile" : "target-MagnumShaders_RESOURCES_GL-dependencies-Release-f54bc9b9af946fddb4eb.json",
+					"name" : "MagnumShaders_RESOURCES_GL-dependencies",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 62,
+					"id" : "MagnumText::@128bd1b72565cf040e14",
+					"jsonFile" : "target-MagnumText-Release-4f647a2c412cb3448514.json",
+					"name" : "MagnumText",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 62,
+					"id" : "MagnumTextObjects::@128bd1b72565cf040e14",
+					"jsonFile" : "target-MagnumTextObjects-Release-7ec1ea41f1dd57a9f075.json",
+					"name" : "MagnumTextObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 63,
+					"id" : "MagnumTextureTools::@c5f0ae6086c2c2f53217",
+					"jsonFile" : "target-MagnumTextureTools-Release-3cb0053b79674a618e25.json",
+					"name" : "MagnumTextureTools",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 63,
+					"id" : "MagnumTextureTools_RESOURCES-dependencies::@c5f0ae6086c2c2f53217",
+					"jsonFile" : "target-MagnumTextureTools_RESOURCES-dependencies-Release-adbeac2f2227c57005be.json",
+					"name" : "MagnumTextureTools_RESOURCES-dependencies",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 64,
+					"id" : "MagnumTrade::@bc05f17fb260e1e89f6c",
+					"jsonFile" : "target-MagnumTrade-Release-2b716ac91078c251e4b6.json",
+					"name" : "MagnumTrade",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 64,
+					"id" : "MagnumTradeObjects::@bc05f17fb260e1e89f6c",
+					"jsonFile" : "target-MagnumTradeObjects-Release-82f0dff850677d202a5e.json",
+					"name" : "MagnumTradeObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 52,
+					"id" : "MagnumWglContextObjects::@9d917e4c3e870e6bd6de",
+					"jsonFile" : "target-MagnumWglContextObjects-Release-5c49cdd3738a7e4b06b4.json",
+					"name" : "MagnumWglContextObjects",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 76,
+					"id" : "WebSocketClient::@f69b199499d0984d2231",
+					"jsonFile" : "target-WebSocketClient-Release-02a5405da54faad3114f.json",
+					"name" : "WebSocketClient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 38,
+					"id" : "corrade-rc::@d61cb7e2700672687a0d",
+					"jsonFile" : "target-corrade-rc-Release-f58eac696c0df5f0084b.json",
+					"name" : "corrade-rc",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 75,
+					"id" : "enet::@73e15f0305291dcef13e",
+					"jsonFile" : "target-enet-Release-3fa7bfbc32e08a28fafb.json",
+					"name" : "enet",
+					"projectIndex" : 5
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release",
+		"source" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Animation",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Animation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Easing.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Interpolation.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Player.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Player.hpp",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Animation/Track.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Animation",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Animation"
+	}
+}

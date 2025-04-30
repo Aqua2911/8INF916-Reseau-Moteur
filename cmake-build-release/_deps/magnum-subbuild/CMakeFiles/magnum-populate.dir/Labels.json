@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/CMakeFiles/magnum-populate"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/CMakeFiles/magnum-populate.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/CMakeFiles/magnum-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/jpkpg/CLEMENT-DEV/.GIT-REMOTE/8INF916-Reseau-Moteur/cmake-build-release/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"magnum-populate"
+		],
+		"name" : "magnum-populate"
+	}
+}

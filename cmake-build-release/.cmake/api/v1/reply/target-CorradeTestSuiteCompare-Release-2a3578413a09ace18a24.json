@@ -1,0 +1,98 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "Corrade/TestSuite/Compare"
+	},
+	"id" : "CorradeTestSuiteCompare::@e400984ae57874867cbe",
+	"name" : "CorradeTestSuiteCompare",
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/TestSuite/Compare",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/Container.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/File.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/FileToString.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/FloatingPoint.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/Numeric.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/SortedContainer.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/String.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/StringToFile.h",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "UTILITY"
+}

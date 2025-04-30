@@ -1,0 +1,50 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/Corrade/TestSuite/Compare",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/Container.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/File.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/FileToString.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/FloatingPoint.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/Numeric.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/SortedContainer.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/String.h",
+				"cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare/StringToFile.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/corrade-build/src/Corrade/TestSuite/Compare",
+		"source" : "cmake-build-release/_deps/corrade-src/src/Corrade/TestSuite/Compare"
+	}
+}

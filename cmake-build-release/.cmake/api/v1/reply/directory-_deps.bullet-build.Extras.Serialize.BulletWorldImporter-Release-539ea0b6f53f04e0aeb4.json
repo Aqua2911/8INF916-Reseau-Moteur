@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/bullet-build/Extras/Serialize/BulletWorldImporter",
+		"source" : "cmake-build-release/_deps/bullet-src/Extras/Serialize/BulletWorldImporter"
+	}
+}

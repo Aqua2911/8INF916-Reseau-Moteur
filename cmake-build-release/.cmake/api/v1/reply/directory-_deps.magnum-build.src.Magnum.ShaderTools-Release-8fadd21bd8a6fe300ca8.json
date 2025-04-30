@@ -1,0 +1,77 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 85,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumShaderTools.dll.a"
+			],
+			"targetId" : "MagnumShaderTools::@c60ac98c8af158362b93",
+			"targetIndex" : 59,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumShaderTools.dll"
+			],
+			"targetId" : "MagnumShaderTools::@c60ac98c8af158362b93",
+			"targetIndex" : 59,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/ShaderTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools/AbstractConverter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools/ShaderTools.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools/Stage.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/ShaderTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/ShaderTools"
+	}
+}

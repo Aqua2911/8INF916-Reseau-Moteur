@@ -1,0 +1,79 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 81,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 85,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumMaterialTools.dll.a"
+			],
+			"targetId" : "MagnumMaterialTools::@f71ab39c8db72d367fc1",
+			"targetIndex" : 44,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumMaterialTools.dll"
+			],
+			"targetId" : "MagnumMaterialTools::@f71ab39c8db72d367fc1",
+			"targetIndex" : 44,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/MaterialTools",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/Copy.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/Filter.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/Merge.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/PhongToPbrMetallicRoughness.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/RemoveDuplicates.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/MaterialTools",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/MaterialTools"
+	}
+}

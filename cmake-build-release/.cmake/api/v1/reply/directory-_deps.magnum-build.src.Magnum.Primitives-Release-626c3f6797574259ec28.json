@@ -1,0 +1,88 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 90,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 94,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"Release/lib/libMagnumPrimitives.dll.a"
+			],
+			"targetId" : "MagnumPrimitives::@e49b507f48cfc33072da",
+			"targetIndex" : 54,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Release/bin/libMagnumPrimitives.dll"
+			],
+			"targetId" : "MagnumPrimitives::@e49b507f48cfc33072da",
+			"targetIndex" : 54,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/Magnum/Primitives",
+			"paths" : 
+			[
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Axis.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Capsule.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Circle.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Crosshair.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Cone.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Cube.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Cylinder.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Gradient.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Grid.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Icosphere.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Line.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Plane.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/Square.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/UVSphere.h",
+				"cmake-build-release/_deps/magnum-src/src/Magnum/Primitives/visibility.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/magnum-build/src/Magnum/Primitives",
+		"source" : "cmake-build-release/_deps/magnum-src/src/Magnum/Primitives"
+	}
+}
