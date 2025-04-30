@@ -10,8 +10,11 @@ target_link_libraries(LauncherApp PRIVATE
         Magnum::GlfwApplication
         MagnumIntegration::ImGui
         Magnum::GL
-        ws2_32
 )
+
+if (WIN32)
+  target_link_libraries(LauncherApp PRIVATE ws2_32)
+endif()
 
 
 target_include_directories(LauncherApp PRIVATE

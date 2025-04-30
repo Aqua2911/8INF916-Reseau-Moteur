@@ -4,6 +4,12 @@
 */
 #define ENET_BUILDING_LIB 1
 #include <string.h>
+#include <errno.h>             /* for errno */
+
+#ifndef _WIN32
+/** On non-Windows platforms, map WSAGetLastError() to errno */
+#define WSAGetLastError() (errno)
+#endif
 #include "enet6/enet.h"
 
 /** @defgroup host ENet host functions

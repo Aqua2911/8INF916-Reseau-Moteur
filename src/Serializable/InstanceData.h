@@ -17,6 +17,11 @@ struct InstanceData {
     Matrix3x3 normalMatrix;
     Color3 color;
 
+    InstanceData() = default;
+
+    InstanceData(const Matrix4& matrix, const Matrix3x3& normal, const Color3& c)
+        : transformationMatrix(matrix), normalMatrix(normal), color(c) {}
+
     std::vector<char> serialize() const ;
     InstanceData deserialize(std::streampos position) ;
     InstanceData deserialize(const char *buffer, int &offset);

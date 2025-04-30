@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/CMakeFiles/magnum-populate"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/CMakeFiles/magnum-populate.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/CMakeFiles/magnum-populate-complete.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-build.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-configure.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-download.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-install.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-patch.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-test.rule"
+		},
+		{
+			"file" : "/home/ensea/UQAC/8INF916-Reseau-Moteur/cmake-build-linux/_deps/magnum-subbuild/magnum-populate-prefix/src/magnum-populate-stamp/magnum-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"magnum-populate"
+		],
+		"name" : "magnum-populate"
+	}
+}

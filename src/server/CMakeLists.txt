@@ -10,5 +10,7 @@ target_include_directories(ServerApp PRIVATE
         ${PROJECT_SOURCE_DIR}/externals/nlohmann
 )
 
-target_link_libraries(ServerApp PRIVATE ws2_32)
+if (WIN32)
+  target_link_libraries(ServerApp PRIVATE ws2_32)
+endif()
 set_property(TARGET ServerApp PROPERTY CXX_STANDARD 20)
