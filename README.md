@@ -48,7 +48,7 @@ cd GameApi/bin/Release/net9.0/linux-x64/publish/
 
 In a new terminal, run the server
 ```bash
-cd cmake-build-release/Release/bin/
+cd cmake-build-linux/Release/bin/
 ```
 ```bash
 ./MagnumServer
@@ -56,7 +56,7 @@ cd cmake-build-release/Release/bin/
 
 In another terminal, run the client
 ```bash
-cd cmake-build-release/Release/bin/
+cd cmake-build-linux/Release/bin/
 ```
 ```bash
 ./LauncherApp
