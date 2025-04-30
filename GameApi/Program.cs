@@ -35,7 +35,10 @@ app.UseWebSockets(); // Enable WebSocket middleware
 
 
 var users = new List<Player>{
-    new Player("alice")
+    new Player("alice"),
+    new Player("bob"),
+    new Player("charlie"),
+    new Player("valere")
 };
 var matchQueue = new List<MatchRequest>();
 var sessions = new Dictionary<string, string>(); // username → server IP
@@ -116,7 +119,7 @@ app.MapPost("/match", [Authorize] (HttpContext ctx) =>
 
     // Try to find a group of 4 with similar level
     const int LEVEL_TOLERANCE = 3;
-    const int PLAYER_PER_MATCH = 1;
+    const int PLAYER_PER_MATCH = 4;
     var group = waitingPlayers
         .Where(p => Math.Abs(p.MatchmakingRanking - playerMMR) <= LEVEL_TOLERANCE)
         .Take(PLAYER_PER_MATCH)
@@ -135,9 +138,9 @@ app.MapPost("/match", [Authorize] (HttpContext ctx) =>
     {
         sessions[player.Uid] = server.WebSocketUrl;
         waitingPlayers.RemoveAll(p => p.Uid == player.Uid);
+
         Console.WriteLine($"Matched {player.Uid} to {server.WebSocketUrl}");
     }
-
     return Results.Ok(new { session = server.WebSocketUrl });
 });
 

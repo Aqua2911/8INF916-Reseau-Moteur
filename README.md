@@ -58,3 +58,18 @@ cd cmake-build-release/Release/bin/
 ```bash
 ./LauncherApp
 ```
+
+# Workflow
+
+1. Run the `GameApi`
+2. Start the `MagnumServer`
+3. Start one `LauncherApp` per client you wish to start
+4. Log in as either one of the following registered usernames :
+    * alice
+    * bob
+    * charlie
+    * valere
+5. Click on the `Login` button, logging in should request the api with infos about achievements and skins
+6. Click on the `Find match` button
+7. Once a match is found, click on the `Launch Game` button
+8. game window appears, you can now play the game

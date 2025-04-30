@@ -112,9 +112,9 @@ target_link_libraries(MagnumClient PRIVATE
 )
 
 # SERVER APP
-add_subdirectory(src/server)
+#add_subdirectory(src/server)
 # CLIENT APP
-add_subdirectory(src/client)
+#add_subdirectory(src/client)
 # WEBSOCKET
 add_subdirectory(src/telemetry-client)
 # GAME LAUNCHER

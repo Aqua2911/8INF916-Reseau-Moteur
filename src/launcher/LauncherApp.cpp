@@ -120,6 +120,8 @@ void LauncherApp::textInputEvent(TextInputEvent& event) {
 void LauncherApp::handleLogin() {
     bool loginStatus = onlineClient.login(_username);
     _state = loginStatus ? State::LoggedIn : State::Error;
+
+
 }
 
 void LauncherApp::handleMatchmaking() {

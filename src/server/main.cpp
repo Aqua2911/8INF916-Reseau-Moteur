@@ -11,6 +11,11 @@
 
 using json = nlohmann::json;
 
+/*
+ * This file runs the basic methods that are used by a game server to communicate with the REST API
+ */
+
+
 int main() {
     //std::vector<GameServer> gameServers;
 

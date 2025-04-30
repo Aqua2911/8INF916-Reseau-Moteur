@@ -9,6 +9,11 @@
 
 using json = nlohmann::json;
 
+
+/*
+ * This file runs the basic methods that are used by a client to communicate with the REST API
+ */
+
 int main(int argc, char** argv) {
     std::cout << "[ClientApp] main() entered " << "\n";
 

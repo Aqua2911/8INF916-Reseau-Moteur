@@ -15,6 +15,10 @@
 using namespace Magnum;
 using namespace Magnum::Platform;
 
+/*
+ * This class allows communication with the REST API using methods that handle most tasks done in our workflow
+ */
+
 class LauncherApp : public GlfwApplication {
 public:
     explicit LauncherApp(const Arguments& arguments);
